@@ -1,0 +1,15 @@
+/* Import the bootstrap variables */
+@import "/client/lib/custom.bootstrap.import.less";
+
+/* Hide background color and border*/
+#main-navbar{
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+	transition: background-color 0.4s, border-color 0.4s;
+}
+
+/* Show background on hover */
+#main-navbar:hover{
+	background-color: @navbar-default-bg;
+	border-color: @navbar-default-border;
+}

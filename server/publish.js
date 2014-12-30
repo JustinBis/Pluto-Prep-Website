@@ -16,10 +16,10 @@ Meteor.publish('activeQuiz', function() {
 			// Only publish those active quizzes for which this user is a player
 			// Make sure this user is one of the players
 			$or: [
-    			{ player1Id: this.userId },
-    			{ player2Id: this.userId }
-    		]
-		});	
+				{ player1Id: this.userId },
+				{ player2Id: this.userId }
+			]
+		});
 	}
 	else
 	{
