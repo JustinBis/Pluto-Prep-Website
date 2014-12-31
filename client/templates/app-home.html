@@ -7,11 +7,24 @@
 	<div class="jumbotron" id="main-jumbotron">
 		<div class="container">
 			<div class="jumbotron-text-container">
-				<h2>MCAT practice done the smart way.</h2>
+			{{#if currentUser}}
+				<h2 class="text-center">Welcome Back</h2>
+				<button type="button" class="btn btn-lg sign-in-button" id="jumbotron-take-quiz-button">
+					Take a Quiz Now
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				</button>
+			{{else}}
+				<h1>MCAT practice done the smart way.</h1>
 				<p>
 					Compete in short quizzes against other students and compare your results. Expertly crafted questions and clear explanations pinpoint areas of stride and struggle so you can study smarter, not harder. 
 				</p>
-			</div>
+
+				<button type="button" class="btn btn-lg sign-in-button" id="jumbotron-sign-in-button">
+					Try a Quiz
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				</button>
+			{{/if}}
+			</div> <!-- /.jumbotron-text-container -->
 		</div>
 	</div>
 
