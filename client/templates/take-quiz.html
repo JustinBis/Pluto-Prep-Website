@@ -1,0 +1,39 @@
+<!-- The page served to the "/quiz/:_id" route -->
+<template name="takeQuiz">
+	<!-- Full page container -->
+	<div class="find-partner-background">
+		<div class="quiz-question-container text-center">
+			<p>
+				{{#each questions}}
+					{{> questionTemplate}}
+					<br />
+				{{/each}}
+			</p>
+		</div>
+
+		<div class="text-center">
+		<h3> Debug Info </h3>
+			<p>
+				p1_id: {{p1_id}}
+				<br />
+				That's all!
+			</p>
+		</div>
+	</div>
+</template>
+
+<!-- The question template -->
+<template name="questionTemplate">
+	<div class="question-container">
+		<span class="question-text">
+			{{question}}
+		</span>
+
+		<ul class="list-inline list-group question-answers">
+			<li class="list-group-item"><span>A</span> {{a}}</li>
+			<li class="list-group-item"><span>B</span> {{b}}</li>
+			<li class="list-group-item"><span>C</span> {{c}}</li>
+			<li class="list-group-item"><span>D</span> {{d}}</li>
+		</ul>
+	</div>
+</template>

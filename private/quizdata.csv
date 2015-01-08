@@ -1,0 +1,139 @@
+qid,subject,subcategory,question,a,b,c,d,answer,long_explanation,short_explanation
+1,Biology,Eukaryotic Cell,In what cellular organelle are ribosomes  assembled?,Golgi apparatus,Endoplasmic reticulum,Cytoplasm,Nucleolus,D,">Ribosomes, composed of ribosomal RNA (rRNA) and proteins, are assembled in the nucleolus.>rRNA is synthesized in the nucleolus. >The ribosomal proteins are manufactured in the cytoplasm and transported to the nucleolus.",>Ribosomes are assembled in the nucleolus.
+2,Biology,Eukaryotic Cell,What subcellular organelle is most associated with drug detoxification?,Mitochondria,Endoplasmic Reticulum,Nucleus,Golgi apparatus,B,">The endoplasmic reticulum aids in drug detoxification.>It is also involved in lipid and steroid synthesis as well as protein synthesis, folding, and transport.",>The endoplasmic reticulum is reponsible for drug detoxification.
+3,Biology,Endocrine System,Which of the following hormones is released from the posterior pituitary gland?,Thyroid-stimulating hormone (TSH),Luteinizing hormone (LH),Growth hormone,Oxytocin,D,">The posterior pituitary gland releases two major hormones: oxytocin and vasopressin (ADH). >LH, growth hormone, and TSH are released from the anterior pituitary.",">The posterior pituitary releases oxytocin.>LH, growth hormone, and TSH are released from the anterior pituitary."
+4,Biology,Nephron,"Angiotensin converting enzyme (ACE) inhibitors are a common treatment for hypertension. It inhibits the conversion of angiotensin I into angiotensin II, a hormone that affects vasoconstriction and aldosterone production. Based on this information, ACE inibitors treat hypertension by:",increasing blood volume and increasing blood vessel relaxation.,increasing blood volume and decreasing blood vessel relaxation.,decreasing blood volume and increasing blood vessel relaxation.,decreasing blood volume and decreasing blood vessel relaxation.,C,">Because they inhibit the production of angiotensin II, ACE inhibitors treat blood pressure by decreasing blood volume and promoting vasodilation. >Angiotensin Converting Enzyme (ACE) converts angiotensin I to angiotensin II.>Angiotensin II has two functions: it increases vasoconstriction and stimulates the release of aldosterone. Aldosterone increases the blood volume by promoting the reabsorption of sodium in the nephron. ",">ACE inhibitors block the production of angiotensin II, which results in vasodilation and a decrease in blood volume.>Angiotensin II promotes vasoconstriction and the release of aldoesterone. Aldoesterone increases blood volume."
+5,Biology,Bacteria,The active site of the ribosome catalyzes the formation of the peptide bond in the growing polypeptide chain.  This active site is primarily composed of:,non polar amino acids.,charged amino acids.,DNA,RNA,D,">In the ribosome, peptide bond formation is catalyzed by RNA. Though ribosomes do contain proteins, these proteins are not located near the active site.>This component of the ribosome is an example of a ribozyme, a ribonucleic enzyme.",>The ribosomal active site is composed of RNA.
+6,Biology,Bacteria,Bacteria that are rod-like or cylindrical in shape are referred to as:,cocci.,bacilli.,spirilla.,heloarcula.,B,">Bacteria are classified into three primary morphological types:       >rod-like (bacilli)       >spherical (cocci)      >helical (spirilla)",>Bacteria that are cylindrical or rod-like in shape are classified as bacilli.
+7,Biology,Bacteria,Bacteria that are curved or helical in shape are referred to as:,cocci.,bacilli.,spirilla.,heloarcula.,C,">Bacteria are classified into three primary morphological types:      >helical (spirilla)     >rod-like (bacilli)      >spherical (cocci)     ",>Bacteria that are helical or curved in shape are classified as sprilla.
+8,Biology,Bacteria,Bacteria that are spherical or ovular in shape are referred to as:,cocci.,bacilli.,spirilla.,heloarcula.,A,">Bacteria are classified into three primary morphological types:      >spherical (cocci)     >helical (spirilla)     >rod-like (bacilli) ",>Bacteria that are spherical or ovular in shape are classified as cocci.
+9,Biology,Bacteria,A plasmid is composed of:,single stranded intragenomic DNA.,double stranded intragenomic DNA.,single stranded extragenomic DNA.,double stranded extragenomic DNA.,D,">Plasmids are closed loops of double stranded DNA.>They are extrachromosomal, which means they are not part of the bacterial genome (extragenomic).>Naturally occurring plasmids generally contain beneficial, though unncessary, genes and can be transferred from one cell to another through conjugation, transduction, or transformation. >Artificial plasmids are often used as vectors for genetic cloning.",">Plasmids are closed loops of double standed DNA.>They are not part of bacterial chromosomes and are thus said to be extragenomic."
+10,Biology,Bacteria,"Genes can be horizontally transferred from one bacterium to another through the use of a virus, a process known as:",transformation.,conjugation.,transduction.,binary fission.,C,">Bacteria can be genetically altered through viral infection. Bacteriophages can insert DNA from other bacteria, which can then be transcribed and used.>Transduction is one of the three major ways bacteria can be genetically altered (the others are transformation and conjugation).",>Horizontal gene transfer from one bacterium to another through the use of a virus is known as transduction.
+11,Biology,Bacteria,"In microbiology and biotechnology, the bacterial ability to take up extracellular DNA from the surroundings is known as competence. The process by which these cells take up DNA and are genetically altered is known as:",transformation.,conjugation.,transduction.,binary fission.,A,">Transformation is the process by which cells are genetically altered through direct uptake of extracellular, extragenomic DNA from the surroundings.>Cells that can be altered by this process are called competent cells.>Transformation is one of the three major ways bacteria can be genetically altered (the others are transduction and conjugation).",>The process by which a bacterial cell is genetically altered through the uptake of extracellular DNA is known as transformation.
+12,Biology,Bacteria,"Considered to be the bacterial counterpart to sexual mating, the process by which bacteria exchange genetic material through direct cell to cell contact is known as:",transformation.,conjugation.,transduction.,binary fission.,B,">Conjugation is the process by which genes are transferred from one bacteria to another by direct contact.>It can occur through cell to cell contact or through the use of a bridge-like structure called a pilus.>Conjugation is one of the three major ways abcteria can be genetically altered (the others are transduction and conjugation).",">Bacteria can exchange DNA with direct, cell to cell contact, a process known as conjugation."
+13,Biology,Bacteria,Any process by which foreign DNA is transferred to a cell through through the use of a virus is known as:,transformation.,conjugation.,transduction.,binary fission.,C,>Transduction is any process by which foreign DNA is introduced into a cell through the use of a viral vector.,>The alteration of the genetic makeup of a cell through the use of a virus is known as transduction.
+14,Biology,Endocrine System,Tropic hormones are hormones that act upon other glands of the endocrine system and are involved in the regulation of other hormones. All of the following are tropic hormones EXCEPT:,thyroid-stimulating hormone (TSH).,luteinizing hormone (LH).,oxytocin.,adrenocorticotropic hormone (ACTH).,C,">Tropic hormones are those hormones that act upon other endocrine glands, regulating the synthesis and release of additional hormones.>Oxytocin is the only hormone provided that directly acts on effector organs (direct hormone).>The others are tropic hormones: ACTH, TSH, and LH stimulate the adrenal glands, the thyroid, and the ovaries, respectively.",">ACTH, TSH, and LH are all tropic hormones in that they regulate the production and release of hormones by other endocrine glands.>Oxytocin directly stimulates effector organs (the uterus and mammary glands), making it a direct hormone."
+15,Biology,Endocrine System,"The pancreas secretes hormones that are critical to the maintenance of glucose homeostasis. In the period soon after a meal, the pancreas will likely:","increases its secretion of insulin, promoting the breakdown of glycogen.","increases its secretion of glucagon, promoting the breakdown of glycogen.","increases its secretion of insulin, promoting the formation of glycogen.","increases its secretion of glucagon, promoting the formation of glycogen.",C,">In response to an increase in blood glucose levels (as would be the case after a meal), the pancreas releases insulin.>Insulin stimulates glucose uptake and its polymerization into glycogen, which decreases blood glucose concentration.",">In response to a high blood glucose concentration, the pancreas releases insulin.>Insulin stiumulates the formation of glycogen and the removal of free glucose from the blood."
+16,Biology,Endocrine System,"In order to regulate blood glucose levels, the pancreas produces and secretes the homones insulin and glucagon. In response to periods of fasting, the pancreas:","increases its secretion of insulin, promoting the breakdown of glycogen.","increases its secretion of glucagon, promoting the breakdown of glycogen.","increases its secretion of insulin, promoting the formation of glycogen.","increases its secretion of glucagon, promoting the formation of glycogen.",B,">In response to a decrease in blood glucose concentration, the pancreas releases glucagon.>Glucagon stimulates the breakdown of glycogen into free glucose, thereby increasing the concentration of glucose in the blood.",">In response to a low blood glucose concentration, the pancreas releases glucagon.>Glucagon stiumulates the breakdown of glycogen and the release of free glucose into the blood."
+17,Biology,Endocrine System,Which of the following hormones is derived from cholesterol?,Aldosterone,Epinephrine,Vasopressin,Glucagon,A,">Steroid hormones are non polar hormones derived from cholesterol, of which aldosterone is an example.>Vasopressin and glucagon are peptide hormones while epinephrine is derived from the amino acids tyrosine and phenylalanine.",">Aldosterone is an example of a steroid hormone, a class of hormones that are derived from cholesterol."
+18,Biology,Eukaryotic Cell,Which of the following can diffuse through cell membranes without the use of embedded proteins?,Water,Gases,Ions,Proteins,B,">The cellular membrane is primarily composed of a repeating phospholipid bilayer.>Since these phospholipid molecules are largely hydrophobic, only small non polar molecules like gases and steroid hormones can pass through the membrane without the use of transport proteins.>Polar (water), charged (ions), or large (proteins) molecules require the use of embedded proteins to enter the cell.",">Small, non polar molecules like gases can across the primarily hydrophobic cellular membrane."
+19,Biology,Eukaryotic Cell,"In the absence of embedded membrane proteins, all of the following are cell membrane impermeable EXCEPT:",cholesterol.,water.,ions.,glucose.,A,">The cellular membrane is primarily composed of a repeating phospholipid bilayer.>Since these phospholipid molecules are largely hydrophobic, only small non polar molecules like cholesterol are membrane permeable.>Polar molecules like water and glucose and charged molecules like ions are membrane impermeable.",">Small, non polar molecules like cholesterol can cross the primarily hydrophobic cellular membrane."
+20,Biology,Immune System,All of the following are lymphocytes EXCEPT:,T cells.,B cells.,neutrophils.,natural killer cells.,C,">Lymphocytes are those leukocytes (white blood cells) derived from lymphoid progenitors in the bone marrow and include B cells, T cells, and natural killer (NK) cells.>The remaining leukocytes, including neutrophils, are derived from myeloid progenitors in the bone marrow.",">B cells, T cells, and natural killer (NK) cells are lymphocytes.>Lymphocytes are derived from lymphoid progenitors in the bone marrow."
+21,Biology,Immune System,All of the following are leukocytes EXCEPT:,B cells.,erythrocytes.,neutrophils.,monocytes.,B,">Leukocytes (white blood cells) are any immune cells derived from stem cells housed in the bone marrow.>Monocytes, B cells, and neutrophils are all white blood cells.>Though originating in the bone marrow, erythrocytes (red blood cells) have no immune function and are not leukocytes.",">Leukocytes (white blood cells) are immune cells derived from bone marrow stem cells.>Neutrophils, B cells, and monocytes are leukocytes while erythrocytes (red blood cells) are not."
+22,Biology,Immune System,Immune cells are primarily derived from stem cells housed in the:,bone marrow.,thymus.,spleen.,heart.,A,">Along with erythrocytes and platelets, the cells of the immune system are derived from stem cells housed in the bone marrow.>Though these cells may mature in regions throughout the body, they all originate in the bone marrow.",>All immune cells are derived from stem cells housed in the bone marrow.
+23,Biology,Circulatory System,All of the following are derived from bone marrow housed stem cells EXCEPT:,platelets.,erythrocytes.,T cells.,oligodendrocytes.,D,">White blood cells (leukocytes), red blood cells (erythrocytes), and platelets are all derived from cells that are housed in the bone marrow. >Oligodendrocytes are the myelinating cells of the central nervous system (CNS) and orginate in the CNS.",">Leukocytes, erythrocytes, and platelets are derived from bone marrow stem cells.>Oligodendrocytes are derived from cells located in the central nervous system."
+24,Biology,Immune System,T lymphocytes complete their maturation primarily in the:,bone marrow.,thyroid.,liver.,thymus.,D,">Though T cells are derived from bone marrow stem cells, they complete their maturation in the thymus. >Partway through their development, T cells migrate to the thymus (which where they get their name).",">Though derived from stem cells in the bone marrow, T cells mature in the thymus."
+25,Biology,Immune System,"Granulocytes are immune cells that can be identified by the presence of granules in their cytoplasms, granules that may contain histamine, defensins, or other immune proteins. All of the following are examples of granulocytes EXCEPT:",neutrophils.,eosinophils.,erythrocytes.,basophils.,C,">Neutrophils, eosinophils, and basophils are all granulocytes in that they contain granules as described. >Erythrocytes (red blood cells) are not immune cells and are not granulocytes.",">Neutrophils, eosinophils, and basophils are all granulocytes. >Erythrocytes (red blood cells) are not immune cells."
+26,Biology,Immune System,The most abundant leukocyte in the body is the:,neutrophil.,monocyte.,B cell.,erythrocyte.,A,">The most abundant white blood cell in the body is the short lived neutrophil, composing 50-70% of leukocytes in the body. >Neutrophils are phagocytic granulocytes and the primary component of pus but have life spans of less than one week.",">Neutrophils are the most abundant leukocyte in the body, composing 50-70% of the population."
+27,Biology,Immune System,All of the following are properties of the adaptive immune system EXCEPT:,formation of immunological memory.,recognition of specific antigens.,immediate response to initial pathogen exposure.,derivation from stem cells housed in the bone marrow.,C,">Usually, several days are required in order for a full response by the adaptive immune system to an initial pathogen exposure (primary response).>The adaptive immune system is able to recognize very specific antigens and ""remember"" them upon second exposure. >The cells of the adaptive immune system, along with all other leukocytes, are derived from stem cells in the bone marrow.",>Several days are required in order to see an adpative response to a primary pathogen exposure.
+28,Biology,Immune System,"The innate immune system is able to rapidly recognize and eliminate pathogens upon exposure. In order to accomplish this rapid response, the innate immune system:",recognizes broad molecular patterns.,recognizes specific antigens.,forms long lasting immunological memory.,quickly targets self antigens.,A,">The innate immune system is able to quickly recognize and eliminate pathogens because it does not target specific antigens. >Instead, cells look for broad molecular patterns not seen on human cells. For example, many cells target lipopolysaccharides (LPS), a major component of gram negative bacterial cell walls that is not found on human cells.",>The innate immune system rapidly reacts to pathogens because its cells recognize broad molecular patterns not found on human cells.
+29,Biology,Endocrine System,"The immune system occasionally targets self antigens for destruction, leading to cell damage and death within the body, termed autoimmunity. One such disease that results forms the immune cell destruction of beta cells in the pancreas and is known as:",type I diabetes.,type II diabetes.,acid reflux disease.,Celiac disease.,A,">Type I diabetes is associated with the immune mediated destruction of the insulin producing beta cells of the pancreas. >Type I diabetes is a common example of an autoimmune disease.",>Type I diabetes is caused the immune mediated destruction of the insulin producing beta cells of the pancreas. 
+30,Biology,Immune System,"The skin has many functions important to defending the body from pathogens, including all of the following EXCEPT:",providing a non specific barrier to entry.,housing B and T cells important for a rapid immune response.,housing commensal bacteria capable of outcompeting foreign pathogens.,secreting antibacterial proteins.,B,">The skin does not house B and T cells; instead, these cells await activation primarily in the secondary lymphoid tissues of the body. >The skin does secrete antibacterial peptides, house commensal bacteria, and provide a nonspecific barrier to pathogen entry.",>B and T cells await activation primarily in the secondary lymphoid tissues of the body and are not stored in the skin.
+31,Biology,Immune System,"The most common cause of acquired immunodeficiency syndrome (AIDS) is the human immunodeficiency virus (HIV), which causes broad immune suppression and, eventually, susceptibility to various opportunistic infections. Affected individuals become immunocompromised as the virus targets cells necessary for broad immune system activation known as: ",memory B cells.,macrophages.,cytotoxic (CD8+) T cells.,helper (CD4+) T cells.,D,">HIV targets CD4+ (helper) T cells, cells that are necessary for the activation of the immune system. >With the loss of these cells, patients develop AIDS and are often unable to respond to common pathogens, leading to the prevalence of opportunistic infections.",>HIV targets CD4+ (helper) T cells.
+32,Biology,Immune System,All of the following are functions of antibody constant regions EXCEPT:,opsonization.,activation of complement.,binding to specific antigens.,binding to receptors on mast cells.,C,">Antibody variable regions, not constant regions, bind to specific antigens.>However, the constant regions do opsonize pathogens, activate complement, and bind to receptors on mast cell membranes.",">Antibody variable regions, not  constant regions, bind to specific antigens."
+33,Biology,Immune System,The humoral immune system is defined as:,the cells that make up the innate and adaptive immune systems.,the immune proteins contained in the extracellular fluids of the body.,the cells and proteins responsible for recognizing specific antigens.,"the cells and proteins responsible for the initial, nonspecific response to pathogens.",B,">The humoral immune system is composed of the immune proteins contained in the extracellular fluids of the body. >Antibodies, complement proteins, and antimicrobial peptides are the primary components of the humoral immune system.",>The humoral immune system is composed of the immune protein contained in the extracellular fluids of the body. 
+34,Biology,Immune System,All of the following are functions of T cells EXCEPT:,the production of specific antibodies.,the elimination of intracellular pathogens.,the modulation of the immune response during active infection.,the participation in immune cell activation during infection.,A,">B cells, not T cells, produce antibodies to specific pathogens. >T cells are associated with the elimination of intracellular pathogens, with immune modulation, and aiding in the activation of other immune cells.",">B cells, not T cells, produce antibodies to specific pathogens. "
+35,Biology,Immune System,Cytotoxic (CD8+) T cells primarily:,produce specific antibodies.,aid in the elimination of intracellular pathogens.,modulate immune response during active infection.,aid in the activation of B cells.,B,">Cytotoxic (CD8+) T cells are primarily associated with the elimination of intracellular pathogens like viruses. >Their T cell receptors bind to major histocompatibility complex (MHC) class I molecules present on almost all nucleated cells in the body. These molecules present intracellular antigens to which the CD8+ T cells can respond.",>Cytotoxic (CD8+) T cells are  associated with the elimination of intracellular pathogens. 
+36,Biology,Immune System,Passive immunization is defined as:,the elimination of regulatory immune cells through apoptosis.,the nonspecific activation of the immune system in preparation for pathogen exposure.,the introduction of antigens to stimulate immune response and create immunological memory.,the transfer of antibodies from one individual to another.,D,">Passive immunization is defined as the transfer of fully formed antibodies from one individual to another. These antibodes can then bind to specific antigens and confer short lived protection to these pathogens. >Passive immunization is most associated with the maternal transfer of antibodies through children through breastfeeding and with the use of antivenoms and treatments to specific diseases.",>Passive immunization is the transfer of fully formed antibodies from one individual to another.
+37,Biology,Immune System,Active immunization is defined as:,the elimination of regulatory immune cells through apoptosis.,the nonspecific activation of the immune system in preparation for pathogen exposure.,the introduction of antigens to stimulate immune response and create immunological memory.,the transfer of antibodies from one individual to another.,C,">Active immunization is the introduction of specific antigens to the body such that a primary response is seen and immunological memory is created. >Upon a second exposure to the pathogen, the adaptive immune system is able to rapidly activate and quickly target the pathogen for elimination.>Vaccination is a type of active immunization.",>Active immunization is the introduction of specific antigens to the body such that immunological memory is created. 
+38,Biology,Immune System,Vaccination can provide long term protection from specific pathogens by ensuring that a rapid and potent secondary response is seen upon future exposure to the pathogen. This process is most dependent on which of the following properties of the immune system?,Immunological memory,Self/nonself recognition,Macrophage activation and proliferation,Agglutination of foreign antigens,A,">The benefits of vaccination depend on the formation of the immunological memory. >Vaccination is the controlled immune exposure to specific pathogens such that a primary response is seen and memory is formed. >Upon a second exposure to the pathogen, the adaptive immune system is able to rapidly activate and quickly target the pathogen for elimination.",">The success of vaccinations is dependent on the formation of immunological memory such that, upon future exposures, a potent secondary response is seen."
+39,Biology,Immune System,Antibodies do all of the following EXCEPT:,neutralize toxins.,digest proteins.,opsonize pathogens.,activate complement.,B,">Antibodies do not have intrinsic protease activity. >However, they can neutralize toxins, target pathogens for phagocytosis (opsonization), and activate the complement system.",>Antibodies do not have protease activity. 
+40,Biology,Immune System,"During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:",microglia.,B cells.,neutrophils.,erythrocytes.,B,">The lymph nodes contain large populations of B cells, cells that can be activated during the adaptive immune response. >The other cells listed are not part of the adaptive immune system and are also predominantly housed in other areas of the body.",">The lymph nodes contain large populations of B cells, which make up a large portion of the adaptive response."
+41,Biology,Immune System,All of the following are parts of the lymphatic system EXCEPT:,tonsils.,the spleen.,the heart.,lymph nodes.,C,">The heart is not part of the lymphatic system in that it does not house a substantial population of immune cells at any time. >The tonsils, spleen, and lymph nodes do house lymphocytes and are thus secondary lymphoid organs.",>The heart does not house a substantial population of lymphocytes and is not a part of the lymphatic system.
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,

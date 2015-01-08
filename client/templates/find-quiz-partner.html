@@ -1,0 +1,32 @@
+<!-- The page served to the "/newquiz" route -->
+<template name="findQuizPartner">
+	<!-- Full page container -->
+	<div class="find-partner-background">
+	
+		<!-- The body of the page -->
+		<div id="find-quiz-partner-container" class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center space-20-percent">
+					<h2>Finding an opponent</h2>
+					<!-- Spinner Icon -->
+					<div class="spinner">
+						<div class="cube1"></div>
+						<div class="cube2"></div>
+					</div>
+				</div>
+			</div> <!-- /.row -->
+
+			<!-- Debug info -->
+			<div class="row">
+				<div class="col-xs-12 text-center space-20-percent">
+					<h3>Debug Info:</h3>
+					{{#if quizId}}
+					<button id="take-quiz-button">
+						Take Quiz
+					</button>
+					{{/if}}
+				</div>
+			</div>
+		</div> <!-- /.container -->
+	</div> <!-- /.find-partner-background -->
+</template>

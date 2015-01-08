@@ -1,0 +1,46 @@
+.position(@type; @top: auto; @right: auto; @bottom: auto; @left: auto; @width: auto; @height: auto) {
+  position: @type;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+  width: @width;
+  height: @height;
+}
+
+body {
+	.position(absolute, 0, 0, 0, 0);
+
+  /* Make the body cover the whole page */
+  /* Fallbacks for older browsers */
+  height: 100%;
+  width: 100%;
+  /* Use the viewport size on newer browsers */
+  height: 100vh;
+  width: 100vw;
+}
+
+#content-container
+{
+  width: 100%;
+  height: 100%;
+
+  /* Prevent margin collapsing */
+  overflow: auto;
+  
+	/* So the fade takes place on top of each other */
+	/*
+	.position(absolute, 0, 0, 0, 0);
+	transition: all 200ms ease-out;
+	opacity: 1;
+	*/
+}
+
+@font-face {
+  font-family: 'Proxima Nova Light';
+  src: url('font/proxima-nova-light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('font/proxima-nova-bold.woff') format('woff');
+}
