@@ -1,0 +1,30 @@
+.position(@type; @top: auto; @right: auto; @bottom: auto; @left: auto; @width: auto; @height: auto) {
+  position: @type;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+  width: @width;
+  height: @height;
+}
+
+body > div.full-page {
+	width: 50%;
+}
+
+/* Represents a full page container */
+.full-page {
+	.position(absolute, 0, 0, 0, 0);
+	height: 100%;
+	/* The width is defined above in body > div.full-page */
+	min-width: 100vw;
+}
+
+/* Sets the background to the theme blue and text to white
+   For use with full page containers */
+.blue-background {
+	color: white;
+	background-color: #2980b9;
+	/* Overflow in to the rest of the (potentially) expanded container */
+	overflow: auto;
+}

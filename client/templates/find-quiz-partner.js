@@ -3,6 +3,7 @@ Template.findQuizPartner.rendered = function() {
 	// For now, act like there is never a partner
 
 	// If no partner, make a new quiz
+	Session.set('currentStep', 'Creating new quiz');
 	Meteor.call('createQuiz', 'Biology', 6, function(err, result) {
 		if(err)
 		{
@@ -37,5 +38,8 @@ Template.findQuizPartner.events({
 Template.findQuizPartner.helpers({
 	quizId: function() {
 		return Session.get('quizId');
+	},
+	currentStep: function() {
+		return Session.get('currentStep');
 	}
 })
