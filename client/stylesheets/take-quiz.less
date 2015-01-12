@@ -35,8 +35,9 @@
 		border-radius: 4px;
 		margin: 2px;
 
-		/* 50% would overflow everything on to individual lines */
-		min-width: 49%;
+		/* 50% would overflow everything on to individual lines 
+		   so we keep 49% so we get 2 boxes per line */
+		width: 49%;
 	}
 	.list-group-item:hover {
 		background-color: rgb(54, 186, 255);

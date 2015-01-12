@@ -23,7 +23,8 @@ Meteor.methods({
 			num_questions: numQuestions,
 			p1_id: this.userId,
 			p1_answers: [],
-			questions: randomQuestions
+			questions: randomQuestions,
+			time_created: (new Date()).getTime()
 		}
 
 		// Put this quiz into the database

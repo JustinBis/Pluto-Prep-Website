@@ -7,24 +7,39 @@
 		<div id="find-quiz-partner-container" class="container">
 			<div class="row">
 				<div class="col-xs-12 text-center space-20-percent">
+					{{#if quizId}}
+					<h2>Ready?</h2>
+					<button id="take-quiz-button" class="btn btn-lg sign-in-button">
+						Play
+						<span class="glyphicon glyphicon-play" aria-hidden	="true"></span>
+					</button>
+
+					{{else}}
+
 					<h2>Finding an opponent</h2>
 					<!-- Spinner Icon -->
 					<div class="spinner">
 						<div class="cube1"></div>
 						<div class="cube2"></div>
 					</div>
+
+					{{/if}}
 				</div>
 			</div> <!-- /.row -->
 
 			<!-- Debug info -->
 			<div class="row">
-				<div class="col-xs-12 text-center space-20-percent">
+				<div class="col-xs-12 text-center">
 					<h3>Debug Info:</h3>
+					<!-- Echo our progress -->
+					Current step:
 					{{#if quizId}}
-					<button id="take-quiz-button">
-						Take Quiz
-					</button>
+						Waiting for user to start
+					{{else}}
+						{{progress}}
 					{{/if}}
+					<br />
+					{{#if error}} Error: {{error}} {{/if}}
 				</div>
 			</div>
 		</div> <!-- /.container -->

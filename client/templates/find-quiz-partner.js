@@ -1,9 +1,19 @@
+Template.findQuizPartner.created = function() {
+	// Create the reactive state variables
+	this.progress = new ReactiveVar();
+}
+
 Template.findQuizPartner.rendered = function() {
 	// When the template renders, find a partner
+	this.progress.set('Finding an opponent');
+
+	
+
 	// For now, act like there is never a partner
 
+
 	// If no partner, make a new quiz
-	Session.set('currentStep', 'Creating new quiz');
+	this.progress.set('Creating new quiz');
 	Meteor.call('createQuiz', 'Biology', 6, function(err, result) {
 		if(err)
 		{
@@ -19,7 +29,7 @@ Template.findQuizPartner.rendered = function() {
 			console.error("findQuizPartner: quizId not set, unable to route to quiz.");
 			return;
 		}
-		
+
 		// Otherwise, redirect to the quiz
 		//Router.go('/quiz/' + result);
 		// So we can edit the page, just store the quiz id and allow it
@@ -39,7 +49,10 @@ Template.findQuizPartner.helpers({
 	quizId: function() {
 		return Session.get('quizId');
 	},
-	currentStep: function() {
-		return Session.get('currentStep');
+	progress: function() {
+		return Template.instance().progress.get();
+	},
+	error: function () {
+		return Session.get('server-error');
 	}
 })
