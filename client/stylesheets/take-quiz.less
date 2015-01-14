@@ -23,22 +23,22 @@
 }
 
 /* Classes to set the background color when an answer is submitted */
-.correct {
-	background-color: @correct-color;
-	transition: background-color 0.4s;
-
-	.list-group-item {
-		background-color: @correct-color;
-		transition: background-color 0.4s;
-	}
-}
-
 .wrong {
 	background-color: @wrong-color;
 	transition: background-color 0.4s;
 
 	.list-group-item {
 		background-color: @wrong-color;
+		transition: background-color 0.4s;
+	}
+}
+
+.correct {
+	background-color: @correct-color;
+	transition: background-color 0.4s;
+
+	.list-group-item {
+		background-color: @correct-color;
 		transition: background-color 0.4s;
 	}
 }
@@ -67,6 +67,12 @@
 	}
 	.list-group-item:hover {
 		background-color: rgb(54, 186, 255);
+	}
+
+	/* So we override the .wrong .list-group-item */
+	.list-group-item.correct {
+		background-color: @correct-color;
+		transition-delay: 0.8s;
 	}
 
 	margin: 0 auto;

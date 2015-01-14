@@ -48,12 +48,19 @@ Template.questionTemplate.events({
 				this_template.result.set("correct");
 
 			}
-			// Otherwise mark the answer as wrong
+			// Otherwise mark the answer as wrong 
+			// and highlight the correct answer
 			else
 			{
 				console.log("NOPE");
 				// Set the template result to wrong
 				this_template.result.set("wrong");
+				// Highlight the correct answer
+				// Get the <li> target, Go to the parent <ul>, and then filter the children 
+				$(event.currentTarget)
+					.parent()
+					.children('li[data-answer="'+ result.answer + '"]')
+					.addClass('correct');
 			}
 
 			// Move on to the next question automatically

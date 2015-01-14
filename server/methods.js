@@ -53,11 +53,17 @@ Meteor.methods({
 			// Return an object so we can compare the truth value directly
 			// Thus avoiding the client interpreting an empty value as false
 			// and any set value as true
-			return {correct: true};
+			return {
+				correct: true,
+				answer: question.answer
+			};
 		}
 		else
 		{
-			return {correct: false};
+			return {
+				correct: false,
+				answer: question.answer
+			};
 		}
 	}
 });
