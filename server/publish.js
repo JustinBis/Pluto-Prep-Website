@@ -25,7 +25,13 @@ Meteor.publish('activeQuiz', function() {
 			]
 		},
 		// Don't publish the answers
-		{fields: {'questions.answer': 0}}
+		{
+			fields: {
+			'questions.answer': 0,
+			'questions.short_explanation': 0,
+			'questions.long_explanation': 0
+			}
+		}
 		);
 	}
 	else

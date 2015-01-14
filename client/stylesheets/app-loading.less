@@ -1,16 +1,28 @@
-.loading-page {
-	
+.app-loading {
+
+	background: url(img/hipsterlogogenerator3.png) center center no-repeat,
+				url(img/hipsterlogogenerator_background.jpeg) bottom left / cover no-repeat;
+	height: 100%;
+	width: 100%;
+
+	z-index: 1000;
 
 	.spinner {
-		margin: 100px auto 0;
-		width: 70px;
+		/* Center vertically and horizontally */
+		position: absolute;
+		top: 50%;
+		left: 0;
+		/* Offset the top by 80px so the dots stay in an open part of the image */
+		margin: 80px auto 0;
+		width: 100%;
 		text-align: center;
+
 	}
 	
 	.spinner > div {
 		width: 18px;
 		height: 18px;
-		background-color: #333;
+		background-color: #FFF;
 	
 		border-radius: 100%;
 		display: inline-block;
@@ -45,6 +57,7 @@
 			-webkit-transform: scale(1.0);
 		}
 	}
+
 }
 
 #loading-logo {

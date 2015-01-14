@@ -30,5 +30,34 @@ Meteor.methods({
 		// Put this quiz into the database
 		// And replace any exisiting quizzes this user has running
 		return ActiveQuizzes.insert(quizData);
+	},
+	// Checks a quiz answer
+	checkQuizAnswer: function(quiz_id, question_id, answer) {
+		// Check the inputs
+		check(quiz_id, String);
+		check(question_id, String);
+		check(answer, String);
+
+		// Make sure the answer is only a single letter
+		if(answer.length !== 1)
+		{
+			throw new Meteor.Error("err-invalid-answer-length", "The answer to check must be a single letter");
+		}
+
+		// Select the question from the database, only grabbing the answer field
+		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1}});
+		console.log("Looking for " + question.answer + ". Given " + answer);
+		// Was this the right answer?
+		if(question.answer === answer)
+		{
+			console.log("RIGHT");
+			// Return an object
+			return {correct: true};
+		}
+		else
+		{
+			console.log("NOPE");
+			return {correct: false};
+		}
 	}
 });
