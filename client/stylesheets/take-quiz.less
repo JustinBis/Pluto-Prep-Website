@@ -1,9 +1,14 @@
+
+@correct-color: rgb(126, 221, 29);
+@wrong-color: rgb(244, 91, 83);
+
 .quiz-question-container {
 	/* Todo: make this mobile friendly with the navbar */
 	margin: 5% auto;
 	max-width: 60%;
 	color: black;
 	/* background-color: white; */
+
 }
 
 .question-container {
@@ -15,6 +20,27 @@
 	min-height: 10%;
 
 	border-radius: 10px;
+}
+
+/* Classes to set the background color when an answer is submitted */
+.correct {
+	background-color: @correct-color;
+	transition: background-color 0.4s;
+
+	.list-group-item {
+		background-color: @correct-color;
+		transition: background-color 0.4s;
+	}
+}
+
+.wrong {
+	background-color: @wrong-color;
+	transition: background-color 0.4s;
+
+	.list-group-item {
+		background-color: @wrong-color;
+		transition: background-color 0.4s;
+	}
 }
 
 .question-text {

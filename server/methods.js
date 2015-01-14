@@ -46,17 +46,17 @@ Meteor.methods({
 
 		// Select the question from the database, only grabbing the answer field
 		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1}});
-		console.log("Looking for " + question.answer + ". Given " + answer);
+
 		// Was this the right answer?
 		if(question.answer === answer)
 		{
-			console.log("RIGHT");
-			// Return an object
+			// Return an object so we can compare the truth value directly
+			// Thus avoiding the client interpreting an empty value as false
+			// and any set value as true
 			return {correct: true};
 		}
 		else
 		{
-			console.log("NOPE");
 			return {correct: false};
 		}
 	}

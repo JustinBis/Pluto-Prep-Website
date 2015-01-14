@@ -24,12 +24,13 @@
 
 <!-- The question template -->
 <template name="questionTemplate">
-	<div class="question-container">
+	<!-- Use the result to style this template -->
+	<div class="question-container {{result}}">
 		<span class="question-text">
 			{{question}}
 		</span>
 
-		<ul class="list-inline list-group question-answers" data-question-number="99">
+		<ul class="list-inline list-group question-answers">
 			<li class="list-group-item" data-answer="a">
 				<span>A</span> {{a}}
 			</li>
