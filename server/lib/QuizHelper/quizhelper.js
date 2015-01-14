@@ -21,9 +21,6 @@ QuizHelper = {
 		// Generate an array of indicies to select from the found documents
 		var indicies = QuizHelper.generateIndicies(numQuestions, found.count());
 
-		console.log("QuizHelper: generated indicies: ");
-		console.log(indicies);
-
 		// Fetch the cursor, retrieving an array of documents
 		var allQuestions = found.fetch();
 

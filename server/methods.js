@@ -22,7 +22,8 @@ Meteor.methods({
 		var quizData = {
 			num_questions: numQuestions,
 			p1_id: this.userId,
-			p1_answers: [],
+			p1_num_answered: 0,
+			p2_num_answered: 0,
 			questions: randomQuestions,
 			time_created: (new Date()).getTime()
 		}

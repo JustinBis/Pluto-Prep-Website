@@ -2,6 +2,8 @@
 <template name="takeQuiz">
 	<!-- Full page container -->
 	<div class="full-page takeQuiz blue-background">
+
+		{{#if questions}}
 		<div class="quiz-question-container text-center">
 			<p>
 				{{#each questions}}
@@ -10,12 +12,29 @@
 				{{/each}}
 			</p>
 		</div>
+		{{else}}
+		<!-- If there are no questions, show an error -->
+		<div class="space-20-percent text-center">
+			<h1>Sorry, there was an error loading this quiz</h1>
+			<h3>
+				<!-- Offer a way back -->
+				<button id="new-quiz-button" class="btn btn-lg sign-in-button">
+						Make a new quiz
+				</button>
+			</h3>
+		</div>
+		{{/if}}
 
 		<div class="text-center">
 		<h3> Debug Info </h3>
 			<p>
 				p1_id: {{p1_id}}
 				<br />
+				{{#if serverError}}
+					Error: {{serverError}}
+					<br />
+				{{/if}}
+
 				That's all!
 			</p>
 		</div>

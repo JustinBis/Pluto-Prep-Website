@@ -1,0 +1,58 @@
+@import "/client/lib/lesshat-prefixed.import.less";
+@import "/client/stylesheets/globals/variables.import.less";
+
+#notifications {
+	/* Place at the top and center of the screen */
+	position: fixed;
+	top: auto;
+	right: auto;
+	bottom: 0;
+	left: 50%;
+
+	width: 100%;
+	height: auto;
+
+	font-size: 18px;
+
+	background-color: transparent;
+
+	border-style: solid;
+	border-width: 1px 0 0;
+	border-color: white;
+
+	/* So we center correctly */
+	transform: translate3d(-50%, 0, 0);
+
+	z-index: 10000;
+
+	/* The actual notification boxes */
+	.notification {
+		position: static;
+		padding: 0.5em 0 0.25em;
+
+		width: 100%;
+
+
+		color: white;
+		background-color: @light-blue;
+	}
+
+	/* The spinner animation */
+	.spin {
+		.lh-animation(spin 2s infinite linear);
+		/* Align the icon */
+		vertical-align: text-top;
+
+		margin-right: 0.5em;
+	}
+}
+
+@-webkit-keyframes spin {
+  0% { .lh-transform(rotate(0deg)); }
+  100% { .lh-transform(rotate(359deg)); }
+}
+@keyframes spin {
+  0% { .lh-transform(rotate(0deg)); }
+  100% { .lh-transform(rotate(359deg)); }
+}
+

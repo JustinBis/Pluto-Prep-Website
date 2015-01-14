@@ -41,7 +41,7 @@ Template.findQuizPartner.rendered = function() {
 Template.findQuizPartner.events({
 	// When the take a quiz now button is clicked, redirect
 	"click #take-quiz-button": function () {
-		Router.go('/quiz/' + Session.get('quizId'));
+		Router.go('take-quiz', {_id: Session.get('quizId')});
 	}
 });
 
