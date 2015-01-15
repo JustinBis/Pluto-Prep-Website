@@ -2,8 +2,14 @@
 <template name="takeQuiz">
 	<!-- Full page container -->
 	<div class="full-page takeQuiz blue-background">
-
 		{{#if questions}}
+		<!-- Show the progress and a timer -->
+		<div class="progress-container text-center">
+			<div>
+				Time remaining: {{minutesRemaining}}:{{secondsRemaining}}
+			</div>
+		</div>
+		<!-- Show the questions -->
 		<div class="quiz-question-container text-center">
 			<p>
 				{{#each questions}}

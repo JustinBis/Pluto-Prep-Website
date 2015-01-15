@@ -1,3 +1,62 @@
+// How much time to give each quiz, in milliseconds
+var QUIZ_TIME = 1 * 60 * 1000;
+
+// When the question template is created, create the reactive variables
+Template.takeQuiz.created = function() {
+	// Create the reactive state variables
+	this.quizTimeRemaining = new ReactiveVar();
+}
+
+// When the quiz template is rendered, start the quiz timer on the server
+Template.takeQuiz.rendered = function(){
+	// if there is a valid quiz
+	if(this.data._id)
+	{
+		// Cache this template instance for use in callbacks and anon functions
+		var this_template = this;
+
+		var quiz_id = this.data._id;
+
+		var quiz_time = QUIZ_TIME;
+
+		Meteor.call('startQuiz', quiz_id, quiz_time, function(err, result) {
+			if(err)
+			{
+				Session.set('serverError', err.reason);
+				console.error("Error calling startQuiz: " + err.reason);
+				return;
+			}
+
+			console.log("Quiz started at time " + result.time_start);
+			console.log(result);
+
+			var localTime = (new Date()).getTime();
+			console.log("Local time " + localTime);
+
+			// TODO: Make sure to show the correct time remaining
+			// so it's still right if a user refreshes the page
+			
+		});
+
+		// Set up the quiz timer to end after the quiz time has elapsed
+		this.quizTimeRemaining.set(quiz_time);
+
+		// Set the quiz timer on an interval to count down every second
+		var this_interval = Meteor.setInterval(function(){
+			this_template.quizTimeRemaining.set(
+				this_template.quizTimeRemaining.get() - 1000
+			);
+
+			// Clear the interval if we're at 0 milliseconds remaining or less
+			if(this_template.quizTimeRemaining.get() <= 0)
+			{
+				Meteor.clearInterval(this_interval);
+			}
+		}, 1000);
+	}
+}
+
+// Quiz template event listeners
 Template.takeQuiz.events({
 	// If there is an error loading the quiz and the user clicks the go back button
 	"click #new-quiz-button": function(event) {
@@ -6,29 +65,30 @@ Template.takeQuiz.events({
 	}
 });
 
-// When the quiz template is rendered, start the quiz timer on the server
-Template.takeQuiz.rendered = function(){
-	// if there is a valid quiz
-	if(this.data._id)
-	{
-		var quiz_id = this.data._id;
-		Meteor.call('startQuiz', quiz_id, function(err, result) {
-			if(err)
-			{
-				Session.set('serverError', err.reason);
-				console.error("Error calling startQuiz: " + err.reason);
-				return;
-			}
-
-			// We don't care about the result here since this is just for timing
-		});
-	}
-}
-
-
+// Helpers for the quiz template
 Template.takeQuiz.helpers({
 	serverError: function() {
 		return Session.get('serverError');
+	},
+	// Returns true if the quiz time is up
+	timeUp: function() {
+		var time = Template.instance().quizTimeRemaining.get();
+		if(time > 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	},
+	secondsRemaining: function() {
+		var time = Template.instance().quizTimeRemaining.get();
+		return parseInt((time / 1000) % 60, 10);
+	},
+	minutesRemaining: function() {
+		var time = Template.instance().quizTimeRemaining.get();
+		return parseInt((time / 1000 / 60), 10);
 	}
 })
 
