@@ -5,7 +5,7 @@
 .quiz-question-container {
 	/* Todo: make this mobile friendly with the navbar */
 	margin: 20px auto;
-	max-width: 60%;
+	/*max-width: 80%;*/
 	color: black;
 	/* background-color: white; */
 
@@ -59,11 +59,11 @@
 	.list-group-item {
 		border: none;
 		border-radius: 4px;
-		margin: 2px;
+		/*margin: 2px;*/
 
 		/* 50% would overflow everything on to individual lines 
 		   so we keep 49% so we get 2 boxes per line */
-		width: 49%;
+		/*width: 49%;*/
 	}
 	.list-group-item:hover {
 		background-color: rgb(54, 186, 255);
@@ -81,4 +81,49 @@
 
 .progress-container {
 	margin: 70px auto 0;
+}
+
+.error-container {
+	margin: 70px auto 20px;
+}
+
+.time-remaining {
+	font-size: 18px;
+}
+
+.quiz-progress-bubbles {
+
+	span {
+		color: white;
+	
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		vertical-align: middle;
+		/* Just use something large enough to make a full circle */
+		border-radius: 100px;
+	
+		border: 1px solid white;
+	
+		transition: background-color 0.4s;
+	}
+
+	.answered {
+		color: #000;
+		border: 1px solid #000;
+		background-color: white;
+	}
+
+	.correct {
+		color: @correct-color;
+		background-color: @correct-color;
+		border-width: 0px;
+	}
+
+	.wrong {
+		color: @wrong-color;
+		background-color: @wrong-color;
+		border-width: 0px;
+	}
 }

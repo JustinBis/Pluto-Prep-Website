@@ -1,16 +1,22 @@
 // How much time to give each quiz, in milliseconds
-var QUIZ_TIME = 1 * 60 * 1000;
+var QUIZ_TIME = 6 * 60 * 1000;
 
 // When the question template is created, create the reactive variables
+// and helper functions
 Template.takeQuiz.created = function() {
 	// Create the reactive state variables
 	this.quizTimeRemaining = new ReactiveVar();
+	// Will be called when the quiz is finished
+	this.quizFinished = function() {
+		// TODO: route to the results page
+		//Router.go()
+	}
 }
 
 // When the quiz template is rendered, start the quiz timer on the server
 Template.takeQuiz.rendered = function(){
 	// if there is a valid quiz
-	if(this.data._id)
+	if(this.data && this.data._id)
 	{
 		// Cache this template instance for use in callbacks and anon functions
 		var this_template = this;
@@ -51,6 +57,8 @@ Template.takeQuiz.rendered = function(){
 			if(this_template.quizTimeRemaining.get() <= 0)
 			{
 				Meteor.clearInterval(this_interval);
+				// Call the quizFinished function (registered in template creation)
+				this_template.quizFinished();
 			}
 		}, 1000);
 	}
@@ -89,7 +97,33 @@ Template.takeQuiz.helpers({
 	minutesRemaining: function() {
 		var time = Template.instance().quizTimeRemaining.get();
 		return parseInt((time / 1000 / 60), 10);
+	},
+	// Returns the quiz and given player's progress
+	myProgress: function(questionNumber) {
+		// Make sure we were given a question number
+		if(!questionNumber)
+		{
+			return null;
+		}
+
+		// Lower the question number by one, since the questions are 0 indexed in the data
+		questionNumber = questionNumber - 1;
+
+		var data = Template.instance().data;
+		if(data && Meteor.userId() === data.p1_id)
+		{
+			// May not be defined
+			return data.questions[questionNumber]['p1_answer'];
+		}
+		else if(data && Meteor.userId() === data.p2_id)
+		{
+			// May not be defined
+			return data.questions[questionNumber]['p2_answer'];
+		}
+
+		// Otherwise null
 	}
+
 })
 
 
@@ -97,12 +131,21 @@ Template.takeQuiz.helpers({
 Template.questionTemplate.created = function() {
 	// Create the reactive state variables
 	this.result = new ReactiveVar();
+	this.answer = new ReactiveVar();
 }
 
 // Helpers for the question templates
 Template.questionTemplate.helpers({
 	result: function() {
 		return Template.instance().result.get();
+	},
+	// Returns "correct" if the given letter was the answer
+	isAnswer: function(letter) {
+		if(letter === Template.instance().answer.get())
+		{
+			console.log("CO");
+			return "correct";
+		}
 	}
 });
 
@@ -155,12 +198,8 @@ Template.questionTemplate.events({
 			{
 				// Set the template result to wrong
 				this_template.result.set("wrong");
-				// Highlight the correct answer
-				// Get the <li> target, Go to the parent <ul>, and then filter the children 
-				$(event.currentTarget)
-					.parent()
-					.children('li[data-answer="'+ result.answer + '"]')
-					.addClass('correct');
+				// Set the answer so we can highlight the correct answer
+				this_template.answer.set(result.answer);
 			}
 
 			// Move on to the next question automatically

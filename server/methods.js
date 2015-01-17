@@ -20,8 +20,6 @@ Meteor.methods({
 		var quizData = {
 			num_questions: numQuestions,
 			p1_id: this.userId,
-			p1_num_answered: 0,
-			p2_num_answered: 0,
 			questions: randomQuestions,
 			time_created: (new Date()).getTime()
 		}
@@ -96,7 +94,7 @@ Meteor.methods({
 		}
 
 		// Update the current quiz taker's progress in the quiz in a different thread
-		// TODO
+		// TODO: That ^
 		
 		var quiz = ActiveQuizzes.findOne({_id: quiz_id});
 
@@ -111,17 +109,40 @@ Meteor.methods({
 			throw new Meteor.Error("err-quiz-finished", "The timer for this quiz has already run out");
 		}
 
+		// Find out what question number this is
+		var questionNumber = null;
+		// Loop through each question searching for the correct id
+		quiz.questions.forEach(function(element, index, array) {
+			if(element._id == question_id)
+			{
+				questionNumber = element.number;
+			}
+
+			// If the question id never matched
+			if(index == array.length && questionNumber === null)
+			{
+				throw new Meteor.Error("err-invalid-question", "The question id wasn't found in this quiz");
+			}
+		});
+
+		// Select the question from the database, only grabbing the answer field
+		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1}});
+
+		var wasCorrect = question.answer === answer;
+
+		// Update the quiz progress
+
 		// Find out which player this user is in the quiz
-		var inc;
+		var player;
 		if(quiz.p1_id === this.userId)
 		{
 			// Update player 1's progress
-			inc = {p1_num_answered: 1};
+			player = 'p1';
 		}
 		else if(quiz.p2_id === this.userId)
 		{
 			// Update player 2's progress
-			inc = {p2_num_answered: 1};
+			player = 'p2';
 		}
 		else
 		{
@@ -129,34 +150,34 @@ Meteor.methods({
 		}
 
 		// Update the quiz progress
-		ActiveQuizzes.update({_id: quiz_id}, {$inc: inc}, function(err, numAffected) {
-			if(err)
+		var answerField = "questions.$."+player+"_answer";
+		var set = {};
+		set[answerField] = wasCorrect ? "correct" : "wrong";
+		ActiveQuizzes.update(
+			{_id: quiz_id, 'questions._id': question_id}, 
 			{
-				throw new Meteor.Error('err-database-error', err.reason);
+				$set: set
+			},
+			function(err, numAffected) {
+				if(err)
+				{
+					console.error("Database error in checkQuizAnswer:");
+					console.error(err);
+					throw new Meteor.Error('err-database-error', err.reason);
+				}
+				console.log("checkQuizAnswer: num affected " + numAffected);
 			}
-		});
+		);
 
-		// Select the question from the database, only grabbing the answer field
-		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1}});
 
-		// Was this the right answer?
-		if(question.answer === answer)
-		{
-			// Return an object so we can compare the truth value directly
-			// Thus avoiding the client interpreting an empty value as false
-			// and any set value as true
-			return {
-				correct: true,
-				answer: question.answer
-			};
-		}
-		else
-		{
-			return {
-				correct: false,
-				answer: question.answer
-			};
-		}
+		// Return an object so we can compare the truth value directly
+		// Thus avoiding the client interpreting an empty value as false
+		// and any set value as true
+		return {
+			// Was this the right answer?
+			correct: wasCorrect,
+			answer: question.answer
+		};
 
 	}
 });

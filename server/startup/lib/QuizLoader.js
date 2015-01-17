@@ -45,6 +45,14 @@ QuizLoader.loadFile = function(filename)
 	// Load the csv string from the file
 	// Done sync, but can be async if given a callback, see Meteor docs
 	var csv = Assets.getText(filename);
+
+	var errorCharacter = new RegExp(String.fromCharCode(65533));
+
+	var found = csv.search(errorCharacter);
+	if(found != -1)
+	{
+		console.error("QuizLoader: Warning: error character found at index " + found);
+	}
 	
 	// Parse the csv string
 	var results = Papa.parse(csv, {
@@ -115,10 +123,14 @@ QuizLoader.addData = function(quizdata)
  * Should make the answer string lowercase
  * TODO: will reformat newlines to be Markdown friendly
  */
-QuizLoader.formatData = function(dataobject)
+QuizLoader.formatData = function(data)
 {
 	// Make the answer field lowercase
-	dataobject.answer = dataobject.answer.toLowerCase();
+	data.answer = data.answer.toLowerCase();
+
+	// Return the formatted data, though really since this is an object the changes
+	// happen by reference to the passed object
+	return data;
 }
 
 

@@ -26,10 +26,14 @@ QuizHelper = {
 
 		// Fill the questions array by choosing elements from allQuestions
 		// using the random indicies
-		// TODO: also randomize the order of the answers
+		// TODO: also randomize the order of the answers (which could be done on client side)
+		// TODO: don't include answers and explanations here since they aren't needed
 		for(var i = 0; i < indicies.length; i++)
 		{
 			questions.push(allQuestions[ indicies[i] ]);
+			// Give this question a question number, which is the index + 1
+			// since arrays are 0 indexed
+			questions[questions.length - 1].number = i + 1;
 		}
 
 		// Return the questions
@@ -85,6 +89,6 @@ QuizHelper = {
 
 		// Finally, return the random indicies
 		return indicies;
-	}
+	},
 
 }

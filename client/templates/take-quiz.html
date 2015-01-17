@@ -3,31 +3,50 @@
 	<!-- Full page container -->
 	<div class="full-page takeQuiz blue-background">
 		{{#if questions}}
-		<!-- Show the progress and a timer -->
-		<div class="progress-container text-center">
-			<div>
-				Time remaining: {{minutesRemaining}}:{{secondsRemaining}}
+		<div class="container">
+			<!-- Show the progress and a timer -->
+			<div class="row progress-container">
+				<div id="my-progress" class="col-xs-4 quiz-progress-bubbles text-center">
+					{{#each questions}}
+						<!-- Style with my answer helper -->
+						<span class="{{myProgress number}}">
+							{{number}}
+						</span>
+					{{/each}}
+				</div>
+				<div class="col-xs-4 text-center time-remaining">
+					Time remaining: {{minutesRemaining}}:{{secondsRemaining}}
+				</div>
+				<div id="opponent-progress" class="col-xs-4 quiz-progress-bubbles text-center">
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+					<span>6</span>
+				</div>
 			</div>
-		</div>
-		<!-- Show the questions -->
-		<div class="quiz-question-container text-center">
-			<p>
+			<!-- Show the questions -->
+			<div class="row quiz-question-container text-center">
+			<div class="col-xs-10 col-xs-offset-1">
 				{{#each questions}}
 					{{> questionTemplate}}
-					<br />
 				{{/each}}
-			</p>
+			</div>
+			</div>
 		</div>
 		{{else}}
 		<!-- If there are no questions, show an error -->
-		<div class="space-20-percent text-center">
-			<h1>Sorry, there was an error loading this quiz</h1>
-			<h3>
-				<!-- Offer a way back -->
-				<button id="new-quiz-button" class="btn btn-lg sign-in-button">
-						Make a new quiz
-				</button>
-			</h3>
+		<div class="row error-container">
+			<div class="col-xs-12 text-center">
+				<h1>Sorry, there was an error loading this quiz</h1>
+				<h3>
+					<!-- Offer a way back -->
+					<button id="new-quiz-button" class="btn btn-lg sign-in-button">
+							Make a new quiz
+					</button>
+				</h3>
+			</div>
 		</div>
 		{{/if}}
 
@@ -41,6 +60,11 @@
 					<br />
 				{{/if}}
 
+				P1 Progress: {{p1_num_answered}}
+				<br />
+				P2 Progress: {{p2_num_answered}}
+				<br />
+
 				That's all!
 			</p>
 		</div>
@@ -49,25 +73,28 @@
 
 <!-- The question template -->
 <template name="questionTemplate">
+<div class="row">
 	<!-- Use the result to style this template -->
-	<div class="question-container {{result}}">
+	<div class="col-xs-12 question-container {{result}}">
 		<span class="question-text">
 			{{question}}
 		</span>
 
-		<ul class="list-inline list-group question-answers">
-			<li class="list-group-item" data-answer="a">
+		<ul class="row row-eq-height list-inline list-group question-answers">
+			<li class="col-xs-12 col-sm-6 list-group-item {{isAnswer 'a'}}" data-answer="a">
 				<span>A</span> {{a}}
 			</li>
-			<li class="list-group-item" data-answer="b">
+			<li class="col-xs-12 col-sm-6 list-group-item {{isAnswer 'b'}}" data-answer="b">
 				<span>B</span> {{b}}
 			</li>
-			<li class="list-group-item" data-answer="c">
+			<div class="clearfix visible-sm-block"></div>
+			<li class="col-xs-12 col-sm-6 list-group-item {{isAnswer 'c'}}" data-answer="c">
 				<span>C</span> {{c}}
 				</li>
-			<li class="list-group-item" data-answer="d">
+			<li class="col-xs-12 col-sm-6 list-group-item {{isAnswer 'd'}}" data-answer="d">
 				<span>D</span> {{d}}
 			</li>
 		</ul>
 	</div>
+</div>
 </template>
