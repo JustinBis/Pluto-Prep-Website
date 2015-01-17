@@ -78,6 +78,16 @@ Template.takeQuiz.helpers({
 	serverError: function() {
 		return Session.get('serverError');
 	},
+	// Establish a reactive dependency on the question number in the URL
+	// that allows us to animate the questions
+	questionContainerScroll: function() {
+		// The question number from the URL parameter
+		var number = Iron.controller().getParams().question_number;
+
+		// Return the scroll amount as a percentage
+		var percent = (number - 1) * 100;
+		return "right:" + String(percent) + "%;";
+	},
 	// Returns true if the quiz time is up
 	timeUp: function() {
 		var time = Template.instance().quizTimeRemaining.get();
@@ -90,15 +100,18 @@ Template.takeQuiz.helpers({
 			return true;
 		}
 	},
+	// The seconds remaining in the quiz without the minutes component
 	secondsRemaining: function() {
 		var time = Template.instance().quizTimeRemaining.get();
 		return parseInt((time / 1000) % 60, 10);
 	},
+	// The number of minutes remaining in the quiz without the seconds component
 	minutesRemaining: function() {
 		var time = Template.instance().quizTimeRemaining.get();
 		return parseInt((time / 1000 / 60), 10);
 	},
-	// Returns the quiz and given player's progress
+	// Returns the current player's progress in the quiz for the given question
+	// Will return "correct", "wrong", or null
 	myProgress: function(questionNumber) {
 		// Make sure we were given a question number
 		if(!questionNumber)
@@ -190,7 +203,6 @@ Template.questionTemplate.events({
 			{
 				// Set the template result to correct
 				this_template.result.set("correct");
-
 			}
 			// Otherwise mark the answer as wrong 
 			// and highlight the correct answer
@@ -205,5 +217,14 @@ Template.questionTemplate.events({
 			// Move on to the next question automatically
 			// TODO
 		});
+	},
+	"click .next-question-button": function(event) {
+		var quiz_id = Iron.controller().getParams()._id;
+		var number = Iron.controller().getParams().question_number;
+		// We want to go to the next question
+		number = Number(number) + 1;
+
+		// Go to the next question
+		Router.go('take-quiz', {_id: quiz_id, question_number: number});
 	}
 })

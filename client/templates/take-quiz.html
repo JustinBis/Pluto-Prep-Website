@@ -2,6 +2,7 @@
 <template name="takeQuiz">
 	<!-- Full page container -->
 	<div class="full-page takeQuiz blue-background">
+
 		{{#if questions}}
 		<div class="container">
 			<!-- Show the progress and a timer -->
@@ -26,16 +27,25 @@
 					<span>6</span>
 				</div>
 			</div>
+
 			<!-- Show the questions -->
-			<div class="row quiz-question-container text-center">
-			<div class="col-xs-10 col-xs-offset-1">
-				{{#each questions}}
-					{{> questionTemplate}}
-				{{/each}}
-			</div>
+			<div class="row">
+				<div class="quiz-questions-row-container quiz-horizontal-scroll" style="{{questionContainerScroll}}">
+
+					{{#each questions}}
+					<div class="quiz-questions-col-container">
+						<div class="col-xs-10 col-xs-offset-1">
+							{{> questionTemplate}}
+						</div>
+					</div>
+					{{/each}}
+
+				</div>
 			</div>
 		</div>
+
 		{{else}}
+
 		<!-- If there are no questions, show an error -->
 		<div class="row error-container">
 			<div class="col-xs-12 text-center">
@@ -73,7 +83,7 @@
 
 <!-- The question template -->
 <template name="questionTemplate">
-<div class="row">
+<div class="row text-center">
 	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container {{result}}">
 		<span class="question-text">
@@ -95,6 +105,12 @@
 				<span>D</span> {{d}}
 			</li>
 		</ul>
+
+		{{#if result}}
+		<button class="btn btn-lg next-question-button">
+			Next Question
+		</button>
+		{{/if}}
 	</div>
 </div>
 </template>

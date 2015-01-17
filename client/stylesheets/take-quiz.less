@@ -2,16 +2,32 @@
 @correct-color: rgb(126, 221, 29);
 @wrong-color: rgb(244, 91, 83);
 
-.quiz-question-container {
+.takeQuiz {
+	overflow-x: hidden;
+}
+
+.quiz-questions-container {
 	/* Todo: make this mobile friendly with the navbar */
 	margin: 20px auto;
 	/*max-width: 80%;*/
 	color: black;
 	/* background-color: white; */
 
+	/* So we can animate the divs in and out */
+	position: relative;
+
 }
 
 .question-container {
+	/* Position absolutely inside the .quiz-questions.container */
+	/*
+	position: absolute;
+	top: 0;
+	left: auto;
+	bottom: auto;
+	right: auto;
+	*/
+	color: black;
 	background-color: white;
 
 	margin: 20px auto;
@@ -20,6 +36,32 @@
 	min-height: 10%;
 
 	border-radius: 10px;
+
+	-webkit-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+	box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+}
+
+.quiz-questions-row-container {
+	/* TODO: Make this work with an arbitrary number of questions
+	 * 100% per question, and then each question gets a col container with 
+	 * 100%/600% width
+	 */
+
+	width: 600%;
+}
+
+.quiz-questions-col-container {
+	width: 16.666666%;
+	float: left;
+}
+
+.quiz-horizontal-scroll {
+	position: relative;
+	right: 0%;
+	left: auto;
+
+	transition: right 0.4s;
 }
 
 /* Classes to set the background color when an answer is submitted */
