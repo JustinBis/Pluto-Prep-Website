@@ -85,7 +85,7 @@
 <template name="questionTemplate">
 <div class="row text-center">
 	<!-- Use the result to style this template -->
-	<div class="col-xs-12 question-container {{result}}">
+	<div class="col-xs-12 question-container effect6 {{myProgress number}}">
 		<span class="question-text">
 			{{question}}
 		</span>
@@ -106,7 +106,8 @@
 			</li>
 		</ul>
 
-		{{#if result}}
+		<!-- Show the button if this question has been answered -->
+		{{#if myProgress number}}
 		<button class="btn btn-lg next-question-button">
 			Next Question
 		</button>

@@ -9,8 +9,8 @@ QuizHelper = {
 		// Create an empty array to store the selected questions
 		questions = [];
 
-		// Query the questions
-		var found = Questions.find({subject: subject});
+		// Query the questions, leaving out the answer and explanations
+		var found = Questions.find({subject: subject}, {fields: {answer: 0, short_explanation:0, long_explanation: 0}});
 
 		// Make sure there are enough questions in total
 		if(found.count() < numQuestions)

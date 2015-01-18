@@ -149,10 +149,19 @@ Meteor.methods({
 			throw new Meteor.Error('err-not-authenticated', "Requester is not a member of the given quiz id");
 		}
 
+		// Don't update a question that has already been answered
+		// i.e. check that the answer field doesn't yet exist
+		// Subtract one from questionNumber since the numbers are 1 indexed and the arrays are 0 indexed
+		if(quiz.questions[questionNumber - 1] && quiz.questions[questionNumber - 1][player+"_answer"])
+		{
+			throw new Meteor.Error('err-already-answered', "Requester has already answered this question");
+		}
+
 		// Update the quiz progress
+		var set = {'questions.$.answer': question.answer};
 		var answerField = "questions.$."+player+"_answer";
-		var set = {};
 		set[answerField] = wasCorrect ? "correct" : "wrong";
+		
 		ActiveQuizzes.update(
 			{_id: quiz_id, 'questions._id': question_id}, 
 			{

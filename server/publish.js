@@ -25,12 +25,13 @@ Meteor.publish('activeQuiz', function() {
 			]
 		},
 		// Don't publish the answers
+		// They shouldn't be in the quiz now
 		{
-			fields: {
-			'questions.answer': 0,
-			'questions.short_explanation': 0,
-			'questions.long_explanation': 0
-			}
+			// fields: {
+			// 'questions.answer': 0,
+			// 'questions.short_explanation': 0,
+			// 'questions.long_explanation': 0
+			// }
 		}
 		);
 	}

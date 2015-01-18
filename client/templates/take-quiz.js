@@ -136,29 +136,53 @@ Template.takeQuiz.helpers({
 
 		// Otherwise null
 	}
-
-})
+});
 
 
 // When the question template is created, create the reactive variables
 Template.questionTemplate.created = function() {
-	// Create the reactive state variables
-	this.result = new ReactiveVar();
-	this.answer = new ReactiveVar();
+	// No variables needed yet
 }
 
 // Helpers for the question templates
 Template.questionTemplate.helpers({
 	result: function() {
-		return Template.instance().result.get();
+		return Template.instance().data.result;
 	},
 	// Returns "correct" if the given letter was the answer
 	isAnswer: function(letter) {
-		if(letter === Template.instance().answer.get())
+		if(letter === Template.instance().data.answer)
 		{
-			console.log("CO");
 			return "correct";
 		}
+	},
+	// Returns the current player's progress in the quiz for the given question
+	// Will return "correct", "wrong", or null
+	// Same as the takeQuiz myProgress helper, but with an updated data context
+	myProgress: function(questionNumber) {
+		// Make sure we were given a question number
+		if(!questionNumber)
+		{
+			return null;
+		}
+
+		// Lower the question number by one, since the questions are 0 indexed in the data
+		questionNumber = questionNumber - 1;
+
+		// Grab the data from the parent takeQuiz template
+		var data = Template.parentData(1);
+		if(data && Meteor.userId() === data.p1_id)
+		{
+			// May not be defined
+			return data.questions[questionNumber]['p1_answer'];
+		}
+		else if(data && Meteor.userId() === data.p2_id)
+		{
+			// May not be defined
+			return data.questions[questionNumber]['p2_answer'];
+		}
+
+		// Otherwise null
 	}
 });
 
@@ -170,7 +194,7 @@ Template.questionTemplate.events({
 		var this_template = Template.instance();
 
 		// Make sure we haven't already submitted this answer
-		if(this_template.result.get())
+		if(this_template.data.result)
 		{
 			// Don't run this method on any template twice
 			return;
@@ -197,25 +221,7 @@ Template.questionTemplate.events({
 				console.error("Error calling checkQuizAnswer: result never sent.");
 				return;
 			}
-
-			// If the answer was right
-			if(result.correct === true)
-			{
-				// Set the template result to correct
-				this_template.result.set("correct");
-			}
-			// Otherwise mark the answer as wrong 
-			// and highlight the correct answer
-			else
-			{
-				// Set the template result to wrong
-				this_template.result.set("wrong");
-				// Set the answer so we can highlight the correct answer
-				this_template.answer.set(result.answer);
-			}
-
-			// Move on to the next question automatically
-			// TODO
+			// The result is also in the quiz data now, so we can ignore the return value here
 		});
 	},
 	"click .next-question-button": function(event) {

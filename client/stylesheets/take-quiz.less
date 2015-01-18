@@ -36,10 +36,6 @@
 	min-height: 10%;
 
 	border-radius: 10px;
-
-	-webkit-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
-	box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
 }
 
 .quiz-questions-row-container {
@@ -64,25 +60,9 @@
 	transition: right 0.4s;
 }
 
-/* Classes to set the background color when an answer is submitted */
-.wrong {
-	background-color: @wrong-color;
-	transition: background-color 0.4s;
-
-	.list-group-item {
-		background-color: @wrong-color;
-		transition: background-color 0.4s;
-	}
-}
-
-.correct {
-	background-color: @correct-color;
-	transition: background-color 0.4s;
-
-	.list-group-item {
-		background-color: @correct-color;
-		transition: background-color 0.4s;
-	}
+/* Overide the list group item backgrounds to be transparent */
+.list-group-item {
+	background-color: transparent;
 }
 
 .question-text {
@@ -101,24 +81,26 @@
 	.list-group-item {
 		border: none;
 		border-radius: 4px;
-		/*margin: 2px;*/
-
-		/* 50% would overflow everything on to individual lines 
-		   so we keep 49% so we get 2 boxes per line */
-		/*width: 49%;*/
 	}
-	.list-group-item:hover {
+
+	.list-group-item:hover{
 		background-color: rgb(54, 186, 255);
-	}
-
-	/* So we override the .wrong .list-group-item */
-	.list-group-item.correct {
-		background-color: @correct-color;
-		transition-delay: 0.8s;
 	}
 
 	margin: 0 auto;
 	width: 80%;
+}
+
+/* Classes to set the background color when an answer is submitted */
+/* Also prevents answered questions from being highlighted */
+.wrong, .wrong .list-group-item:hover {
+	background-color: @wrong-color;
+	transition: background-color 0.4s;
+}
+/* Also prevent the highlighted correct answer from going to the @wrong-color color */
+.correct, .correct .list-group-item:hover, .correct.list-group-item:hover{
+	background-color: @correct-color;
+	transition: background-color 0.4s;
 }
 
 .progress-container {
@@ -168,4 +150,41 @@
 		background-color: @wrong-color;
 		border-width: 0px;
 	}
+}
+
+/*
+ * Shadow effect from CSS-tricks.com
+ * http://css-tricks.com/almanac/properties/b/box-shadow/
+ */
+.effect6
+{
+	position:relative;
+	-webkit-box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect6:before, .effect6:after
+{
+	content:"";
+	position:absolute;
+	z-index:-1;
+	-webkit-box-shadow:0 0 40px rgba(0,0,0,0.8);
+	-moz-box-shadow:0 0 40px rgba(0,0,0,0.8);
+	box-shadow:0 0 40px rgba(0,0,0,0.8);
+	top:50%;
+	bottom:0;
+	left:10px;
+	right:10px;
+	-moz-border-radius:100px / 10px;
+	border-radius:100px / 10px;
+}
+.effect6:after
+{
+	right:10px;
+	left:auto;
+	-webkit-transform:skew(8deg) rotate(3deg);
+	-moz-transform:skew(8deg) rotate(3deg);
+	-ms-transform:skew(8deg) rotate(3deg);
+	-o-transform:skew(8deg) rotate(3deg);
+	transform:skew(8deg) rotate(3deg);
 }
