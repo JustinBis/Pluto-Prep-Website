@@ -194,7 +194,7 @@ Template.questionTemplate.events({
 		var this_template = Template.instance();
 
 		// Make sure we haven't already submitted this answer
-		if(this_template.data.result)
+		if(this_template.data.answer)
 		{
 			// Don't run this method on any template twice
 			return;
@@ -231,6 +231,22 @@ Template.questionTemplate.events({
 		number = Number(number) + 1;
 
 		// Go to the next question
+		Router.go('take-quiz', {_id: quiz_id, question_number: number});
+	},
+	// Clicking the next question button
+	"click .question-nav-next": function(event) {
+		var quiz_id = Iron.controller().getParams()._id;
+		// Go to the next question number
+		var number = this.number + 1;
+
+		Router.go('take-quiz', {_id: quiz_id, question_number: number});
+	},
+	// Clicking the prev question button
+	"click .question-nav-prev": function(event) {
+		var quiz_id = Iron.controller().getParams()._id;
+		// Go to the previous question number
+		var number = this.number - 1;
+
 		Router.go('take-quiz', {_id: quiz_id, question_number: number});
 	}
 })

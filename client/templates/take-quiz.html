@@ -19,6 +19,7 @@
 					Time remaining: {{minutesRemaining}}:{{secondsRemaining}}
 				</div>
 				<div id="opponent-progress" class="col-xs-4 quiz-progress-bubbles text-center">
+					<!-- TODO: Implement opponent progress -->
 					<span>1</span>
 					<span>2</span>
 					<span>3</span>
@@ -39,6 +40,12 @@
 						</div>
 					</div>
 					{{/each}}
+					<!-- Show the end card -->
+					<div class="quiz-questions-col-container">
+						<div class="col-xs-10 col-xs-offset-1">
+							{{> quizEndCard}}
+						</div>
+					</div>
 
 				</div>
 			</div>
@@ -86,6 +93,16 @@
 <div class="row text-center">
 	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container effect6 {{myProgress number}}">
+		<!-- Left and right nav buttons -->
+		<div class="question-nav question-nav-prev">
+			<span class="glyphicon glyphicon-chevron-left">
+			</span>
+		</div>
+		<div class="question-nav question-nav-next">
+			<span class="glyphicon glyphicon-chevron-right">
+			</span>
+		</div>
+
 		<span class="question-text">
 			{{question}}
 		</span>
@@ -112,6 +129,19 @@
 			Next Question
 		</button>
 		{{/if}}
+	</div>
+</div>
+</template>
+
+<!-- The template for the final quiz card -->
+<template name="quizEndCard">
+<div class="row text-center">
+	<div class="col-xs-12 question-container effect6">
+		<span class="question-text">
+			That's it!
+		</span>
+
+		Your opponent is still goin'
 	</div>
 </div>
 </template>

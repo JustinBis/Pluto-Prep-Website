@@ -26,6 +26,8 @@ Meteor.publish('activeQuiz', function() {
 		},
 		// Don't publish the answers
 		// They shouldn't be in the quiz now
+		// Possibly use a field (p1_answered = true, p2_answered = false) to see if a player has
+		// answered and only publish if they have
 		{
 			// fields: {
 			// 'questions.answer': 0,

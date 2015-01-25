@@ -1,3 +1,10 @@
+@import "/client/stylesheets/globals/variables.import.less";
+@import "/client/lib/lesshat-prefixed.import.less";
+
+/* Number of quiz questions in total */
+@num-quiz-questions: 6;
+/* Number of cards to show in the quiz area */
+@num-quiz-cards: @num-quiz-questions + 1;
 
 @correct-color: rgb(126, 221, 29);
 @wrong-color: rgb(244, 91, 83);
@@ -39,17 +46,29 @@
 }
 
 .quiz-questions-row-container {
-	/* TODO: Make this work with an arbitrary number of questions
-	 * 100% per question, and then each question gets a col container with 
-	 * 100%/600% width
+	/*
+	 * 100% per card, and then each card gets a col container with 
+	 * 1 / num-quiz-cards width
 	 */
 
-	width: 600%;
+	width: percentage(@num-quiz-cards);
 }
 
 .quiz-questions-col-container {
-	width: 16.666666%;
+	/* Fit all quiz cards in the .quiz-questions-row-container */
+	width: percentage(1 / @num-quiz-cards);
 	float: left;
+}
+
+.quiz-questions-end-card {
+	/* Position behind all the quiz cards */
+	position: absolute;
+	left: 100%;
+	right: auto;
+	top: auto;
+	bottom: auto;
+	z-index: -1;
+
 }
 
 .quiz-horizontal-scroll {
@@ -151,6 +170,85 @@
 		border-width: 0px;
 	}
 }
+
+/* Question card navigation blocks */
+
+.question-nav {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: auto;
+	right: auto;
+	margin: 0 0;
+	height: 100%;
+	/* Without a width, the glyph can't be seen */
+	width: 5%;
+
+	background-color: transparent;
+
+	.lh-transition(padding 0.5s ease, background-color 0.5s ease);
+
+	span {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: auto;
+		right: auto;
+		height: 1em;
+		margin: auto 0px;
+
+		.lh-transition(padding 0.5s ease, background-color 0.5s ease);
+	}
+}
+
+.question-nav.question-nav-prev {
+	/* Place on left edge */
+	left: 0;
+
+	padding-left: 5px;
+
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+
+	/* Center icon vertically and on left */
+	span {
+		left: 0;
+		margin-left: 5px;
+	}
+}
+
+.question-nav.question-nav-prev:hover {
+	padding-left: 15px;
+	background-color: fade(@light-blue, 15%);
+
+	span {
+		padding-left: 15px;
+	}
+}
+
+.question-nav.question-nav-next {
+	/* Place on right edge */
+	right: 0;
+
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	/* Center icon vertically and on right */
+	span {
+		right: 0;
+		margin-right: 5px;
+	}
+}
+
+.question-nav.question-nav-next:hover {
+	padding-right: 15px;
+	background-color: fade(@light-blue, 15%);
+
+	span {
+		padding-right: 15px;
+	}
+}
+
 
 /*
  * Shadow effect from CSS-tricks.com
