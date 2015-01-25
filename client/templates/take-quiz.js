@@ -103,7 +103,13 @@ Template.takeQuiz.helpers({
 	// The seconds remaining in the quiz without the minutes component
 	secondsRemaining: function() {
 		var time = Template.instance().quizTimeRemaining.get();
-		return parseInt((time / 1000) % 60, 10);
+		time = parseInt((time / 1000) % 60, 10);
+		// If there is <10 seconds left, add a leading 0
+		if(time < 10)
+		{
+			time = "0" + String(time);
+		}
+		return time;
 	},
 	// The number of minutes remaining in the quiz without the seconds component
 	minutesRemaining: function() {
@@ -155,6 +161,15 @@ Template.questionTemplate.helpers({
 		{
 			return "correct";
 		}
+	},
+	// Should we show the left nav button
+	// Will return false for the first question
+	showLeftNav: function(number) {
+		if(number <= 1)
+		{
+			return false;
+		}
+		return true;
 	},
 	// Returns the current player's progress in the quiz for the given question
 	// Will return "correct", "wrong", or null
@@ -224,29 +239,79 @@ Template.questionTemplate.events({
 			// The result is also in the quiz data now, so we can ignore the return value here
 		});
 	},
+	// Go to the next question
 	"click .next-question-button": function(event) {
-		var quiz_id = Iron.controller().getParams()._id;
-		var number = Iron.controller().getParams().question_number;
-		// We want to go to the next question
-		number = Number(number) + 1;
-
-		// Go to the next question
-		Router.go('take-quiz', {_id: quiz_id, question_number: number});
-	},
-	// Clicking the next question button
-	"click .question-nav-next": function(event) {
 		var quiz_id = Iron.controller().getParams()._id;
 		// Go to the next question number
 		var number = this.number + 1;
 
 		Router.go('take-quiz', {_id: quiz_id, question_number: number});
 	},
-	// Clicking the prev question button
+	// Clicking the next question nav button
+	"click .question-nav-next": function(event) {
+		var quiz_id = Iron.controller().getParams()._id;
+
+		// The current center question number
+		var question_number = Iron.controller().getParams().question_number;
+		// The question number of the clicked template
+		var number = this.number;
+
+		if(question_number == number)
+		{
+			// Go to the next question
+			Router.go('take-quiz', {_id: quiz_id, question_number: number + 1});
+		}
+		// Otherwise pull this template into the view
+		else
+		{
+			Router.go('take-quiz', {_id: quiz_id, question_number: number});
+		}
+	},
+	// Clicking the prev question nav button
 	"click .question-nav-prev": function(event) {
 		var quiz_id = Iron.controller().getParams()._id;
-		// Go to the previous question number
-		var number = this.number - 1;
 
-		Router.go('take-quiz', {_id: quiz_id, question_number: number});
+		// The current center question number
+		var question_number = Iron.controller().getParams().question_number;
+		// The question number of the clicked template
+		var number = this.number;
+
+		if(question_number == number)
+		{
+			// Go to the next question
+			Router.go('take-quiz', {_id: quiz_id, question_number: number - 1});
+		}
+		// Otherwise pull this template into the view
+		else
+		{
+			Router.go('take-quiz', {_id: quiz_id, question_number: number});
+		}
+	}
+})
+
+Template.quizEndCard.events({
+	// The previous question button
+	"click .question-nav-prev": function(event) {
+		var quiz_id = Iron.controller().getParams()._id;
+		var question_number = Iron.controller().getParams().question_number;
+
+		// Find the final question of the quiz
+		var questions = Template.parentData(1).questions;
+		// Get the question number of the last element
+		var number = questions[questions.length - 1].number;
+
+		console.log("HI");
+		// If we clicked the arrow while still looking at the last question
+		// i.e. the quizEndCard is still off screen
+		if(question_number == number)
+		{
+			// Go to the end card, which is the question number after the last question
+			Router.go('take-quiz', {_id: quiz_id, question_number: number + 1});
+		}
+		else
+		{
+			// Go to that final question
+			Router.go('take-quiz', {_id: quiz_id, question_number: number});
+		}
 	}
 })

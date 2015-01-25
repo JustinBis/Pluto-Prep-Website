@@ -94,17 +94,19 @@
 	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container effect6 {{myProgress number}}">
 		<!-- Left and right nav buttons -->
+		{{#if showLeftNav number}}
 		<div class="question-nav question-nav-prev">
 			<span class="glyphicon glyphicon-chevron-left">
 			</span>
 		</div>
+		{{/if}}
 		<div class="question-nav question-nav-next">
 			<span class="glyphicon glyphicon-chevron-right">
 			</span>
 		</div>
 
 		<span class="question-text">
-			{{question}}
+		{{#markdown}}{{question}}{{/markdown}}
 		</span>
 
 		<ul class="row row-eq-height list-inline list-group question-answers">
@@ -137,9 +139,17 @@
 <template name="quizEndCard">
 <div class="row text-center">
 	<div class="col-xs-12 question-container effect6">
+		<!-- Left nav button -->
+		<div class="question-nav question-nav-prev">
+			<span class="glyphicon glyphicon-chevron-left">
+			</span>
+		</div>
+
 		<span class="question-text">
 			That's it!
 		</span>
+
+		<br />
 
 		Your opponent is still goin'
 	</div>
