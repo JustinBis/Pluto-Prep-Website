@@ -1,3 +1,5 @@
+@import "/client/stylesheets/globals/variables.import.less";
+
 .position(@type; @top: auto; @right: auto; @bottom: auto; @left: auto; @width: auto; @height: auto) {
   position: @type;
   top: @top;
@@ -20,7 +22,7 @@
    For use with full page containers */
 .blue-background {
 	color: white;
-	background-color: #2980b9;
+	background-color: @dark-blue;
 	/* Overflow in to the rest of the (potentially) expanded container */
 	overflow: auto;
 }
