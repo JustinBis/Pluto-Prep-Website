@@ -1,7 +1,5 @@
 // All Meteor publish functions should go here
 
-// Will become relevant once autopublish is gone
-
 /*
 // Likely not needed, as we do quiz matching server side
 // Allow access to all quiz seekers

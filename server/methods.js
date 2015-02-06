@@ -174,7 +174,6 @@ Meteor.methods({
 					console.error(err);
 					throw new Meteor.Error('err-database-error', err.reason);
 				}
-				console.log("checkQuizAnswer: num affected " + numAffected);
 			}
 		);
 
