@@ -6,11 +6,15 @@
 /* Number of cards to show in the quiz area */
 @num-quiz-cards: @num-quiz-questions + 1;
 
-@correct-color: rgb(126, 221, 29);
-@wrong-color: rgb(244, 91, 83);
+//@correct-color: rgb(126, 221, 29);
+//@wrong-color: rgb(244, 91, 83);
+
+@correct-color: rgba(116, 207, 147, 0.7);
+@wrong-color: rgba(255, 100, 100, 0.7);
 
 .takeQuiz {
 	overflow-x: hidden;
+	color: white;
 }
 
 .quiz-questions-container {
@@ -86,14 +90,17 @@
 
 .question-text {
 	font-size: 18px;
-	font-weight: 600;
 }
 
 .question-answers {
 	li {
+		margin: 0 2em;
+		font-size: 16px;
 		span {
-			display: block;
-			color: #882200;
+			font-weight: bold;
+			display: inline-block;
+			margin-right: 1em;
+			color: rgb(60, 60, 60);
 		}
 	}
 
@@ -107,7 +114,6 @@
 	}
 
 	margin: 0 auto;
-	width: 80%;
 }
 
 /* Classes to set the background color when an answer is submitted */
@@ -131,18 +137,20 @@
 }
 
 .time-remaining {
-	font-size: 18px;
+	font-size: 24px;
+	line-height: 40px;
+	vertical-align: middle;
 }
 
 .quiz-progress-bubbles {
 
 	span {
-		color: white;
-	
+		font-size: 18px;
+
 		display: inline-block;
-		width: 25px;
-		height: 25px;
-		line-height: 25px;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
 		vertical-align: middle;
 		/* Just use something large enough to make a full circle */
 		border-radius: 100px;

@@ -1,7 +1,7 @@
 <!-- The page served to the "/quiz/:_id" route -->
 <template name="takeQuiz">
 	<!-- Full page container -->
-	<div class="full-page takeQuiz blue-background">
+	<div class="full-page takeQuiz slate-background">
 
 		{{#if questions}}
 		<div class="container">
@@ -16,7 +16,7 @@
 					{{/each}}
 				</div>
 				<div class="col-xs-4 text-center time-remaining">
-					Time remaining: {{minutesRemaining}}:{{secondsRemaining}}
+					{{minutesRemaining}}:{{secondsRemaining}}
 				</div>
 				<div id="opponent-progress" class="col-xs-4 quiz-progress-bubbles text-center">
 					<!-- TODO: Implement opponent progress -->
@@ -68,6 +68,9 @@
 		{{/if}}
 
 		<div class="text-center">
+		<br />
+		<br />
+		<br />
 		<h3> Debug Info </h3>
 			<p>
 				p1_id: {{p1_id}}
@@ -90,7 +93,7 @@
 
 <!-- The question template -->
 <template name="questionTemplate">
-<div class="row text-center">
+<div class="row text-left">
 	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container effect6 {{myProgress number}}">
 		<!-- Left and right nav buttons -->
@@ -105,31 +108,35 @@
 			</span>
 		</div>
 
-		<span class="question-text">
-		{{#markdown}}{{question}}{{/markdown}}
-		</span>
+		<div class="row">
+			<div class="col-xs-10 col-xs-push-1 question-text">
+				{{#markdown}}{{question}}{{/markdown}}
+			</div>
+		</div>
 
 		<ul class="row row-eq-height list-inline list-group question-answers">
-			<li class="col-xs-12 list-group-item {{isAnswer 'a'}}" data-answer="a">
+			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'a'}}" data-answer="a">
 				<span>A</span> {{a}}
 			</li>
-			<li class="col-xs-12 list-group-item {{isAnswer 'b'}}" data-answer="b">
+			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'b'}}" data-answer="b">
 				<span>B</span> {{b}}
 			</li>
 			<div class="clearfix visible-sm-block"></div>
-			<li class="col-xs-12 list-group-item {{isAnswer 'c'}}" data-answer="c">
+			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'c'}}" data-answer="c">
 				<span>C</span> {{c}}
 				</li>
-			<li class="col-xs-12 list-group-item {{isAnswer 'd'}}" data-answer="d">
+			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'd'}}" data-answer="d">
 				<span>D</span> {{d}}
 			</li>
 		</ul>
 
 		<!-- Show the button if this question has been answered -->
 		{{#if myProgress number}}
-		<button class="btn btn-lg next-question-button">
-			Next Question
-		</button>
+		<div class="text-center">
+			<button class="btn btn-lg next-question-button">
+				Next Question
+			</button>
+		</div>
 		{{/if}}
 	</div>
 </div>
