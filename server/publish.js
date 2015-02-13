@@ -42,3 +42,9 @@ Meteor.publish('activeQuiz', function() {
 		return [];
 	}
 });
+
+// For testing, push questions
+// TODO: Make this for admins only
+Meteor.publish('questions', function() {
+	return Questions.find();
+});

@@ -158,7 +158,11 @@ Meteor.methods({
 		}
 
 		// Update the quiz progress
-		var set = {'questions.$.answer': question.answer};
+		var set = {
+			'questions.$.answer': question.answer,
+			'questions.$.short_explanation': question.short_explanation,
+			'questions.$.long_explanation': question.long_explanation
+		};
 		var answerField = "questions.$."+player+"_answer";
 		set[answerField] = wasCorrect ? "correct" : "wrong";
 		
