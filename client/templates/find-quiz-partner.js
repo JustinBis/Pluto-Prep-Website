@@ -14,7 +14,7 @@ Template.findQuizPartner.rendered = function() {
 
 	// If no partner, make a new quiz
 	this.progress.set('Creating new quiz');
-	Meteor.call('createQuiz', 'Biology', 6, function(err, result) {
+	Meteor.call('createQuiz', 'Bio', 6, function(err, result) {
 		if(err)
 		{
 			Session.set('server-error', err.reason);
