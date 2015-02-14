@@ -2,6 +2,10 @@
 
 // Options: #A3F9D8;//#CDEDE0;
 
+/* 
+ * TODO: THIS AFFECTS ALL PAGES' BODY
+ * FIX THAT
+ */
 body { 
   background-color: @main-color;
   /* 434F64 Slate */
@@ -13,85 +17,83 @@ body {
   margin: 50px auto 50px;
 }
 
-.section-1 {
+.quiz-results {
   color: white;
   background: url(https://exchange.coinbase.com/img/product_bg.jpg);
   width: 100%;
   padding-bottom: 20px;
+
+  button {
+    margin: 0.5em;
+    padding: 0.75em 0.5em;
+    background-color: transparent;
+    border: 1px solid white;
+    width: 8em;
+  }
+
+  button:hover {
+    color: white;
+    background-color: rgba(10, 75, 180, 0.55);
+    border: 1px solid rgba(10, 90, 180, 0.55);
+    transition: background-color 0.5s, border 0.5s;
+  }
+
 }
 
-.section-1 button {
-  margin: 0.5em;
-  padding: 0.75em 0.5em;
-  background-color: transparent;
-  border: 1px solid white;
-  width: 8em;
-}
-
-.section-1 button:hover {
-  color: white;
-  background-color: rgba(10, 75, 180, 0.55);
-  border: 1px solid rgba(10, 90, 180, 0.55);
-  transition: background-color 0.5s, border 0.5s;
-}
-
-.section-2 {
-  padding-top: 30px;
+.section {
+  padding: 3em 0;
 }
 
 .top-shadow {
   box-shadow: 0px -5px 15px -5px rgba(0,0,0,0.8);
 }
 
-.spacer {
-  margin-top: 50px;
-}
 
-.exp {
-  /*border-top: 1px solid rgba(15, 10, 25, 0.15);*/
-  margin-top: 1em;
-  padding-top: 0.5em;
-  width: 80%;
-}
-
-.number {
+.number-bubble {
+  text-align: center;
   margin-bottom: 1em;
-}
-.number > span {
-  display: inline-block;
-  padding: 5px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 25px;
-}
 
-.row.questions {
-  //background-color: lighten(@main-color, 15%);
+  /* 
+   * In order to border just the number, we need a child element.
+   * A span is as good as any I guess
+   */
+  span {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+  }
 }
 
 .question {
-  margin: 0 auto;
+  /* Have a bottom margin to space out the rows of questions */
+  margin: 0 auto 2em;
   padding: 1em;
   border-radius: 2px;
   width: 85%;
   vertical-align: bottom;
-}
 
-/*.border-right {
-  border-right: 1px solid rgba(0,0,0,0.2);
-}
-.border-left {
-  border-left: 1px solid rgba(0,0,0,0.2);
-}
-.border-top {
-  border-top: 1px solid rgba(0,0,0,0.2);
-}*/
+  .answers {
+    margin-top: 1em;
+    margin-left: 2em;
 
-.question > .answers {
-  margin-top: 1em;
-  margin-left: 2em;
-}
+    .letter {
+      margin-right: 0.5em;
+    }
 
-.bottom {
-  height: 250px;
-  /*background-color: rgba(200, 220, 250, 0.9);*/
+    /* 
+     * Markdown wraps each answer in a <p> tag
+     * But we want the letter to align to the left of the answer's text
+     */
+    p {
+      display: inline;
+    }
+  }
+
+  .explanation {
+    /*border-top: 1px solid rgba(15, 10, 25, 0.15);*/
+    margin-top: 1em;
+    padding-top: 0.5em;
+    width: 80%;
+  }
 }

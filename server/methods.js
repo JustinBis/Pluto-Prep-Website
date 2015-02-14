@@ -126,7 +126,7 @@ Meteor.methods({
 		});
 
 		// Select the question from the database, only grabbing the answer field
-		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1}});
+		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1, short_explanation: 1, long_explanation: 1}});
 
 		var wasCorrect = question.answer === answer;
 
@@ -158,6 +158,8 @@ Meteor.methods({
 		}
 
 		// Update the quiz progress
+		console.log("TEA");
+		console.log(question.short_explanation);
 		var set = {
 			'questions.$.answer': question.answer,
 			'questions.$.short_explanation': question.short_explanation,

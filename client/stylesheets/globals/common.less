@@ -1,13 +1,13 @@
 @import "/client/stylesheets/globals/variables.import.less";
 
 .position(@type; @top: auto; @right: auto; @bottom: auto; @left: auto; @width: auto; @height: auto) {
-  position: @type;
-  top: @top;
-  right: @right;
-  bottom: @bottom;
-  left: @left;
-  width: @width;
-  height: @height;
+	position: @type;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+	width: @width;
+	height: @height;
 }
 
 /* Represents a full page container */
@@ -19,7 +19,7 @@
 }
 
 /* Sets the background to the theme blue and text to white
-   For use with full page containers */
+	 For use with full page containers */
 .blue-background {
 	background-color: @dark-blue;
 	/* Overflow in to the rest of the (potentially) expanded container */
@@ -29,4 +29,88 @@
 .slate-background {
 	background: url(/img/product_bg.jpg);
 	color: #fff;
+}
+
+
+/*
+ * Bootstrap Col Clearfix
+ * Thanks to http://www.bluthemes.com/blog/3/clearing-bootstrap-3-columns
+ */
+.col-custom-clearfix {
+	/*  Tablet  */
+	@media (min-width:767px){
+
+		/* Column clear fix */
+		.col-lg-1:nth-child(12n+1),
+		.col-lg-2:nth-child(6n+1),
+		.col-lg-3:nth-child(4n+1),
+		.col-lg-4:nth-child(3n+1),
+		.col-lg-6:nth-child(2n+1),
+		.col-md-1:nth-child(12n+1),
+		.col-md-2:nth-child(6n+1),
+		.col-md-3:nth-child(4n+1),
+		.col-md-4:nth-child(3n+1),
+		.col-md-6:nth-child(2n+1){
+			clear: none;
+		}
+		.col-sm-1:nth-child(12n+1),
+		.col-sm-2:nth-child(6n+1),
+		.col-sm-3:nth-child(4n+1),
+		.col-sm-4:nth-child(3n+1),
+		.col-sm-6:nth-child(2n+1){
+			clear: left;
+		}
+	}
+
+
+	/*  Medium Desktop  */
+	@media (min-width:992px){
+
+		/* Column clear fix */
+		.col-lg-1:nth-child(12n+1),
+		.col-lg-2:nth-child(6n+1),
+		.col-lg-3:nth-child(4n+1),
+		.col-lg-4:nth-child(3n+1),
+		.col-lg-6:nth-child(2n+1),
+		.col-sm-1:nth-child(12n+1),
+		.col-sm-2:nth-child(6n+1),
+		.col-sm-3:nth-child(4n+1),
+		.col-sm-4:nth-child(3n+1),
+		.col-sm-6:nth-child(2n+1){
+			clear: none;
+		}
+		.col-md-1:nth-child(12n+1),
+		.col-md-2:nth-child(6n+1),
+		.col-md-3:nth-child(4n+1),
+		.col-md-4:nth-child(3n+1),
+		.col-md-6:nth-child(2n+1){
+			clear: left;
+		}
+	}
+
+
+	/*  Large Desktop  */
+	@media (min-width:1200px){
+
+		/* Column clear fix */
+		.col-md-1:nth-child(12n+1),
+		.col-md-2:nth-child(6n+1),
+		.col-md-3:nth-child(4n+1),
+		.col-md-4:nth-child(3n+1),
+		.col-md-6:nth-child(2n+1),
+		.col-sm-1:nth-child(12n+1),
+		.col-sm-2:nth-child(6n+1),
+		.col-sm-3:nth-child(4n+1),
+		.col-sm-4:nth-child(3n+1),
+		.col-sm-6:nth-child(2n+1){
+			clear: none;
+		}
+		.col-lg-1:nth-child(12n+1),
+		.col-lg-2:nth-child(6n+1),
+		.col-lg-3:nth-child(4n+1),
+		.col-lg-4:nth-child(3n+1),
+		.col-lg-6:nth-child(2n+1){
+			clear: left;
+		}
+	}
 }

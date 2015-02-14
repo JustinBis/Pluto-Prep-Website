@@ -1,161 +1,71 @@
 <template name="quizResults">
-<div class="container section-1">
-	<div class="row top text-center">
-		<h1>You Win!</h1>
-		<h3>5 - 3</h3>
-		<button class="btn btn-lg">
-			Rematch
-		</button>
-		<button class="btn btn-lg">
-			Play Again
-		</button>
+	<!-- The results header -->
+	<div class="section quiz-results">
+		<div class="container">
+			<div class="row top text-center">
+				<h1>You Win!</h1>
+				<h3>5 - 3</h3>
+				<button class="btn btn-lg">
+					Rematch
+				</button>
+				<button class="btn btn-lg">
+					Play Again
+				</button>
+			</div>
+		</div>
 	</div>
-</div>
 
-<!-- Begin Question Overview Section -->
-<div class="section-2 top-shadow">
-<div class="container">
-	<div class="row questions">
-		<div class="col-xs-12 col-sm-6">
-			<div class="number">
-				<span>1</span>
-			</div>
-			<div class="question text-left">
-				During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
+	<!-- The question overview section -->
+	<div class="section quiz-questions top-shadow">
+		<div class="container">
+			<div class="row col-custom-clearfix">
+				<!-- TODO: Make this the error page when there is no valid quiz -->
+				{{#unless questions}}
+					Sorry! There was an error finding the results for this quiz.
+				{{/unless}}
+
+				{{#each questions}}
+				<!-- Have to list each col size for the clearfix to work -->
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="number-bubble">
+						<span>{{number}}</span>
+					</div>
+
+					<div class="question">
+						{{#markdown}}{{question}}{{/markdown}}
+
+						<div class="answers">
+							<span class="letter">A.</span>
+							{{#markdown}}{{a}}{{/markdown}}
+							<br />
+
+							<span class="letter">B.</span>
+							{{#markdown}}{{b}}{{/markdown}}
+							<br />
+
+							<span class="letter">C.</span>
+							{{#markdown}}{{c}}{{/markdown}}
+							<br />
+
+							<span class="letter">D.</span>
+							{{#markdown}}{{d}}{{/markdown}}
+							<br />
+						</div>
+
+						<div class="explanation">
+							{{#markdown}}{{short_explanation}}{{/markdown}}
+						</div>
+					</div>
 				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-6 text-center border-left">
-			<div class="number">
-				<span>2</span>
-			</div>
-			<div class="question text-left">
-				The most common cause of acquired immunodeficiency syndrome (AIDS) is the human immunodeficiency virus (HIV), which causes broad immune suppression and, eventually, susceptibility to various opportunistic infections. Affected individuals become immunocompromised as the virus targets cells necessary for broad immune system activation known as:
-				
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
-				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
-				</div>
-			</div>
-		</div>
-	</div> <!-- /row -->
- 
-	<div class="row text-center spacer border-top">
-		<div class="col-xs-12 col-sm-6">
-			<div class="number">
-				<span>3</span>
-			</div>
-			<div class="question text-left">
-				During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
-				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-6">
-			<div class="number">
-				<span>4</span>
-			</div>
-			<div class="question text-left">
-				During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
-				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
+				{{/each}}
+			</div> <!-- /row -->
+			
+			<!-- Bottom stuff -->
+			<div class="row">
+				<div class="col-xs-12">
+					
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row text-center spacer">
-		<div class="col-xs-12 col-sm-6">
-			<div class="number">
-				<span>5</span>
-			</div>
-			<div class="question text-left">
-				During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
-				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-6">
-			<div class="number">
-				<span>6</span>
-			</div>
-			<div class="question text-left">
-				During many infections, the lymph nodes are the initial site of adaptive immune system activation. As such, lymph nodes normally contain large numbers of:
-				<div class="answers">
-				A. Things
-				<br />
-				B. More Things
-				<br />
-				C. I don't know medical things
-				<br />
-				D. I haven't been to a doctor in years
-				</div>
-				
-				<div class="exp">
-				The skin is the largest organ
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Bottom stuff -->
-	<div class="row">
-		<div class="col-xs-12 bottom">
-			Stuff
-		</div>
-	</div>
-</div>
-</div>
 </template>
