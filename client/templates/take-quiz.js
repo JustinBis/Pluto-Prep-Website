@@ -287,7 +287,7 @@ Template.questionTemplate.events({
 			Router.go('take-quiz', {_id: quiz_id, question_number: number});
 		}
 	}
-})
+});
 
 Template.quizEndCard.events({
 	// The previous question button
@@ -313,5 +313,10 @@ Template.quizEndCard.events({
 			// Go to that final question
 			Router.go('take-quiz', {_id: quiz_id, question_number: number});
 		}
+	},
+	// When the take a quiz now button is clicked, redirect
+	"click #go-to-results-button": function () {
+		var quiz_id = Iron.controller().getParams()._id;
+		Router.go('quiz-results', {_id: quiz_id});
 	}
-})
+});
