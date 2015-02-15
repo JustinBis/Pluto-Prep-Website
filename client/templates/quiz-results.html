@@ -28,29 +28,26 @@
 				<!-- Have to list each col size for the clearfix to work -->
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="number-bubble">
-						<span>{{number}}</span>
+						<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
 					</div>
 
 					<div class="question">
 						{{#markdown}}{{question}}{{/markdown}}
 
-						<div class="answers">
-							<span class="letter">A.</span>
-							{{#markdown}}{{a}}{{/markdown}}
-							<br />
-
-							<span class="letter">B.</span>
-							{{#markdown}}{{b}}{{/markdown}}
-							<br />
-
-							<span class="letter">C.</span>
-							{{#markdown}}{{c}}{{/markdown}}
-							<br />
-
-							<span class="letter">D.</span>
-							{{#markdown}}{{d}}{{/markdown}}
-							<br />
-						</div>
+						<ul class="answers">
+							<li class="{{isAnswer 'a'}}">
+								{{#markdown}}A. {{a}}{{/markdown}}
+							</li>
+							<li class="{{isAnswer 'b'}}">
+								{{#markdown}}B. {{b}}{{/markdown}}
+							</li>
+							<li class="{{isAnswer 'c'}}">
+								{{#markdown}}C. {{c}}{{/markdown}}
+							</li>
+							<li class="{{isAnswer 'd'}}">
+								{{#markdown}}D. {{d}}{{/markdown}}
+							</li>
+						</ul>
 
 						<div class="explanation">
 							{{#markdown}}{{short_explanation}}{{/markdown}}

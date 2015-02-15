@@ -8,9 +8,7 @@
 
 //@correct-color: rgb(126, 221, 29);
 //@wrong-color: rgb(244, 91, 83);
-
-@correct-color: rgba(116, 207, 147, 0.7);
-@wrong-color: rgba(255, 100, 100, 0.7);
+// These are now defined in the variables import
 
 .takeQuiz {
 	overflow-x: hidden;
@@ -109,23 +107,23 @@
 		border-radius: 4px;
 	}
 
+	/* Classes to set the background color when an answer is submitted */
+	/* Also prevents answered questions from being highlighted */
+	.wrong, .wrong.list-group-item:hover {
+		background-color: @wrong-color;
+		transition: background-color 0.4s;
+	}
+	/* Also prevent the highlighted correct answer from going to the @wrong-color color */
+	.correct,.correct.list-group-item:hover{
+		background-color: @correct-color;
+		transition: background-color 0.4s;
+	}
+
 	.list-group-item:hover{
 		background-color: rgb(54, 186, 255);
 	}
 
 	margin: 0 auto;
-}
-
-/* Classes to set the background color when an answer is submitted */
-/* Also prevents answered questions from being highlighted */
-.wrong, .wrong .list-group-item:hover {
-	background-color: @wrong-color;
-	transition: background-color 0.4s;
-}
-/* Also prevent the highlighted correct answer from going to the @wrong-color color */
-.correct, .correct .list-group-item:hover, .correct.list-group-item:hover{
-	background-color: @correct-color;
-	transition: background-color 0.4s;
 }
 
 .progress-container {

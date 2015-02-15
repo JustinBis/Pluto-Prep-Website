@@ -10,7 +10,7 @@
 				<div id="my-progress" class="col-xs-4 quiz-progress-bubbles text-center">
 					{{#each questions}}
 						<!-- Style with my answer helper -->
-						<span class="{{myProgress number}}">
+						<span class="{{wasQuestionAnsweredCorrectly}}">
 							{{number}}
 						</span>
 					{{/each}}
@@ -95,7 +95,7 @@
 <template name="questionTemplate">
 <div class="row text-left">
 	<!-- Use the result to style this template -->
-	<div class="col-xs-12 question-container effect6 {{myProgress number}}">
+	<div class="col-xs-12 question-container effect6">
 		<!-- Left and right nav buttons -->
 		{{#if showLeftNav number}}
 		<div class="question-nav question-nav-prev">
@@ -158,12 +158,8 @@
 
 		<br />
 
-		Placeholder: Your opponent is still going
-
-		<br />
-
 		<button id="go-to-results-button" class="btn btn-lg next-question-button">
-			Link to results
+			See Results
 		</button>
 	</div>
 </div>

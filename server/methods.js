@@ -128,8 +128,6 @@ Meteor.methods({
 		// Select the question from the database, only grabbing the answer field
 		var question = Questions.findOne({_id: question_id}, {fields: {answer: 1, short_explanation: 1, long_explanation: 1}});
 
-		var wasCorrect = question.answer === answer;
-
 		// Update the quiz progress
 
 		// Find out which player this user is in the quiz
@@ -158,15 +156,15 @@ Meteor.methods({
 		}
 
 		// Update the quiz progress
-		console.log("TEA");
-		console.log(question.short_explanation);
+		// TODO: Make it so that we don't need to store the explanations and answers with the quiz
 		var set = {
 			'questions.$.answer': question.answer,
 			'questions.$.short_explanation': question.short_explanation,
 			'questions.$.long_explanation': question.long_explanation
 		};
+		// Set this player's answer
 		var answerField = "questions.$."+player+"_answer";
-		set[answerField] = wasCorrect ? "correct" : "wrong";
+		set[answerField] = answer;
 		
 		ActiveQuizzes.update(
 			{_id: quiz_id, 'questions._id': question_id}, 
@@ -189,7 +187,7 @@ Meteor.methods({
 		// and any set value as true
 		return {
 			// Was this the right answer?
-			correct: wasCorrect,
+			correct: question.answer === answer,
 			answer: question.answer
 		};
 
