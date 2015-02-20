@@ -8,6 +8,24 @@ Meteor.methods({
 			throw new Meteor.Error("err-not-authenticated", "Requester not logged in");
 		}
 
+		//
+		// Begin demo section
+		// Demo users: demo1 and demo2
+		// Demo passwords: demo1password and demo2password
+		//
+
+		// If we're a demo user, create a demo quiz that always connects the demo users
+		// Let demo1 create a regular quiz, but demo2 always connects to it
+		var username = Meteor.user().username;
+		if(username == "demo2")
+		{
+			return Meteor.call('findOpponent', subject, numQuestions);
+		}
+
+		//
+		// End demo section
+		//
+
 		// Make sure the subject is a string
 		check(subject, String);
 		// Make sure there is a valid number of questions
@@ -27,6 +45,51 @@ Meteor.methods({
 		// Put this quiz into the database
 		// And replace any exisiting quizzes this user has running
 		return ActiveQuizzes.insert(quizData);
+	},
+	// Try to match this player with an opponent
+	// will return null if no opponent can be found
+	findOpponent: function(subject, numQuestions) {
+
+		//
+		// Begin demo section
+		//
+		// Always connect demo2 to the lastest quiz created by demo1
+		var username = Meteor.user().username;
+		if(username == "demo2")
+		{
+			var otherUser = Meteor.users.findOne({username: "demo1"});
+			var otherUserId = otherUser._id;
+
+			// Find the quiz where demo1 is p1
+			// Sort descending, meaning give the newest (highest number of seconds since creation) first
+			var demoquiz = ActiveQuizzes.findOne({ p1_id: otherUserId },  {sort: {time_created: -1}});
+
+			// If there was a quiz, put us in it
+			if(demoquiz)
+			{
+				// demo2 is always p2
+				// Update the demo quiz with demo2's id
+				ActiveQuizzes.update(
+					demoquiz._id,
+					{ $set: { p2_id: this.userId } }
+				);
+
+				// Return this quiz ID
+				return demoquiz._id;
+			}
+			else
+			{
+				// If there was no quiz, don't let the 2nd demo player play
+				throw new Meteor.Error("err-no-demo-quiz", "Couldn't find the demo quiz. Make sure demo1 makes a quiz first.");
+			}
+		}
+
+		//
+		// End demo section
+		//
+
+		// Since we're not matching people right now, return null
+		return null;
 	},
 	// Start the quiz timer
 	// Takes in a quiz _id and the length of the quiz in milliseconds
@@ -157,17 +220,13 @@ Meteor.methods({
 
 		// Update the quiz progress
 		// TODO: Make it so that we don't need to store the explanations and answers with the quiz
-		var set = {
-			'questions.$.answer': question.answer,
-			'questions.$.short_explanation': question.short_explanation,
-			'questions.$.long_explanation': question.long_explanation
-		};
+		var set = {};
 		// Set this player's answer
 		var answerField = "questions.$."+player+"_answer";
 		set[answerField] = answer;
 		
 		ActiveQuizzes.update(
-			{_id: quiz_id, 'questions._id': question_id}, 
+			{_id: quiz_id, 'questions._id': question_id},
 			{
 				$set: set
 			},
@@ -176,7 +235,7 @@ Meteor.methods({
 				{
 					console.error("Database error in checkQuizAnswer:");
 					console.error(err);
-					throw new Meteor.Error('err-database-error', err.reason);
+					throw new Meteor.Error('err-database-error', "Unknown database error");
 				}
 			}
 		);

@@ -174,6 +174,37 @@ Template.takeQuiz.helpers({
 		{
 			return "wrong";
 		}
+	},
+	opponentQuestionAnsweredCorrectly: function() {
+		// Which player are we?
+		var player_answer = null;
+		// Grab the data from the parent
+		var data = Template.parentData(1);
+		// Show the other player's progress
+		if(data && Meteor.userId() === data.p1_id)
+		{
+			player_answer = 'p2_answer';
+		}
+		else if(data && Meteor.userId() === data.p2_id)
+		{
+			player_answer = 'p1_answer';
+		}
+
+		// Did the player not answer yet?
+		if(!this[player_answer])
+		{
+			return null;
+		}
+		// Did this player answer this question correctly?
+		else if(this.answer === this[player_answer])
+		{
+			return "correct";
+		}
+		// Otherwise, they were wrong
+		else
+		{
+			return "wrong";
+		}
 	}
 });
 
@@ -264,7 +295,20 @@ Template.questionTemplate.events({
 		var this_template = Template.instance();
 
 		// Make sure we haven't already submitted this answer
-		if(this_template.data.answer)
+		// Which player are we?
+		var player_num = null;
+		// Grab the data from the parent
+		var data = Template.parentData(1);
+		// Show the other player's progress
+		if(data && Meteor.userId() === data.p1_id)
+		{
+			player_answer = 'p2_answer';
+		}
+		else if(data && Meteor.userId() === data.p2_id)
+		{
+			player_answer = 'p1_answer';
+		}
+		if(this_template.data.player_num)
 		{
 			// Don't run this method on any template twice
 			return;

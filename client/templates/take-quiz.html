@@ -19,13 +19,12 @@
 					{{minutesRemaining}}:{{secondsRemaining}}
 				</div>
 				<div id="opponent-progress" class="col-xs-4 quiz-progress-bubbles text-center">
-					<!-- TODO: Implement opponent progress -->
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
-					<span>6</span>
+					{{#each questions}}
+						<!-- Show opponent progress -->
+						<span class="{{opponentQuestionAnsweredCorrectly}}">
+							{{number}}
+						</span>
+					{{/each}}
 				</div>
 			</div>
 
@@ -71,19 +70,16 @@
 		<br />
 		<br />
 		<br />
-		<h3> Debug Info </h3>
+		<h3>Debug Info</h3>
 			<p>
 				p1_id: {{p1_id}}
+				<br />
+				p2_id: {{p2_id}}
 				<br />
 				{{#if serverError}}
 					Error: {{serverError}}
 					<br />
 				{{/if}}
-
-				P1 Progress: {{p1_num_answered}}
-				<br />
-				P2 Progress: {{p2_num_answered}}
-				<br />
 
 				That's all!
 			</p>

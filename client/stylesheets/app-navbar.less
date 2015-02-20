@@ -1,5 +1,6 @@
 /* Import the bootstrap variables */
 @import "/client/lib/custom.bootstrap.import.less";
+@import "/client/stylesheets/globals/variables.import.less";
 
 /* Hide background color and border*/
 #main-navbar{
@@ -10,6 +11,6 @@
 
 /* Show background on hover */
 #main-navbar:hover{
-	background-color: #3812B1;
+	background-color: @navbar-background;
 	border-color: @navbar-default-border;
 }

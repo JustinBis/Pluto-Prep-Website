@@ -6,11 +6,9 @@ QuizHelper = {
 	findRandomQuestions: function(subject, numQuestions) {
 		check(subject, String);
 
-		// Create an empty array to store the selected questions
-		questions = [];
-
 		// Query the questions, leaving out the answer and explanations
-		var found = Questions.find({subject: subject}, {fields: {answer: 0, short_explanation:0, long_explanation: 0}});
+		// TODO: Make it so that we don't need to store the explanations and answers with the quiz
+		var found = Questions.find({subject: subject});
 
 		// Make sure there are enough questions in total
 		if(found.count() < numQuestions)
@@ -23,6 +21,9 @@ QuizHelper = {
 
 		// Fetch the cursor, retrieving an array of documents
 		var allQuestions = found.fetch();
+
+		// Create an empty array to store the selected questions
+		questions = [];
 
 		// Fill the questions array by choosing elements from allQuestions
 		// using the random indicies
