@@ -39,12 +39,13 @@
 	color: black;
 	background-color: white;
 
-	margin: 20px auto;
-	padding: 25px;
+	margin: 0 auto;
 
-	min-height: 10%;
+	/* Give white space at the bottom to match the apparent white space
+	   provided by the question number bubble at the top */
+	//padding-bottom: 2em;
 
-	border-radius: 10px;
+	//border-radius: 10px;
 }
 
 .quiz-questions-row-container {
@@ -87,7 +88,8 @@
 }
 
 .question-text {
-	font-size: 18px;
+	font-size: 16px;
+	padding-top: 1em;
 }
 
 .question-answers {
@@ -127,7 +129,7 @@
 }
 
 .progress-container {
-	margin: 70px auto 0;
+	margin: 40px auto 0;
 }
 
 .error-container {
@@ -232,7 +234,7 @@
 
 .question-nav.question-nav-prev:hover {
 	padding-left: 15px;
-	background-color: fade(@light-blue, 15%);
+	//background-color: fade(@light-blue, 15%);
 
 	span {
 		padding-left: 15px;
@@ -255,7 +257,7 @@
 
 .question-nav.question-nav-next:hover {
 	padding-right: 15px;
-	background-color: fade(@light-blue, 15%);
+	//background-color: fade(@light-blue, 15%);
 
 	span {
 		padding-right: 15px;

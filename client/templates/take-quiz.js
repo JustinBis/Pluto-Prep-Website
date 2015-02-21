@@ -223,12 +223,6 @@ Template.questionTemplate.helpers({
 	// returns "wrong" if the user answerd that letter, but it was incorrect
 	// otherwise returns nothing
 	isAnswer: function(letter) {
-		// Is this the right answer?
-		if(letter === this.answer)
-		{
-			return "correct";
-		}
-		
 		// Which player are we?
 		var player_answer = null;
 		// Grab the data from the parent
@@ -240,6 +234,20 @@ Template.questionTemplate.helpers({
 		else if(data && Meteor.userId() === data.p2_id)
 		{
 			player_answer = 'p2_answer';
+		}
+
+		// Has this player answered yet?
+		if(!this[player_answer])
+		{
+			// If they haven't anwered
+			// don't give away the answer early
+			return null;
+		}
+
+		// Is this the right answer?
+		if(letter === this.answer)
+		{
+			return "correct";
 		}
 
 		// Did this player answer this question with the passed letter?
@@ -284,6 +292,36 @@ Template.questionTemplate.helpers({
 		}
 
 		// Otherwise null
+	},
+	wasQuestionAnsweredCorrectly: function() {
+		// Which player are we?
+		var player_answer = null;
+		// Grab the data from the parent
+		var data = Template.parentData(1);
+		if(data && Meteor.userId() === data.p1_id)
+		{
+			player_answer = 'p1_answer';
+		}
+		else if(data && Meteor.userId() === data.p2_id)
+		{
+			player_answer = 'p2_answer';
+		}
+
+		// Did the player not answer yet?
+		if(!this[player_answer])
+		{
+			return null;
+		}
+		// Did this player answer this question correctly?
+		else if(this.answer === this[player_answer])
+		{
+			return "correct";
+		}
+		// Otherwise, they were wrong
+		else
+		{
+			return "wrong";
+		}
 	}
 });
 
