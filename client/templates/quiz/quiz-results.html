@@ -1,0 +1,70 @@
+<template name="quizResults">
+	<div class="full-page">
+		<!-- The results header -->
+		<div class="section quiz-results">
+			<div class="container">
+				<div class="row text-center">
+					<h1>You Win!</h1>
+					<h3>5 - 3</h3>
+					<button class="btn btn-lg">
+						Rematch
+					</button>
+					<button class="btn btn-lg">
+						Play Again
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- The question overview section -->
+		<div class="section quiz-questions top-shadow">
+			<div class="container">
+				<div class="row col-custom-clearfix">
+					<!-- TODO: Make this the error page when there is no valid quiz -->
+					{{#unless questions}}
+						Sorry! There was an error finding the results for this quiz.
+					{{/unless}}
+
+					{{#each questions}}
+					<!-- Have to list each col size for the clearfix to work -->
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="number-bubble">
+							<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+						</div>
+
+						<div class="question">
+							{{#markdown}}{{question}}{{/markdown}}
+
+							<ul class="answers">
+								<li class="{{isAnswer 'a'}}">
+									{{#markdown}}A. {{a}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'b'}}">
+									{{#markdown}}B. {{b}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'c'}}">
+									{{#markdown}}C. {{c}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'd'}}">
+									{{#markdown}}D. {{d}}{{/markdown}}
+								</li>
+							</ul>
+
+							<div class="explanation">
+								{{#markdown}}{{short_explanation}}{{/markdown}}
+							</div>
+						</div>
+					</div>
+					{{/each}}
+				</div> <!-- /row -->
+				
+				<!-- Bottom stuff -->
+				<div class="row">
+					<div class="col-xs-12">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
