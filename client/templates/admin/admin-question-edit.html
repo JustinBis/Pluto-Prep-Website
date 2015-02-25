@@ -1,0 +1,37 @@
+<!-- The page served to the "/admin/questions" route -->
+<template name="adminQuestionEdit">
+	<!-- Full page container -->
+	<div class="full-page takeQuiz slate-background">
+		<div style="height: 80px">
+
+		</div>
+		{{#if this.count}}
+		<div class="container">
+			<!-- Show the questions -->
+			<div class="row">
+				<div class="">
+
+					{{#each this}}
+					<div class="">
+						<div class="col-xs-10 col-xs-offset-1">
+							{{> questionTemplate}}
+						</div>
+					</div>
+					{{/each}}
+
+				</div>
+			</div>
+		</div>
+
+		{{else}}
+
+		<!-- If there are no questions, show an error -->
+		<div class="row error-container">
+			<div class="col-xs-12 text-center">
+				<h1>Sorry, no questions found</h1>
+				<h3>Check that the subject in the URL is correct</h3>
+			</div>
+		</div>
+		{{/if}}
+	</div>
+</template>

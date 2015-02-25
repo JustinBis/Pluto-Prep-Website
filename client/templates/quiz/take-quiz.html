@@ -99,6 +99,7 @@
 	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container">
 		<!-- Left and right nav buttons -->
+		<!--
 		{{#if showLeftNav number}}
 		<div class="question-nav question-nav-prev">
 			<span class="glyphicon glyphicon-chevron-left">
@@ -109,6 +110,7 @@
 			<span class="glyphicon glyphicon-chevron-right">
 			</span>
 		</div>
+		-->
 
 		<div class="number-bubble">
 			<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
@@ -120,21 +122,23 @@
 			</div>
 		</div>
 
-		<ul class="row row-eq-height list-inline list-group question-answers">
+		<div class="row">
+		<ul class="list-inline list-group question-answers">
 			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'a'}}" data-answer="a">
-				<span>A</span> {{a}}
+				<span>A</span>{{a}}
 			</li>
 			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'b'}}" data-answer="b">
-				<span>B</span> {{b}}
+				<span>B</span>{{b}}
 			</li>
 			<div class="clearfix visible-sm-block"></div>
 			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'c'}}" data-answer="c">
-				<span>C</span> {{c}}
+				<span>C</span>{{c}}
 				</li>
 			<li class="col-xs-10 col-xs-push-1 list-group-item {{isAnswer 'd'}}" data-answer="d">
-				<span>D</span> {{d}}
+				<span>D</span>{{d}}
 			</li>
 		</ul>
+		</div>
 
 		<!-- Hide the button until this question has been answered -->
 		<div class="text-center {{#unless myProgress number}}transparent{{/unless}}">

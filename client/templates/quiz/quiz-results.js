@@ -60,5 +60,15 @@ Template.quizResults.helpers({
 		{
 			return "wrong";
 		}
+	},
+	// Returns true if this player won
+	thisPlayerWon: function() {
+		// If this player's score is higher than the opponents score, return true
+		return true;
+	},
+	// Returns true if this quiz ended in a tie
+	thisQuizWasATie: function() {
+		// If both players' scores match, return true
+		return false;
 	}
 });

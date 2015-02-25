@@ -6,10 +6,6 @@
 /* Number of cards to show in the quiz area */
 @num-quiz-cards: @num-quiz-questions + 1;
 
-//@correct-color: rgb(126, 221, 29);
-//@wrong-color: rgb(244, 91, 83);
-// These are now defined in the variables import
-
 .takeQuiz {
 	overflow-x: hidden;
 	color: white;
@@ -93,20 +89,18 @@
 }
 
 .question-answers {
-	li {
-		margin: 0 2em;
+	li.list-group-item {
+		/* Space out the answer backgrounds and indent the answer choices */
+		margin: 1px 2em;
 		font-size: 16px;
+		border: none;
+		border-radius: 4px;
 		span {
 			font-weight: bold;
 			display: inline-block;
 			margin-right: 1em;
 			color: rgb(60, 60, 60);
 		}
-	}
-
-	.list-group-item {
-		border: none;
-		border-radius: 4px;
 	}
 
 	/* Classes to set the background color when an answer is submitted */

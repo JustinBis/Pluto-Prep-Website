@@ -4,8 +4,14 @@
 		<div class="section quiz-results">
 			<div class="container">
 				<div class="row text-center">
-					<h1>You Win!</h1>
-					<h3>5 - 3</h3>
+					<h1>
+						{{#if thisPlayerWon}}
+						You Win!
+						{{else}}
+						:(
+						{{/if}}
+					</h1>
+					<h3>{{myScore}} - {{opponentScore}}</h3>
 					<button class="btn btn-lg">
 						Rematch
 					</button>
