@@ -68,7 +68,6 @@ Template.takeQuiz.rendered = function(){
 Template.takeQuiz.events({
 	// If there is an error loading the quiz and the user clicks the go back button
 	"click #new-quiz-button": function(event) {
-		console.log("Clicked");
 		Router.go('find-quiz-partner');
 	}
 });
