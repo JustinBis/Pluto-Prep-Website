@@ -2,9 +2,8 @@
 @import "/client/lib/lesshat-prefixed.import.less";
 
 /* Number of quiz questions in total */
+/* TODO: Allow this to be modified programmatically */
 @num-quiz-questions: 6;
-/* Number of cards to show in the quiz area */
-@num-quiz-cards: @num-quiz-questions + 1;
 
 .takeQuiz {
 	overflow-x: hidden;
@@ -47,15 +46,15 @@
 .quiz-questions-row-container {
 	/*
 	 * 100% per card, and then each card gets a col container with 
-	 * 1 / num-quiz-cards width
+	 * 1 / num-quiz-questions width
 	 */
 
-	width: percentage(@num-quiz-cards);
+	width: percentage(@num-quiz-questions);
 }
 
 .quiz-questions-col-container {
 	/* Fit all quiz cards in the .quiz-questions-row-container */
-	width: percentage(1 / @num-quiz-cards);
+	width: percentage(1 / @num-quiz-questions);
 	float: left;
 }
 

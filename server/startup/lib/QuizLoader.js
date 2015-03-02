@@ -126,7 +126,7 @@ QuizLoader.addData = function(quizdata)
 QuizLoader.formatData = function(data)
 {
 	// Make the answer field lowercase
-	data.answer = data.answer.toLowerCase();
+	data.answer = data.answer.trim().toLowerCase();
 
 	// Return the formatted data, though really since this is an object the changes
 	// happen by reference to the passed object

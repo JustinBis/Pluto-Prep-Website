@@ -468,34 +468,3 @@ Template.questionTemplate.events({
 		}
 	}
 });
-
-Template.quizEndCard.events({
-	// The previous question button
-	"click .question-nav-prev": function(event) {
-		var quiz_id = Iron.controller().getParams()._id;
-		var question_number = Iron.controller().getParams().question_number;
-
-		// Find the final question of the quiz
-		var questions = Template.parentData(1).questions;
-		// Get the question number of the last element
-		var number = questions[questions.length - 1].number;
-
-		// If we clicked the arrow while still looking at the last question
-		// i.e. the quizEndCard is still off screen
-		if(question_number == number)
-		{
-			// Go to the end card, which is the question number after the last question
-			Router.go('take-quiz', {_id: quiz_id, question_number: number + 1});
-		}
-		else
-		{
-			// Go to that final question
-			Router.go('take-quiz', {_id: quiz_id, question_number: number});
-		}
-	},
-	// When the take a quiz now button is clicked, redirect
-	"click #go-to-results-button": function () {
-		var quiz_id = Iron.controller().getParams()._id;
-		Router.go('quiz-results', {_id: quiz_id});
-	}
-});
