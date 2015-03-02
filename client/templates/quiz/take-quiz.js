@@ -1,5 +1,40 @@
 // How much time to give each quiz, in milliseconds
 var QUIZ_TIME = 6 * 60 * 1000;
+// Delay (in milliseconds) before moving on to the next question automatically after answering
+// This delay is used for correct answers
+var QUIZ_QUESTION_CORRECT_DELAY = 500;
+// This delay is used for wrong answers (so the user can see the correct answer)
+var QUIZ_QUESTION_WRONG_DELAY = 1500;
+/*
+ *
+ * Common Quiz Helper Functions
+ * 
+ */
+
+/**
+ * Moves on to the next question if there is one
+ * or will move on to the results page if there are no more questions
+ * @params: iron_params The result of 
+ */
+var goToNextQuestion = function() {
+	console.log("YO");
+	var quiz_id = Router.current().params._id;
+	// Go to the next question number
+	var number = Router.current().params.question_number;
+	// The params are strings, so convert to a number for adding
+	number = Number(number) + 1;
+
+	// Was that the final question?
+	if(number > Router.current().data().num_questions)
+	{
+		Router.go('quiz-results', {_id: quiz_id});
+	}
+	// Otherwise move on to the next question
+	else
+	{
+		Router.go('take-quiz', {_id: quiz_id, question_number: number});
+	}
+}
 
 // When the question template is created, create the reactive variables
 // and helper functions
@@ -372,7 +407,16 @@ Template.questionTemplate.events({
 				console.error("Error calling checkQuizAnswer: result never sent.");
 				return;
 			}
-			// The result is also in the quiz data now, so we can ignore the return value here
+
+			// Now that we have a result, lets move on to the next question automatically
+			// after a short delay defined as one of the 'constants' at the top of the file
+			var delay = QUIZ_QUESTION_WRONG_DELAY;
+			// Speed up the delay if they answered correctly
+			if(result.correct)
+			{
+				delay = QUIZ_QUESTION_CORRECT_DELAY;
+			}
+			Meteor.setTimeout(goToNextQuestion, delay);
 		});
 	},
 	// Go to the next question
