@@ -58,54 +58,22 @@
 				<h1>Sorry, there was an error loading this quiz</h1>
 				<h3>
 					<!-- Offer a way back -->
-					<button id="new-quiz-button" class="btn btn-lg sign-in-button">
+					<a href="{{pathFor route='find-quiz-partner'}}">
+						<button id="a-new-quiz-button" class="btn btn-lg sign-in-button">
 							Make a new quiz
-					</button>
+						</button>
+					</a>
 				</h3>
 			</div>
 		</div>
 		{{/if}}
-
-		<div class="text-center">
-		<br />
-		<br />
-		<br />
-		<h3>Debug Info</h3>
-			<p>
-				p1_id: {{p1_id}}
-				<br />
-				p2_id: {{p2_id}}
-				<br />
-				{{#if serverError}}
-					Error: {{serverError}}
-					<br />
-				{{/if}}
-
-				That's all!
-			</p>
-		</div>
 	</div>
 </template>
 
 <!-- The question template -->
 <template name="questionTemplate">
 <div class="row text-left">
-	<!-- Use the result to style this template -->
 	<div class="col-xs-12 question-container">
-		<!-- Left and right nav buttons -->
-		<!--
-		{{#if showLeftNav number}}
-		<div class="question-nav question-nav-prev">
-			<span class="glyphicon glyphicon-chevron-left">
-			</span>
-		</div>
-		{{/if}}
-		<div class="question-nav question-nav-next">
-			<span class="glyphicon glyphicon-chevron-right">
-			</span>
-		</div>
-		-->
-
 		<div class="number-bubble">
 			<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
 		</div>
@@ -135,7 +103,8 @@
 		</div>
 
 		<!-- Hide the button until this question has been answered -->
-		<div class="text-center {{#unless myProgress number}}transparent{{/unless}}">
+		<!-- Note that wasQuestionAnsweredCorrectly will evaluate as true as long as the question has been answered at all since it returns a string -->
+		<div class="text-center {{#unless wasQuestionAnsweredCorrectly}}transparent{{/unless}}">
 			<button class="btn btn-lg next-question-button">
 				Next Question
 			</button>

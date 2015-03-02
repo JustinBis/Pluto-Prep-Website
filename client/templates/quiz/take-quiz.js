@@ -4,7 +4,7 @@ var QUIZ_TIME = 6 * 60 * 1000;
 // This delay is used for correct answers
 var QUIZ_QUESTION_CORRECT_DELAY = 500;
 // This delay is used for wrong answers (so the user can see the correct answer)
-var QUIZ_QUESTION_WRONG_DELAY = 1500;
+var QUIZ_QUESTION_WRONG_DELAY = 1200;
 /*
  *
  * Common Quiz Helper Functions
@@ -17,7 +17,6 @@ var QUIZ_QUESTION_WRONG_DELAY = 1500;
  * @params: iron_params The result of 
  */
 var goToNextQuestion = function() {
-	console.log("YO");
 	var quiz_id = Router.current().params._id;
 	// Go to the next question number
 	var number = Router.current().params.question_number;
@@ -27,6 +26,8 @@ var goToNextQuestion = function() {
 	// Was that the final question?
 	if(number > Router.current().data().num_questions)
 	{
+		// TODO: Mark player 1 as done
+		// Meteor.call('quizPlayerFinished')
 		Router.go('quiz-results', {_id: quiz_id});
 	}
 	// Otherwise move on to the next question
@@ -36,16 +37,82 @@ var goToNextQuestion = function() {
 	}
 }
 
+/**
+ * Finds out which player we are in the quiz
+ * returns "p1" or "p2" or null on failure
+ */
+var getPlayerNumber = function() {
+	var data = Router.current().data();
+	if(data && Meteor.userId() === data.p1_id)
+	{
+		return 'p1';
+	}
+	else if(data && Meteor.userId() === data.p2_id)
+	{
+		return 'p2';
+	}
+	else
+	{
+		console.error("Error: Failed to figure out which player we are in this quiz.");
+		return null;
+	}
+}
+
+/**
+ * Finds out which player the opponent is in the quiz
+ * returns "p1" or "p2" or null on failure
+ */
+var getOpponentNumber = function() {
+	var data = Router.current().data();
+	if(data && Meteor.userId() === data.p1_id)
+	{
+		// We are p1, so they are p2
+		return 'p2';
+	}
+	else if(data && Meteor.userId() === data.p2_id)
+	{
+		// We are p2, so they are p1
+		return 'p1';
+	}
+	else
+	{
+		console.error("Error: Failed to figure out which player the opponent is in this quiz.");
+		return null;
+	}
+}
+
+/**
+ * Finds out if the passed player answered the passed question correctly
+ * returns "correct" if they did, "wrong" if the were wrong, and null if they haven't answered yet
+ * @params player A string representing the player number
+ * @params question a reference to the question data object (must contain an answer and a player answer)
+ */
+var didPlayerAnswerCorrectly = function(player, question)
+{
+	var player_answer = player+'_answer';
+
+	// Did the player not answer yet?
+	if(!question[player_answer])
+	{
+		return null;
+	}
+	// Did this player answer this question correctly?
+	else if(question.answer === question[player_answer])
+	{
+		return "correct";
+	}
+	// Otherwise, they were wrong
+	else
+	{
+		return "wrong";
+	}
+}
+
+
 // When the question template is created, create the reactive variables
-// and helper functions
 Template.takeQuiz.created = function() {
 	// Create the reactive state variables
 	this.quizTimeRemaining = new ReactiveVar();
-	// Will be called when the quiz is finished
-	this.quizFinished = function() {
-		// TODO: route to the results page
-		//Router.go()
-	}
 }
 
 // When the quiz template is rendered, start the quiz timer on the server
@@ -162,119 +229,34 @@ Template.takeQuiz.helpers({
 		// Lower the question number by one, since the questions are 0 indexed in the data
 		questionNumber = questionNumber - 1;
 
-		var data = Template.instance().data;
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			// May not be defined
-			return data.questions[questionNumber]['p1_answer'];
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			// May not be defined
-			return data.questions[questionNumber]['p2_answer'];
-		}
-
-		// Otherwise null
+		var player = getPlayerNumber()+'_answer';
+		return data.questions[questionNumber][player];
 	},
 	// Returns correct if this user answered the question correctly
 	// returns "wrong" if this user answered the question incorrectly
 	// returns nothing if this user hasn't yet answered the question
 	wasQuestionAnsweredCorrectly: function() {
-		// Which player are we?
-		var player_answer = null;
-		// Grab the data from the parent
-		var data = Template.parentData(1);
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			player_answer = 'p1_answer';
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			player_answer = 'p2_answer';
-		}
-
-		// Did the player not answer yet?
-		if(!this[player_answer])
-		{
-			return null;
-		}
-		// Did this player answer this question correctly?
-		else if(this.answer === this[player_answer])
-		{
-			return "correct";
-		}
-		// Otherwise, they were wrong
-		else
-		{
-			return "wrong";
-		}
+		return didPlayerAnswerCorrectly(getPlayerNumber(), this);
 	},
 	opponentQuestionAnsweredCorrectly: function() {
-		// Which player are we?
-		var player_answer = null;
-		// Grab the data from the parent
-		var data = Template.parentData(1);
-		// Show the other player's progress
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			player_answer = 'p2_answer';
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			player_answer = 'p1_answer';
-		}
-
-		// Did the player not answer yet?
-		if(!this[player_answer])
-		{
-			return null;
-		}
-		// Did this player answer this question correctly?
-		else if(this.answer === this[player_answer])
-		{
-			return "correct";
-		}
-		// Otherwise, they were wrong
-		else
-		{
-			return "wrong";
-		}
+		return didPlayerAnswerCorrectly(getOpponentNumber(), this);
 	}
 });
 
 
-// When the question template is created, create the reactive variables
-Template.questionTemplate.created = function() {
-	// No variables needed yet
-}
-
 // Helpers for the question templates
 Template.questionTemplate.helpers({
-	result: function() {
-		return Template.instance().data.result;
-	},
 	// Returns "correct" if the given letter was the answer
 	// returns "wrong" if the user answerd that letter, but it was incorrect
 	// otherwise returns nothing
 	isAnswer: function(letter) {
 		// Which player are we?
-		var player_answer = null;
-		// Grab the data from the parent
-		var data = Template.parentData(1);
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			player_answer = 'p1_answer';
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			player_answer = 'p2_answer';
-		}
-
+		var player_answer = getPlayerNumber()+'_answer';
+		
 		// Has this player answered yet?
 		if(!this[player_answer])
 		{
-			// If they haven't anwered
-			// don't give away the answer early
+			// If they haven't anwered, don't give away the answer early
 			return null;
 		}
 
@@ -290,72 +272,11 @@ Template.questionTemplate.helpers({
 			return "wrong";
 		}
 	},
-	// Should we show the left nav button
-	// Will return false for the first question
-	showLeftNav: function(number) {
-		if(number <= 1)
-		{
-			return false;
-		}
-		return true;
-	},
-	// Returns the current player's progress in the quiz for the given question
-	// Will return "correct", "wrong", or null
-	// Same as the takeQuiz myProgress helper, but with an updated data context
-	myProgress: function(questionNumber) {
-		// Make sure we were given a question number
-		if(!questionNumber)
-		{
-			return null;
-		}
-
-		// Lower the question number by one, since the questions are 0 indexed in the data
-		questionNumber = questionNumber - 1;
-
-		// Grab the data from the parent takeQuiz template
-		var data = Template.parentData(1);
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			// May not be defined
-			return data.questions[questionNumber]['p1_answer'];
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			// May not be defined
-			return data.questions[questionNumber]['p2_answer'];
-		}
-
-		// Otherwise null
-	},
+	// Returns correct if this user answered the question correctly
+	// returns "wrong" if this user answered the question incorrectly
+	// returns nothing if this user hasn't yet answered the question
 	wasQuestionAnsweredCorrectly: function() {
-		// Which player are we?
-		var player_answer = null;
-		// Grab the data from the parent
-		var data = Template.parentData(1);
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			player_answer = 'p1_answer';
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			player_answer = 'p2_answer';
-		}
-
-		// Did the player not answer yet?
-		if(!this[player_answer])
-		{
-			return null;
-		}
-		// Did this player answer this question correctly?
-		else if(this.answer === this[player_answer])
-		{
-			return "correct";
-		}
-		// Otherwise, they were wrong
-		else
-		{
-			return "wrong";
-		}
+		return didPlayerAnswerCorrectly(getPlayerNumber(), this);
 	}
 });
 
@@ -363,29 +284,6 @@ Template.questionTemplate.helpers({
 Template.questionTemplate.events({
 	// Check answers on the server
 	"click .question-answers > li": function (event) {
-		// Cache this template instance for use in the callback
-		var this_template = Template.instance();
-
-		// Make sure we haven't already submitted this answer
-		// Which player are we?
-		var player_num = null;
-		// Grab the data from the parent
-		var data = Template.parentData(1);
-		// Show the other player's progress
-		if(data && Meteor.userId() === data.p1_id)
-		{
-			player_answer = 'p2_answer';
-		}
-		else if(data && Meteor.userId() === data.p2_id)
-		{
-			player_answer = 'p1_answer';
-		}
-		if(this_template.data.player_num)
-		{
-			// Don't run this method on any template twice
-			return;
-		}
-
 		// Grab the quiz id from the parent's data contect
 		var quiz_id = Template.parentData(1)._id;
 		// Find out which answer letter was clicked
@@ -416,55 +314,14 @@ Template.questionTemplate.events({
 			{
 				delay = QUIZ_QUESTION_CORRECT_DELAY;
 			}
-			Meteor.setTimeout(goToNextQuestion, delay);
+			var timeout = Meteor.setTimeout(goToNextQuestion, delay);
+			Session.set('question-advance-timeout', timeout);
 		});
 	},
 	// Go to the next question
 	"click .next-question-button": function(event) {
-		var quiz_id = Iron.controller().getParams()._id;
-		// Go to the next question number
-		var number = this.number + 1;
-
-		Router.go('take-quiz', {_id: quiz_id, question_number: number});
-	},
-	// Clicking the next question nav button
-	"click .question-nav-next": function(event) {
-		var quiz_id = Iron.controller().getParams()._id;
-
-		// The current center question number
-		var question_number = Iron.controller().getParams().question_number;
-		// The question number of the clicked template
-		var number = this.number;
-
-		if(question_number == number)
-		{
-			// Go to the next question
-			Router.go('take-quiz', {_id: quiz_id, question_number: number + 1});
-		}
-		// Otherwise pull this template into the view
-		else
-		{
-			Router.go('take-quiz', {_id: quiz_id, question_number: number});
-		}
-	},
-	// Clicking the prev question nav button
-	"click .question-nav-prev": function(event) {
-		var quiz_id = Iron.controller().getParams()._id;
-
-		// The current center question number
-		var question_number = Iron.controller().getParams().question_number;
-		// The question number of the clicked template
-		var number = this.number;
-
-		if(question_number == number)
-		{
-			// Go to the next question
-			Router.go('take-quiz', {_id: quiz_id, question_number: number - 1});
-		}
-		// Otherwise pull this template into the view
-		else
-		{
-			Router.go('take-quiz', {_id: quiz_id, question_number: number});
-		}
+		// If there is a timeout to automatically advance, clear it
+		Meteor.clearTimeout(Session.get('question-advance-timeout'));
+		goToNextQuestion();
 	}
 });
