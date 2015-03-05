@@ -7,7 +7,9 @@ Meteor.startup(function () {
 	QuizSeekers.remove({});
 
 	// Load the questions into the database when the server loads
-	QuizLoader.loadData();
+	// Only use if the database isn't permanent
+	// TODO: Check for an empty database, then update
+	//QuizLoader.loadData();
 	
 	return;
 });

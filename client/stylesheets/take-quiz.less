@@ -15,8 +15,7 @@
 	margin: 20px auto;
 	/*max-width: 80%;*/
 	color: black;
-	/* background-color: white; */
-
+	
 	/* So we can animate the divs in and out */
 	position: relative;
 
@@ -180,118 +179,4 @@
 	background-color: transparent;
 	color: black;
 	border: 1px solid black;
-}
-
-.question-nav {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: auto;
-	right: auto;
-	margin: 0 0;
-	height: 100%;
-	/* Without a width, the glyph can't be seen */
-	width: 5%;
-
-	background-color: transparent;
-
-	.lh-transition(padding 0.5s ease, background-color 0.5s ease);
-
-	span {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: auto;
-		right: auto;
-		height: 1em;
-		margin: auto 0px;
-
-		.lh-transition(padding 0.5s ease, background-color 0.5s ease);
-	}
-}
-
-.question-nav.question-nav-prev {
-	/* Place on left edge */
-	left: 0;
-
-	padding-left: 5px;
-
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-
-	/* Center icon vertically and on left */
-	span {
-		left: 0;
-		margin-left: 5px;
-	}
-}
-
-.question-nav.question-nav-prev:hover {
-	padding-left: 15px;
-	//background-color: fade(@light-blue, 15%);
-
-	span {
-		padding-left: 15px;
-	}
-}
-
-.question-nav.question-nav-next {
-	/* Place on right edge */
-	right: 0;
-
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-
-	/* Center icon vertically and on right */
-	span {
-		right: 0;
-		margin-right: 5px;
-	}
-}
-
-.question-nav.question-nav-next:hover {
-	padding-right: 15px;
-	//background-color: fade(@light-blue, 15%);
-
-	span {
-		padding-right: 15px;
-	}
-}
-
-
-/*
- * Shadow effect from CSS-tricks.com
- * http://css-tricks.com/almanac/properties/b/box-shadow/
- */
-.effect6
-{
-	position:relative;
-	-webkit-box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-	-moz-box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-	box-shadow:0 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-.effect6:before, .effect6:after
-{
-	content:"";
-	position:absolute;
-	z-index:-1;
-	-webkit-box-shadow:0 0 40px rgba(0,0,0,0.8);
-	-moz-box-shadow:0 0 40px rgba(0,0,0,0.8);
-	box-shadow:0 0 40px rgba(0,0,0,0.8);
-	top:50%;
-	bottom:0;
-	left:10px;
-	right:10px;
-	-moz-border-radius:100px / 10px;
-	border-radius:100px / 10px;
-}
-.effect6:after
-{
-	right:10px;
-	left:auto;
-	-webkit-transform:skew(8deg) rotate(3deg);
-	-moz-transform:skew(8deg) rotate(3deg);
-	-ms-transform:skew(8deg) rotate(3deg);
-	-o-transform:skew(8deg) rotate(3deg);
-	transform:skew(8deg) rotate(3deg);
 }

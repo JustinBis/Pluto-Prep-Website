@@ -2,7 +2,7 @@
 QuizLoader = {}
 
 QuizLoader.files = [
-	'quizdata/demo.csv'
+	'quizdata/full.csv'
 ]
 
 QuizLoader.expectedFields = [

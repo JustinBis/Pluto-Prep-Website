@@ -5,12 +5,37 @@
 /* Hide background color and border*/
 #main-navbar{
 	background-color: transparent;
-	border-color: transparent;
-	transition: background-color 0.4s, border-color 0.4s;
+	border: none;
+	//border-color: transparent;
+	//transition: background-color 0.4s, border-color 0.4s;
+
+	// Put the navbar out front
+	z-index: 10000;
 }
 
 /* Show background on hover */
 #main-navbar:hover{
-	background-color: @navbar-background;
-	border-color: @navbar-default-border;
+	//background-color: @navbar-background;
+	//border-color: @navbar-default-border;
+}
+
+
+/*
+ * Styles for the login dropdown
+ * Note that these are default classes and IDs given by the
+ * Meteor accounts system
+ * TODO: Make out own login dropdown from scratch
+ */
+.login-link-text, .login-link-text:hover {
+	color: #fff;
+}
+
+#login-buttons a {
+	/* Don't underline the text until we're hovering over it */
+	text-decoration: none;
+}
+
+#login-buttons a:hover {
+	/* Don't underline the text until we're hovering over it */
+	text-decoration: underline;
 }
