@@ -1,0 +1,45 @@
+@import "/client/lib/lesshat-prefixed.import.less";
+
+.quizSelectSubject {
+
+	.subjectSelectBox {
+		width: 80%;
+		margin: 0 auto;
+		padding: 2em;
+
+		color: #000;
+		background-color: #fff;
+
+		font-size: 16px;
+
+		border-radius: 5px;
+
+		// Animation attributes
+		.lh-transition(width 0.4s ease-out, padding 0.4s ease, color 0.4s ease, background-color 0.4s ease);
+
+		// Icon tag
+		icon {
+			display: block;
+			margin: 0 auto 2em;
+
+			img {
+				width: 48px;
+				height: 48px;
+				// For svg icons
+				fill: currentColor;
+			}
+		}
+	}
+	.subjectSelectBox:hover {
+		cursor: pointer;
+		width: 90%;
+		padding: 3em 2em;
+		background-color: #00CFFF;
+
+		icon {
+			img {
+				color: green;
+			}
+		}
+	}
+}

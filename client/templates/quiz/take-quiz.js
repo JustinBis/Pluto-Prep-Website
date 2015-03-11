@@ -12,29 +12,52 @@ var QUIZ_QUESTION_WRONG_DELAY = 1200;
  */
 
 /**
- * Moves on to the next question if there is one
- * or will move on to the results page if there are no more questions
- * @params: iron_params The result of 
+ * Moves to the specified question or will move on 
+ * to the results page if the number is higher than the
+ * actual number of questions in the quiz
  */
-var goToNextQuestion = function() {
-	var quiz_id = Router.current().params._id;
-	// Go to the next question number
-	var number = Router.current().params.question_number;
-	// The params are strings, so convert to a number for adding
-	number = Number(number) + 1;
+var goToQuestion = function(number) {
+	if(typeof(number) !== Number)
+	{
+		number = Number(number);
+	}
 
-	// Was that the final question?
+	var quiz_id = Router.current().params._id;
+	// Is this beyond the final question?
 	if(number > Router.current().data().num_questions)
 	{
 		// TODO: Mark player 1 as done
 		// Meteor.call('quizPlayerFinished')
 		Router.go('quiz-results', {_id: quiz_id});
 	}
+	// If the number is negative, we have an error
+	else if(number < 0)
+	{
+		console.error("Error: negative number given to function goToQuestion");
+		return;
+	}
 	// Otherwise move on to the next question
 	else
 	{
 		Router.go('take-quiz', {_id: quiz_id, question_number: number});
 	}
+}
+
+
+/**
+ * Moves on to the next question if there is one
+ * or will move on to the results page if there are no more questions
+ */
+var goToNextQuestion = function() {
+	var quiz_id = Router.current().params._id;
+	// Go to the next question number
+	var number = Router.current().params.question_number;
+	// The params are strings, so convert to a number for adding
+	// and add 1 to the number to refer to the next question
+	number = Number(number) + 1;
+
+	// Go to that question
+	goToQuestion(number);
 }
 
 /**
@@ -322,6 +345,10 @@ Template.questionTemplate.events({
 	"click .next-question-button": function(event) {
 		// If there is a timeout to automatically advance, clear it
 		Meteor.clearTimeout(Session.get('question-advance-timeout'));
-		goToNextQuestion();
+
+		// What question number is this button on?
+		var number = this.number;
+		number = Number(number) + 1;
+		goToQuestion(number);
 	}
 });

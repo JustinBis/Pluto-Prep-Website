@@ -1,6 +1,43 @@
 <template name="quizSelectSubject">
 <!-- Full page container -->
 	<div class="full-page quizSelectSubject slate-background">
-	HELLO
+		
+			<div class="container top-spacer text-center">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Choose a Subject</h2>
+						<br />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<!-- TODO: Make this a pathFor. The data helper isn't easy to work with though, so for now hard link it -->
+						<a href="/newquiz/cpf">
+							<div class="subjectSelectBox">
+								<icon><img src="/img/icons/flask.svg" /></icon>
+								Chemical and Physical Foundations
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<a href="/newquiz/bbf">
+							<div class="subjectSelectBox">
+								<icon><img src="/img/icons/dna.svg" /></icon>
+								Biological and Biochemical Foundations
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<a href="/newquiz/psf">
+							<div class="subjectSelectBox">
+								<icon><img src="/img/icons/brain.svg" /></icon>
+								Psychological, Social, and Biological Foundations
+							</div>
+						</a>
+					</div>
+				</div>
+			</div><!-- ./container -->
+		<!-- /.section -->
 	</div> <!-- /.full-page -->
 </template>
