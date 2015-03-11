@@ -36,6 +36,7 @@ Meteor.methods({
 
 		// Set up the quiz info for player 1
 		var quizData = {
+			subject: subject,
 			num_questions: numQuestions,
 			p1_id: this.userId,
 			questions: randomQuestions,

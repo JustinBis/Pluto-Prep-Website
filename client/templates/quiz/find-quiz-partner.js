@@ -1,9 +1,13 @@
 Template.findQuizPartner.created = function() {
 	// Create the reactive state variables
 	this.progress = new ReactiveVar();
+	this.quizId = new ReactiveVar();
 }
 
 Template.findQuizPartner.rendered = function() {
+	// Save the subject from the URL
+	var subject = Router.current().params.subject;
+
 	// When the template renders, find a partner
 	this.progress.set('Finding an opponent');
 
@@ -14,7 +18,10 @@ Template.findQuizPartner.rendered = function() {
 
 	// If no partner, make a new quiz
 	this.progress.set('Creating new quiz');
-	Meteor.call('createQuiz', 'Psy', 6, function(err, result) {
+
+	// Store the context
+	var self = this;
+	Meteor.call('createQuiz', subject, 6, function(err, result) {
 		if(err)
 		{
 			Session.set('server-error', err.reason);
@@ -34,20 +41,20 @@ Template.findQuizPartner.rendered = function() {
 		//Router.go('/quiz/' + result);
 		// So we can edit the page, just store the quiz id and allow it
 		// to be accessed by a button
-		Session.set('quizId', result);
+		self.quizId.set(result);
 	});
 }
 
 Template.findQuizPartner.events({
 	// When the take a quiz now button is clicked, redirect
 	"click #take-quiz-button": function () {
-		Router.go('take-quiz', {_id: Session.get('quizId'), question_number: 1});
+		Router.go('take-quiz', {_id: Template.instance().quizId.get(), question_number: 1});
 	}
 });
 
 Template.findQuizPartner.helpers({
 	quizId: function() {
-		return Session.get('quizId');
+		return Template.instance().quizId.get();
 	},
 	progress: function() {
 		return Template.instance().progress.get();
