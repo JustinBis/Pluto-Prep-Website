@@ -9,26 +9,44 @@
 			<div class="container">
 				<!-- Show the progress and a timer -->
 				<div class="row progress-container">
-					<div id="my-progress" class="col-xs-4 quiz-progress-bubbles text-center">
-						{{#each questions}}
-							<!-- Style with my answer helper -->
-							<span class="{{wasQuestionAnsweredCorrectly}}">
-								{{number}}
-							</span>
-						{{/each}}
+					<div class="col-xs-5 text-left">
+						<div id="my-icon" class="user-icon user-icon-lg" style="background-image: url(/user/icon/pikachu.jpg);">
+						</div>
+						<div class="username">
+							{{currentUser.username}}
+						</div>
+						<div class="quiz-progress-bubbles">
+							{{#each questions}}
+								<!-- Style with my answer helper -->
+								<span class="{{wasQuestionAnsweredCorrectly}}">
+									{{number}}
+								</span>
+							{{/each}}
+						</div>
 					</div>
-					<div class="col-xs-4 text-center time-remaining">
+
+					<div class="col-xs-2 text-center time-remaining">
 						{{minutesRemaining}}:{{secondsRemaining}}
 					</div>
-					<div id="opponent-progress" class="col-xs-4 quiz-progress-bubbles text-center">
-						{{#each questions}}
-							<!-- Show opponent progress -->
-							<span class="{{opponentQuestionAnsweredCorrectly}}">
-								{{number}}
-							</span>
-						{{/each}}
+
+					<div class="col-xs-5 text-right">
+						<div id="opponent-icon" class="user-icon user-icon-lg" style="background-image: url(/user/icon/up.png);">
+						</div>
+						<div class="username">
+							<!-- TODO: Make this the actual opponent username -->
+							Your Opponent
+						</div>
+						<div class="quiz-progress-bubbles">
+							{{#each questions}}
+								<!-- Show opponent progress -->
+								<span class="{{opponentQuestionAnsweredCorrectly}}">
+									{{number}}
+								</span>
+							{{/each}}
+						</div>
 					</div>
-				</div>
+
+				</div> <!-- /.row.progress-continer -->
 			</div> <!-- /container -->
 		</div> <!-- /section -->
 

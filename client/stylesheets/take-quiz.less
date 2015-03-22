@@ -122,11 +122,56 @@
 }
 
 .progress-container {
-	margin: 40px auto 0;
+	margin: 1em auto 0;
 }
 
 .error-container {
 	margin: 70px auto 20px;
+}
+
+
+/* Quiz progress area */
+
+.user-icon {
+	display: inline-block;
+
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+
+	/* The icon url itself is set in the html with a style call */
+	/* This is just the default */
+	background-image: url(/user/icon/up.png);
+
+	/* We want a border around the image */
+	border: 2px solid #000;
+
+}
+
+.user-icon-lg {
+	width: 80px;
+	height: 80px;
+}
+
+#my-icon {
+	float: left;
+	/* Add space on the right to seperate the name and bubbles */
+	margin-right: 1em;
+}
+
+#opponent-icon {
+	float: right;
+	/* Add space on the left to seperate the name and bubbles */
+	margin-left: 1em;
+}
+
+/* Limit the scope of the username style to the quiz progress container */
+.progress-container .username {
+	font-size: 2em;
 }
 
 .time-remaining {
@@ -139,6 +184,7 @@
 
 	span {
 		font-size: 18px;
+		text-align: center;
 
 		display: inline-block;
 		width: 40px;

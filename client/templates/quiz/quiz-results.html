@@ -1,7 +1,7 @@
 <template name="quizResults">
 	<div class="full-page">
 		<!-- The results header -->
-		<div class="section quiz-results">
+		<div class="section quiz-results slate-background">
 			<div class="container">
 				<div class="row text-center">
 					<h1>
@@ -38,7 +38,7 @@
 							<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
 						</div>
 
-						<div class="question">
+						<div class="question two-col-container">
 							{{#markdown}}{{question}}{{/markdown}}
 
 							<ul class="answers">
@@ -59,18 +59,66 @@
 							<div class="explanation">
 								{{#markdown}}{{short_explanation}}{{/markdown}}
 							</div>
+
+							<!-- Link to Long Explanation -->
+							<!-- Note: must be handled in JS because Iron Router removes the hashes from the URL, meaning anchor links don't work -->
+							<div class="text-center">
+								<button class="btn more-info-button">
+									More Info
+								</button>
+								<button class="btn mark-for-review-button">
+									<!-- TODO: If marked, show "Marked! with a check" -->
+									Mark for Review
+								</button>
+							</div>
 						</div>
 					</div>
 					{{/each}}
 				</div> <!-- /row -->
-				
-				<!-- Bottom stuff -->
+			</div>
+		</div> <!-- /.section -->
+
+		<!-- Long explanation section -->
+		{{#each questions}}
+		<!-- Use a unique ID as an achor tag for scrolling -->
+		<div id="long-explanation-{{number}}" class="section long-explanation">
+			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
-						
+					<div class="number-bubble">
+							<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Question -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="question two-col-container">
+							{{#markdown}}{{question}}{{/markdown}}
+
+							<ul class="answers">
+								<li class="{{isAnswer 'a'}}">
+									{{#markdown}}A. {{a}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'b'}}">
+									{{#markdown}}B. {{b}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'c'}}">
+									{{#markdown}}C. {{c}}{{/markdown}}
+								</li>
+								<li class="{{isAnswer 'd'}}">
+									{{#markdown}}D. {{d}}{{/markdown}}
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- Long Explanation -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="two-col-container">
+							{{#markdown}}{{long_explanation}}{{/markdown}}
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		{{/each}}
 	</div>
 </template>
