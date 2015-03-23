@@ -20,7 +20,9 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
 	-->
-	<script src="/js/gsap/TweenLite.min.js"></script>
-	<script src="/js/gsap/plugins/CSSPlugin.min.js"></script>
-	<script src="/js/gsap/easing/EasePack.min.js"></script>
+	<!-- Load the animation scripts async, as we only need them once a link is clicked -->
+	<!-- TODO: determine if we should load these via jQuery so we get a callback and can start animations on the page when GSAP is loaded. We may be able to avoid this with CSS animation -->
+	<script async src="/js/gsap/TweenLite.min.js"></script>
+	<script async src="/js/gsap/plugins/CSSPlugin.min.js"></script>
+	<script async src="/js/gsap/easing/EasePack.min.js"></script>
 </head>
