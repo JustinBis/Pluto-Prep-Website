@@ -8,19 +8,19 @@
 		{{#if this.count}}
 		<div class="container">
 			<!-- Show the questions -->
+			{{#each this}}
 			<div class="row">
-				<div class="">
+				<div class="col-xs-10 col-xs-offset-1">
+					{{> questionTemplate}}
 
-					{{#each this}}
-					<div class="">
-						<div class="col-xs-10 col-xs-offset-1">
-							{{> questionTemplate}}
-						</div>
-					</div>
-					{{/each}}
-
+					<a href="{{pathFor route='admin-question-edit' data=this}}">
+						<button class="btn btn-lg">
+							Edit
+						</button>
+					</a>
 				</div>
 			</div>
+			{{/each}}
 		</div>
 
 		{{else}}
