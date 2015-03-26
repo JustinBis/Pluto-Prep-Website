@@ -23,6 +23,8 @@ Template.adminQuestionEdit.events({
 		// Save the context for our callback
 		var self = Template.instance();
 
+		console.log(data);
+
 		// Save the question
 		Meteor.call('updateQuestion', questionId, data, function(err, result) {
 			if(err)
@@ -48,8 +50,8 @@ var getEditedQuestion = function(questionId) {
 		b: $('#'+questionId+' [data-answer="b"]').text().trim(),
 		c: $('#'+questionId+' [data-answer="c"]').text().trim(),
 		d: $('#'+questionId+' [data-answer="d"]').text().trim(),
-		short_explanation: $('#'+questionId+' [data-short-explanation').text().trim(),
-		long_explanation: $('#'+questionId+' [data-long-explanation]').text().trim()
+		short_explanation: $('#'+questionId+' [name="data-short-explanation"]').val().trim(),
+		long_explanation: $('#'+questionId+' [name="data-long-explanation"]').val().trim()
 	}
 
 	// Return the compiled data

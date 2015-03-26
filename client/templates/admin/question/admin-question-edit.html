@@ -45,13 +45,12 @@
 							</ul>
 						</div>
 
-						<!-- TODO: Make this an input box to preserve the newlines correctly -->
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1 text-center">
 								<h4>Short Explanation</h4>
 							</div>
-							<div class="col-xs-10 col-xs-push-1" data-short-explanation>
-								{{short_explanation}}
+							<div class="col-xs-10 col-xs-push-1">
+							<textarea rows="4" cols="100" name="data-short-explanation">{{short_explanation}}</textarea>
 							</div>
 						</div>
 
@@ -59,8 +58,8 @@
 							<div class="col-xs-10 col-xs-push-1 text-center">
 								<h4>Long Explanation</h4>
 							</div>
-							<div class="col-xs-10 col-xs-push-1" data-long-explanation>
-								{{long_explanation}}
+							<div class="col-xs-10 col-xs-push-1">
+								<textarea rows="8" cols="100" name="data-long-explanation">{{long_explanation}}</textarea>
 							</div>
 						</div>
 

@@ -47,7 +47,7 @@ var getEditedQuestion = function(questionId) {
 		b: $('#'+questionId+' [data-answer="b"]').text().trim(),
 		c: $('#'+questionId+' [data-answer="c"]').text().trim(),
 		d: $('#'+questionId+' [data-answer="d"]').text().trim(),
-		short_explanation: $('#'+questionId+' [data-short-explanation').text().trim(),
+		short_explanation: $('#'+questionId+' [data-short-explanation]').text().trim(),
 		long_explanation: $('#'+questionId+' [data-long-explanation]').text().trim()
 	}
 
