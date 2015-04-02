@@ -1,0 +1,35 @@
+@jumbotron-text-color: white;
+@jumbotron-image-mask-color: rgba(54, 186, 255, 0.6);
+
+#main-jumbotron{
+	background: url(img/main-jumbotron-image.png) no-repeat;
+	background-size: cover;
+	background-position: bottom right;
+}
+
+.jumbotron-text-container{
+	color: @jumbotron-text-color;
+	margin: 10% 20%;
+}
+
+/* The sign in button in the jumbotron */
+.sign-in-button {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 10px;
+
+	color: @jumbotron-text-color;
+	background-color: transparent;
+	border: 1px solid @jumbotron-text-color;
+
+	vertical-align: top;
+
+	transition: background-color 0.4s;
+}
+.sign-in-button:hover {
+	color: @jumbotron-text-color;
+	background-color: @jumbotron-image-mask-color;
+};
+.sign-in-button:focus {
+	color: @jumbotron-text-color;
+};
