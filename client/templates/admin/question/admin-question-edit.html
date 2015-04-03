@@ -1,4 +1,4 @@
-<!-- The page served to the "/admin/questions/:subject/edit" route -->
+<!-- The page served to the "/admin/question/:id/edit" route -->
 <template name="adminQuestionEdit">
 	<!-- Full page container -->
 	<div class="full-page takeQuiz slate-background">
@@ -92,7 +92,7 @@
 
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1 question-text">
-								{{#markdown}}{{question}}{{/markdown}}
+								{{#mathjax}}{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}{{/mathjax}}
 							</div>
 						</div>
 
@@ -120,7 +120,7 @@
 								<h4>Short Explanation</h4>
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
-								{{#markdown}}{{short_explanation}}{{/markdown}}
+								{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
 							</div>
 						</div>
 
@@ -129,7 +129,7 @@
 								<h4>Long Explanation</h4>
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
-								{{#markdown}}{{long_explanation}}{{/markdown}}
+								{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
 
 							</div>
 						</div>

@@ -39,25 +39,25 @@
 						</div>
 
 						<div class="question two-col-container">
-							{{#markdown}}{{question}}{{/markdown}}
+							{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
 
 							<ul class="answers">
 								<li class="{{isAnswer 'a'}}">
-									{{#markdown}}A. {{a}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'b'}}">
-									{{#markdown}}B. {{b}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'c'}}">
-									{{#markdown}}C. {{c}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'd'}}">
-									{{#markdown}}D. {{d}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
 								</li>
 							</ul>
 
 							<div class="explanation">
-								{{#markdown}}{{short_explanation}}{{/markdown}}
+								{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
 							</div>
 
 							<!-- Link to Long Explanation -->
@@ -92,20 +92,20 @@
 					<!-- Question -->
 					<div class="col-xs-12 col-sm-6">
 						<div class="question two-col-container">
-							{{#markdown}}{{question}}{{/markdown}}
+							{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
 
 							<ul class="answers">
 								<li class="{{isAnswer 'a'}}">
-									{{#markdown}}A. {{a}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'b'}}">
-									{{#markdown}}B. {{b}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'c'}}">
-									{{#markdown}}C. {{c}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
 								</li>
 								<li class="{{isAnswer 'd'}}">
-									{{#markdown}}D. {{d}}{{/markdown}}
+									{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
 								</li>
 							</ul>
 						</div>
@@ -113,7 +113,7 @@
 					<!-- Long Explanation -->
 					<div class="col-xs-12 col-sm-6">
 						<div class="two-col-container bold">
-							{{#markdown}}{{long_explanation}}{{/markdown}}
+							{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
 						</div>
 					</div>
 				</div>

@@ -22,7 +22,12 @@
 	-->
 	<!-- Load the animation scripts async, as we only need them once a link is clicked -->
 	<!-- TODO: determine if we should load these via jQuery so we get a callback and can start animations on the page when GSAP is loaded. We may be able to avoid this with CSS animation -->
-	<script async src="/js/gsap/TweenLite.min.js"></script>
-	<script async src="/js/gsap/plugins/CSSPlugin.min.js"></script>
-	<script async src="/js/gsap/easing/EasePack.min.js"></script>
+	<script async type="text/javascript" src="/js/gsap/TweenLite.min.js"></script>
+	<script async type="text/javascript" src="/js/gsap/plugins/CSSPlugin.min.js"></script>
+	<script async type="text/javascript" src="/js/gsap/easing/EasePack.min.js"></script>
+
+	<!-- CDN link for MathJax -->
+	<!-- Replaced by mrt:mathjax package that loads it for us in a Template helper
+	<script async type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	-->
 </head>

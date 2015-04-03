@@ -41,7 +41,7 @@
 			{{#if editing}}
 				{{question}}
 			{{else}}
-				{{#markdown}}{{question}}{{/markdown}}
+				{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
 			{{/if}}
 		</div>
 	</div>
@@ -73,7 +73,7 @@
 			{{#if editing}}
 				{{short_explanation}}
 			{{else}}
-				{{#markdown}}{{short_explanation}}{{/markdown}}
+				{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
 			{{/if}}
 		</div>
 	</div>
@@ -86,7 +86,7 @@
 			{{#if editing}}
 				{{long_explanation}}
 			{{else}}
-				{{#markdown}}{{long_explanation}}{{/markdown}}
+				{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
 			{{/if}}
 		</div>
 	</div>
