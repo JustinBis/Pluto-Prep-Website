@@ -1,5 +1,7 @@
 // Apply these styles only to the app homescreen
 .appHome {
+	color: #fff;
+
 	.blue {
 		background-color: #0D4966;
 	}
@@ -15,24 +17,36 @@
 	.green {
 		background-color: #8C8819;
 	}
+	.purple {
+		background-color: #5C6BC0;
+	}
+
+	.tagline-text {
+		h1 {
+			line-height: 1.25;
+		}
+
+		p {	
+			font-size: 24px;
+			font-weight: 100;
+			line-height: 1.25;
+		}
+	}
 
 	.homepage-screencast {
-		// Make sure we have a minimum height for this section
-		//min-height: 580px;
-
-		// Center the video container vertically in its parent
-		.video-container {
-			
+		img {
+			position: relative;
+			width: 100%;
 		}
 
 		video {
-			width: 80%;
-		}
+			position: absolute;
+			z-index: 10;
+			top: 19%;
+			left: 21.5%;
 
-		img {
-			width: 90%;
+			width: 57.75%;
 		}
-		
 	}
 }
 
