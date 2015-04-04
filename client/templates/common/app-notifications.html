@@ -1,11 +1,11 @@
 <template name="appNotifications">
+	{{#unless connected}}
 	<div class="text-center" id="notifications">
 		<!-- If there is a connection error, show it here -->
-		{{#unless connected}}
 		<div class="notification" id="connection-error">
 			<span class="glyphicon glyphicon-repeat spin"></span>
 			Lost connection to the server. Reconnecting...
 		</div>
-		{{/unless}}
 	</div>
+	{{/unless}}
 </template>
