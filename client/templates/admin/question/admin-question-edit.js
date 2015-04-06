@@ -46,10 +46,10 @@ var getEditedQuestion = function(questionId) {
 	// Select all of the info we need from the page
 	var data = {
 		question: $('#'+questionId+' [name="data-question"]').val().trim(),
-		a: $('#'+questionId+' [data-answer="a"]').text().trim(),
-		b: $('#'+questionId+' [data-answer="b"]').text().trim(),
-		c: $('#'+questionId+' [data-answer="c"]').text().trim(),
-		d: $('#'+questionId+' [data-answer="d"]').text().trim(),
+		a: $('#'+questionId+' [data-answer="a"]').val().trim(),
+		b: $('#'+questionId+' [data-answer="b"]').val().trim(),
+		c: $('#'+questionId+' [data-answer="c"]').val().trim(),
+		d: $('#'+questionId+' [data-answer="d"]').val().trim(),
 		short_explanation: $('#'+questionId+' [name="data-short-explanation"]').val().trim(),
 		long_explanation: $('#'+questionId+' [name="data-long-explanation"]').val().trim()
 	}
