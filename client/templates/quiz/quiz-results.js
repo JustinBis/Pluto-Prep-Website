@@ -160,6 +160,6 @@ Template.quizResults.helpers({
 Template.quizResults.events({
 	// If there is an error loading the quiz and the user clicks the go back button
 	"click #play-again-button": function(event) {
-		Router.go('find-quiz-partner', {subject: Template.instance().data.subject});
+		Router.go('quiz-select-subject');
 	}
 });
