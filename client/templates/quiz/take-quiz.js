@@ -1,10 +1,6 @@
 // How much time to give each quiz, in milliseconds
 var QUIZ_TIME = 6 * 60 * 1000;
-// Delay (in milliseconds) before moving on to the next question automatically after answering
-// This delay is used for correct answers
-var QUIZ_QUESTION_CORRECT_DELAY = 500;
-// This delay is used for wrong answers (so the user can see the correct answer)
-var QUIZ_QUESTION_WRONG_DELAY = 1200;
+
 /*
  *
  * Common Quiz Helper Functions
@@ -328,24 +324,10 @@ Template.questionTemplate.events({
 				console.error("Error calling checkQuizAnswer: result never sent.");
 				return;
 			}
-
-			// Now that we have a result, lets move on to the next question automatically
-			// after a short delay defined as one of the 'constants' at the top of the file
-			var delay = QUIZ_QUESTION_WRONG_DELAY;
-			// Speed up the delay if they answered correctly
-			if(result.correct)
-			{
-				delay = QUIZ_QUESTION_CORRECT_DELAY;
-			}
-			var timeout = Meteor.setTimeout(goToNextQuestion, delay);
-			Session.set('question-advance-timeout', timeout);
 		});
 	},
 	// Go to the next question
 	"click .next-question-button": function(event) {
-		// If there is a timeout to automatically advance, clear it
-		Meteor.clearTimeout(Session.get('question-advance-timeout'));
-
 		// What question number is this button on?
 		var number = this.number;
 		number = Number(number) + 1;
