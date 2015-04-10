@@ -153,6 +153,45 @@ Template.quizResults.helpers({
 			// We're player 2, so return player 1
 			return p1_score;
 		}
+	},
+	howYouDid: function () {
+		// If this player's score is higher than the opponents score, return true
+		var numQuestions = this.questions.length;
+		var p1_score = 0, p2_score = 0;
+		for(var i = 0; i < numQuestions; i++)
+		{
+			var question = this.questions[i];
+			if(question.answer == question.p1_answer)
+			{
+				p1_score += 1;
+			}
+			if(question.answer == question.p2_answer)
+			{
+				p2_score += 1;
+			}
+		}
+
+		// Who are we?
+		var myScore;
+		if(Meteor.userId() === this.p1_id)
+		{
+			// We're player 1
+			myScore = p1_score;
+		}
+		else if(Meteor.userId() === this.p2_id)
+		{
+			// We're player 2
+			myScore = p2_score;
+		}
+
+		if(myScore >= 4)
+		{
+			return "Nice!";
+		}
+		else
+		{
+			return ":(";
+		}
 	}
 });
 

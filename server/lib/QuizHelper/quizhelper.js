@@ -68,11 +68,11 @@ QuizHelper = {
 		{
 			throw new Meteor.Error("num-questions-too-high", "The number of questions must be less than 20.");
 		}
-		// For now, only work with 6 questions
+		// For now, only work with a certain size question set
 		// TODO: generalize this code
-		if(numQuestions !== 6)
+		if(numQuestions < 4 || numQuestions > 12)
 		{
-			throw new Meteor.Error("invalid-num-questions", "The number of questions must be 6.");
+			throw new Meteor.Error("invalid-num-questions", "The number of questions must be between 4 and 12.");
 		}
 	},
 
