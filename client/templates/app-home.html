@@ -2,33 +2,53 @@
 <template name="appHome">
 	<div class="full-page appHome">
 		<!-- Header Section -->
-		<div class="section purple fill-height">
-			<div class="container fill-height">
-				<div class="row fill-height">
-					<!-- Homepage tagline -->
-					<div class="col-xs-5 col-xs-offset-1 vertical-center tagline-text">
-						<h1>Play to Study, <br />Play to Win.</h1>
-						<p>
+		<!-- Note: Attribute the backrgound to https://www.flickr.com/photos/rachelfordjames/3495485623/ -->
+		<div class="section fill-height home-background">
+			<div class="container vertical-center">
+				<!-- Homepage tagline -->
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1 tagline-text">
+						<h1>Studying Made Simple</h1>
+						<h3>
 							We generate a personalized study plan based on your strengths and weaknesses.
 							<br />
 							All you have to do is <strong>play</strong>.
-						</p>
-					</div>
-
-					<!-- Homepage video -->
-					<div class="col-xs-6 hidden-xs homepage-screencast fill-height">
-						<div class="vertical-center">
-							<img src="/img/apple-cinema-display.png" />
-							<video src="/vid/home-screencast.webm" autoplay loop>
-							</video>							
-						</div>
+						</h3>
 					</div>
 				</div>
-			</div>
 
-			<!-- Next Section Icon / Button-->
-			<div class="next-section-button">
-				<i class="glyphicon glyphicon-menu-down"></i>
+				<!-- Instant User Signup -->
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 create-user-area">
+						<form class="home-form">
+							<h3>Sign Up or Sign In</h3>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</div>
+									<input type="text" class="form-control or-text" id="home-form-email" name="home-form-email" placeholder="Username"/>
+								</div>
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-envelope-o"></i>
+									</div>
+									<input type="email" class="form-control" id="home-form-email" name="home-form-email" placeholder="Email"/>
+								</div>
+
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</div>
+									<input type="password" class="form-control" id="home-form-password" name="home-form-password" placeholder="Password"/>
+								</div>
+
+								<button type="submit" class="btn btn-default btn-lg" id="home-form-submit">Play Now</button>
+								
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 

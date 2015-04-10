@@ -21,17 +21,24 @@
 		background-color: #5C6BC0;
 	}
 
+	.home-background {
+		background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(img/home-background.jpg) no-repeat 50% 50% fixed;
+		background-size: cover;
+	}
+
 	.tagline-text {
+		text-align: center;
+
 		h1 {
 			font-weight: bold;
-			line-height: 1.25;
+			line-height: 1.5;
 			letter-spacing: 2px;
 		}
 
-		p {	
-			font-size: 24px;
-			font-weight: 100;
-			line-height: 1.25;
+		h3 {	
+			//font-size: 24px;
+			//font-weight: 100;
+			line-height: 1.5;
 		}
 	}
 
@@ -51,6 +58,40 @@
 			left: 15%;
 
 			width: 70%;
+		}
+	}
+
+	.create-user-area {
+		text-align: center;
+
+		margin-top: 1em;
+		margin-bottom: 2em;
+	}
+
+	.home-form {
+		h3 {
+			margin-bottom: 1em;
+		}
+
+		.form-group {
+			.or-text {
+				color: black;
+			}
+
+			input, .input-group-addon {
+				// Larger input box
+				padding: 12px 12px;
+				// Uniform bg colors
+				background-color: #fff;
+				// Uniform height
+				height: initial;
+				// No borders
+				border: 0px none transparent;
+			}
+
+			button {
+				width: 100%;
+			}
 		}
 	}
 }
