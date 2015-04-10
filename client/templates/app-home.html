@@ -20,14 +20,14 @@
 				<!-- Instant User Signup -->
 				<div class="row">
 					<div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 create-user-area">
-						<form class="home-form">
+						<form class="home-form" id="create-user-form">
 							<h3>Sign Up</h3>
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon">
 										<i class="fa fa-user"></i>
 									</div>
-									<input type="text" class="form-control or-text" id="home-form-email" name="home-form-email" placeholder="Username"/>
+									<input type="text" class="form-control or-text" id="home-form-username" name="home-form-username" placeholder="Username"/>
 								</div>
 								<div class="input-group">
 									<div class="input-group-addon">
@@ -41,6 +41,13 @@
 										<i class="fa fa-key"></i>
 									</div>
 									<input type="password" class="form-control" id="home-form-password" name="home-form-password" placeholder="Password"/>
+								</div>
+
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input type="password" class="form-control" id="home-form-confirm-password" name="home-form-confirm-password" placeholder="Confirm password"/>
 								</div>
 
 								<button type="submit" class="btn btn-default btn-lg" id="home-form-submit">Play Now</button>
