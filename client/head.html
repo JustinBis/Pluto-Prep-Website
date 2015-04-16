@@ -41,4 +41,17 @@
 		ga('create', 'UA-61514388-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+
+	<!-- Localytics Package -->
+	<script>
+	+function(l,y,t,i,c,s) {
+		l['LocalyticsGlobal'] = i;
+		l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+		l[i].t = +new Date;
+		(s = y.createElement(t)).type = 'text/javascript';
+		a.async=1;s.src = '//web.localytics.com/v3/localytics.js';
+		(c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+		ll('init', '62cf04711377cfa5424fdd2-62898478-e477-11e4-b1d7-009c5fda0a25', {} /* Options */);
+	}(window, document, 'script', 'll');
+	</script>
 </head>
