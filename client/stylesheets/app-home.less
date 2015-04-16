@@ -20,22 +20,44 @@
 	.purple {
 		background-color: #5C6BC0;
 	}
+	.dark-bg {
+		background-color: rgba(28, 34, 36, 1.0);
+	}
+	.light-blue-bg {
+		background-color: rgba(56, 127, 200, 1.0);
+	}
+	.dark-blue-bg {
+		background-color: rgba(47, 129, 202, 1.0);
+	}
+	.white-bg {
+		color: #000;
+		background-color: #fff;
+	}
+
+	.home-background {
+		background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(img/home-background.jpg) no-repeat 50% 50% fixed;
+		background-size: cover;
+	}
 
 	.tagline-text {
+		text-align: center;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
 		h1 {
 			font-weight: bold;
-			line-height: 1.25;
+			line-height: 1.5;
 			letter-spacing: 2px;
 		}
 
-		p {	
-			font-size: 24px;
-			font-weight: 100;
-			line-height: 1.25;
+		h3 {
+			line-height: 1.5;
 		}
 	}
 
 	.homepage-screencast {
+		& > .vertical-center {
+			transform: translateY(-40%);
+		}
 		img {
 			position: relative;
 			width: 100%;
@@ -44,10 +66,54 @@
 		video {
 			position: absolute;
 			z-index: 10;
-			top: 19%;
-			left: 21.5%;
+			top: 17%;
+			left: 15%;
 
-			width: 57.75%;
+			width: 70%;
+		}
+	}
+
+	.create-user-area {
+		text-align: center;
+
+		margin-top: 1em;
+		margin-bottom: 2em;
+	}
+
+	.home-form {
+		h3 {
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+			margin-bottom: 1em;
+		}
+
+		.form-group {
+			input, .input-group-addon {
+				// Larger input box
+				padding: 12px 12px;
+				// Uniform bg colors
+				background-color: #fff;
+				// Uniform height
+				height: initial;
+				// No borders
+				border: 0px none transparent;
+				border-radius: 0;
+			}
+
+			button {
+				width: 50%;
+				margin-top: 1.5em;
+
+				border-radius: 5px;
+				color: #fff;
+				background-color: rgba(24, 115, 203, 0.9);
+				border: 0px solid transparent;
+			}
+		}
+	}
+
+	.section-header {
+		h1 {
+			margin: 0 auto 1em;
 		}
 	}
 }
@@ -56,6 +122,10 @@
 .section {
 	// Mostly defined elsewhere	
 	position: relative;
+}
+
+.section-thin {
+	padding: 0.5em 0;
 }
 
 .fill-height {
@@ -97,7 +167,6 @@
 
 	&:hover {
 		background-color: rgba(220, 220, 220, 0.8);
-		transform: translateY(40%);
 
 		i {
 			margin-top: 20%;
@@ -109,5 +178,25 @@
 		font-size: 3em;
 		margin-top: 15%;
 		transition: margin-top 0.4s;
+	}
+}
+
+// Sizing for the subject icons
+.subject-icons {
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	icon {
+		img {
+			display: block;
+
+			margin: 0 auto 2em;
+
+			max-width: 80%;
+			height: 80px;
+		}
+	}
+	span {
+		font-size: 18px;
 	}
 }

@@ -4,6 +4,7 @@
 		<div class="section quiz-results slate-background">
 			<div class="container">
 				<div class="row text-center">
+					<!--
 					<h1>
 						{{#if thisPlayerWon}}
 						You Win!
@@ -15,6 +16,9 @@
 					<button class="btn btn-lg">
 						Rematch
 					</button>
+					-->
+					<h1>{{howYouDid}}</h1>
+					<h2>{{myScore}} / 8</h2>
 					<button id="play-again-button" class="btn btn-lg">
 						Play Again
 					</button>
@@ -62,15 +66,17 @@
 
 							<!-- Link to Long Explanation -->
 							<!-- Note: must be handled in JS because Iron Router removes the hashes from the URL, meaning anchor links don't work -->
+							<!--
 							<div class="text-center">
 								<button class="btn more-info-button">
 									More Info
 								</button>
 								<button class="btn mark-for-review-button">
-									<!-- TODO: If marked, show "Marked! with a check" -->
+									<!- TODO: If marked, show "Marked! with a check" ->
 									Mark for Review
 								</button>
 							</div>
+							-->
 						</div>
 					</div>
 					{{/each}}
@@ -112,7 +118,7 @@
 					</div>
 					<!-- Long Explanation -->
 					<div class="col-xs-12 col-sm-6">
-						<div class="two-col-container bold">
+						<div class="two-col-container">
 							{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
 						</div>
 					</div>

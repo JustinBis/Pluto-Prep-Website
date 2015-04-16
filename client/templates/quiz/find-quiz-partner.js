@@ -1,3 +1,6 @@
+// The number of desired quiz questions
+var NUM_QUIZ_QUESTIONS = 8;
+
 Template.findQuizPartner.created = function() {
 	// Create the reactive state variables
 	this.progress = new ReactiveVar();
@@ -21,7 +24,7 @@ Template.findQuizPartner.rendered = function() {
 
 	// Store the context
 	var self = this;
-	Meteor.call('createQuiz', subject, 6, function(err, result) {
+	Meteor.call('createQuiz', subject, NUM_QUIZ_QUESTIONS, function(err, result) {
 		if(err)
 		{
 			Session.set('server-error', err.reason);
