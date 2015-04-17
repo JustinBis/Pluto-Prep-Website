@@ -1,3 +1,7 @@
+
+// The color of the submit button for the main form
+@submit-button-color: rgba(24, 115, 203, 0.9);
+
 // Apply these styles only to the app homescreen
 .appHome {
 	color: #fff;
@@ -87,13 +91,17 @@
 		}
 
 		.form-group {
-			input, .input-group-addon {
+			input{
 				// Larger input box
-				padding: 12px 12px;
+				padding-top: 12px;
+				padding-bottom: 12px;
+
 				// Uniform bg colors
 				background-color: #fff;
+
 				// Uniform height
 				height: initial;
+
 				// No borders
 				border: 0px none transparent;
 				border-radius: 0;
@@ -105,7 +113,7 @@
 
 				border-radius: 5px;
 				color: #fff;
-				background-color: rgba(24, 115, 203, 0.9);
+				background-color: @submit-button-color;
 				border: 0px solid transparent;
 			}
 		}
@@ -180,6 +188,31 @@
 		transition: margin-top 0.4s;
 	}
 }
+
+/* Marks a form as one who's inputs will have icons */
+.input-icons {	
+	.input-icon {
+		position: relative;
+
+		input {
+			padding-left: 3em;
+		}
+
+		i {
+			color: #555;
+			position: absolute;
+			left: 1em;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		// Color in the icon when the input is in focus
+		input:focus+i{
+				color: @submit-button-color;
+		}
+	}
+}
+
 
 // Sizing for the subject icons
 .subject-icons {
