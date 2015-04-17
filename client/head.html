@@ -40,6 +40,7 @@
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 		ga('create', 'UA-61514388-1', 'auto');
+		ga('require', 'linkid', 'linkid.js');
 		ga('send', 'pageview');
 	</script>
 
@@ -50,9 +51,9 @@
 		l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
 		l[i].t = +new Date;
 		(s = y.createElement(t)).type = 'text/javascript';
-		a.async=1;s.src = '//web.localytics.com/v3/localytics.js';
+		s.src = '//web.localytics.com/v3/localytics.js';
 		(c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
-		ll('init', '62cf04711377cfa5424fdd2-62898478-e477-11e4-b1d7-009c5fda0a25', {} /* Options */);
+		ll('init', '62cf04711377cfa5424fdd2-62898478-e477-11e4-b1d7-009c5fda0a25', /* Options */{trackPageView: true, domain: 'plutoprep.com'});
 	}(window, document, 'script', 'll');
 	</script>
 </head>
