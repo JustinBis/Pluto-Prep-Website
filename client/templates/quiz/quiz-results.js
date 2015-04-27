@@ -97,7 +97,6 @@ Template.quizResults.helpers({
 		return false;
 	},
 	myScore: function() {
-		// If this player's score is higher than the opponents score, return true
 		var numQuestions = this.questions.length;
 		var p1_score = 0, p2_score = 0;
 		for(var i = 0; i < numQuestions; i++)
@@ -126,7 +125,6 @@ Template.quizResults.helpers({
 		}
 	},
 	opponentScore: function () {
-		// If this player's score is higher than the opponents score, return true
 		var numQuestions = this.questions.length;
 		var p1_score = 0, p2_score = 0;
 		for(var i = 0; i < numQuestions; i++)
@@ -191,6 +189,34 @@ Template.quizResults.helpers({
 		else
 		{
 			return ":(";
+		}
+	},
+	myPoints: function() {
+		var numQuestions = this.questions.length;
+		var p1_points = 0, p2_points = 0;
+		for(var i = 0; i < numQuestions; i++)
+		{
+			var question = this.questions[i];
+			if(question['p1_points'])
+			{
+				p1_points += question['p1_points'];
+			}
+			if(question['p2_points'])
+			{
+				p2_points += question['p2_points'];
+			}
+		}
+
+		// Who are we?
+		if(Meteor.userId() === this.p1_id)
+		{
+			// We're player 1
+			return p1_points;
+		}
+		else if(Meteor.userId() === this.p2_id)
+		{
+			// We're player 2
+			return p2_points;
 		}
 	}
 });

@@ -63,6 +63,8 @@ body {
 
 
 .number-bubble {
+  // So the score can pop out of the number
+  position: relative;
   text-align: center;
   margin-bottom: 1em;
 
@@ -81,6 +83,33 @@ body {
   }
   span.wrong {
     background-color: @wrong-color;
+  }
+
+  .point-bubble {
+    // Cool trick, put the element right next to the number bubble while allowing the number
+    // bubble itself to stay absolutely centered, so this bubble hangs to the right
+    position: absolute;
+
+    margin-left: 1em;
+    font-weight: bold;
+    // Make it look less compressed
+    letter-spacing: 2pt;
+
+    // Animation
+    .lh-animation-name(point-bubble-rise);
+    .lh-animation-iteration-count(1);
+    .lh-animation-timing-function(ease-out);
+    .lh-animation-duration(0.2s);
+
+    span.correct {
+      color: @correct-color;
+    }
+    span.wrong {
+      color: @wrong-color;
+    }
+
+    // Lesshat keyframes must be in one line thanks to LESS syntax being odd
+    .lh-keyframes(~'point-bubble-rise, 0%{ transform: translateY(4em); opacity: 0; } 50%{ transform: translateY(2em); opacity: 1; } 100%{ transform: translateY(0em); opacity: 1; }}');
   }
 }
 

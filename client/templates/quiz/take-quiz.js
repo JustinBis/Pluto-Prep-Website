@@ -296,6 +296,25 @@ Template.questionTemplate.helpers({
 	// returns nothing if this user hasn't yet answered the question
 	wasQuestionAnsweredCorrectly: function() {
 		return didPlayerAnswerCorrectly(getPlayerNumber(), this);
+	},
+	questionPoints: function() {
+		var player = getPlayerNumber();
+		// Get the number of points for this player
+		var points = this[player+'_points'];
+		// Show a plus or minus with the points
+		if(points >= 0)
+		{
+			return "+" + points;
+		}
+		else if(points < 0)
+		{
+			return points;
+		}
+		else
+		{
+			// The player hasn't answered yet
+			return null;
+		}
 	}
 });
 

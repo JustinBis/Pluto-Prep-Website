@@ -99,6 +99,10 @@
 	<div class="col-xs-12 question-container">
 		<div class="number-bubble">
 			<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+			<!-- The point bubble -->
+			{{#if questionPoints}}
+			<span class="point-bubble {{wasQuestionAnsweredCorrectly}}">{{questionPoints}}</span>
+			{{/if}}
 		</div>
 
 		<div class="row">
