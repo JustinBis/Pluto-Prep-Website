@@ -328,9 +328,16 @@ Template.questionTemplate.events({
 	},
 	// Go to the next question
 	"click .next-question-button": function(event) {
-		// What question number is this button on?
-		var number = this.number;
-		number = Number(number) + 1;
-		goToQuestion(number);
+		// Make sure we've answered the question
+		// didPlayAnswerCorrectly will return a string that will eval as true if there has been
+		// any answer at all. If there was no answer, it returns null which evals as false
+		if(didPlayerAnswerCorrectly(getPlayerNumber(), this))
+		{
+			// What question number is this button on?
+			var number = this.number;
+			// Go to the next question
+			number = Number(number) + 1;
+			goToQuestion(number);
+		}
 	}
 });
