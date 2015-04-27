@@ -1,19 +1,11 @@
 // All Meteor publish functions should go here
 
-/*
-// Likely not needed, as we do quiz matching server side
-// Allow access to all quiz seekers
-Meteor.publish('quizSeekers', function() {
-	return QuizSeekers.find({});
-});
-*/
-
 // Publish only the currently active quiz
-Meteor.publish('activeQuiz', function() {
+Meteor.publish('activeQuizzes', function() {
 	// Make sure this person has a user ID (they are logged in)
 	if(this.userId)
 	{
-		return ActiveQuizzes.find({
+		return Quizzes.find({
 			// Only publish those active quizzes for which this user is a player
 			// Make sure this user is one of the players
 			$or: [

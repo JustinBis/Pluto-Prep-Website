@@ -16,7 +16,4 @@ Meteor.startup(function () {
 	}
 	process.env.MAIL_URL = "smtp://" + email.username + ":" + email.password + "@" + email.host + ":" + email.port + "/";
 
-	// Clear the list of quiz seekers
-	QuizSeekers.remove({});
-
 });

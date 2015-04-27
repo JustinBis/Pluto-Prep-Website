@@ -45,7 +45,7 @@ Meteor.methods({
 
 		// Put this quiz into the database
 		// And replace any exisiting quizzes this user has running
-		return ActiveQuizzes.insert(quizData);
+		return Quizzes.insert(quizData);
 	},
 	// Try to match this player with an opponent
 	// will return null if no opponent can be found
@@ -63,14 +63,14 @@ Meteor.methods({
 
 			// Find the quiz where demo1 is p1
 			// Sort descending, meaning give the newest (highest number of seconds since creation) first
-			var demoquiz = ActiveQuizzes.findOne({ p1_id: otherUserId },  {sort: {time_created: -1}});
+			var demoquiz = Quizzes.findOne({ p1_id: otherUserId },  {sort: {time_created: -1}});
 
 			// If there was a quiz, put us in it
 			if(demoquiz)
 			{
 				// demo2 is always p2
 				// Update the demo quiz with demo2's id
-				ActiveQuizzes.update(
+				Quizzes.update(
 					demoquiz._id,
 					{ $set: { p2_id: this.userId } }
 				);
@@ -114,7 +114,7 @@ Meteor.methods({
 		// Time in msec
 		var timeStart = (new Date()).getTime();
 		var timeEnd = timeStart + quiz_time;
-		var numAffected = ActiveQuizzes.update(
+		var numAffected = Quizzes.update(
 			{
 				_id: quiz_id,
 				time_start: { $exists: false },
