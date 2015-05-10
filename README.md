@@ -1,6 +1,10 @@
-Pluto Prep (Quiz App)
+Pluto Prep Website
 ======
 
-Using Meteor as a reactive server and client library.
+This is the core website for Pluto Prep
 
-Depends on the iron:router Meteor package to provide URL routes similar to Rails or Express.
+[Meteor](meteor.com) provides the server architecture, the client templates, and the deployment system
+
+Depends on the iron:router Meteor package to provide URL routes similar to Rails or Express.js
+
+More documentation to come soon
