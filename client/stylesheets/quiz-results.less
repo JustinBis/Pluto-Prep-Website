@@ -107,10 +107,21 @@ body {
     span.wrong {
       color: @wrong-color;
     }
-
-    // Lesshat keyframes must be in one line thanks to LESS syntax being odd
-    .lh-keyframes(~'point-bubble-rise, 0%{ transform: translateY(4em); opacity: 0; } 50%{ transform: translateY(2em); opacity: 1; } 100%{ transform: translateY(0em); opacity: 1; }}');
   }
+}
+
+// Lesshat keyframes must be in one line thanks to LESS syntax being odd
+//.lh-keyframes(~'point-bubble-rise, 0%{ transform: translateY(4em); opacity: 0; } 50%{ transform: translateY(2em); opacity: 1; } 100%{ transform: translateY(0em); opacity: 1; }');
+// Since lesshat caused so many problems, we'll just do the animation classes manually
+@keyframes point-bubble-rise {
+  0%{ .lh-translateY(4em); .lh-opacity(0); }
+  50%{ .lh-translateY(2em); .lh-opacity(1); }
+  100%{ .lh-translateY(0em); .lh-opacity(1); }
+}
+@-webkit-keyframes point-bubble-rise {
+  0%{ .lh-translateY(4em); .lh-opacity(0); }
+  50%{ .lh-translateY(2em); .lh-opacity(1); }
+  100%{ .lh-translateY(0em); .lh-opacity(1); }
 }
 
 /* Makes a thinner spaced out container for two column layouts */
@@ -130,7 +141,6 @@ body {
 
     /* Clear default <ul> padding */
     padding: 0;
-
     list-style: none;
 
     li {
