@@ -1,0 +1,52 @@
+<!-- The page served to the "/newquiz" route -->
+<template name="createDailyQuiz">
+	<!-- Full page container -->
+	<div class="full-page createDailyQuiz slate-background">
+	
+		<!-- The body of the page -->
+		<div id="find-quiz-partner-container" class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center space-20-percent">
+					{{#if quizId}}
+					<h2>Ready?</h2>
+					<button id="take-quiz-button" class="btn btn-lg sign-in-button">
+						Play
+						<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+					</button>
+
+					{{else}}
+
+						{{#unless error}}
+							<h2>{{progress}}</h2>
+							<!-- Spinner Icon -->
+							<div class="spinner">
+								<div class="cube1"></div>
+								<div class="cube2"></div>
+							</div>
+						{{else}}
+							<h2>{{error}}</h2>
+							<h4>Please try loading a different quiz</h4>
+						{{/unless}}
+
+					{{/if}}
+				</div>
+			</div> <!-- /.row -->
+
+			<!-- Debug info
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h3>Debug Info:</h3>
+					Current step:
+					{{#if quizId}}
+						Waiting for user to start
+					{{else}}
+						{{progress}}
+					{{/if}}
+					<br />
+					{{#if error}} Error: {{error}} {{/if}}
+				</div>
+			</div>
+			-->
+		</div> <!-- /.container -->
+	</div> <!-- /.full-page -->
+</template>

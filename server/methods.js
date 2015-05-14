@@ -1,6 +1,6 @@
 // Defines a set of methods to be called by the client
 Meteor.methods({
-	// Will create a new quiz
+	// Create a new quiz
 	createQuiz: function(subject, numQuestions) {
 		// Make sure the user is logged in
 		if(!this.userId)
@@ -138,5 +138,10 @@ Meteor.methods({
 			// Say the time was previously set
 			return {set: false, time_start: timeStart, time_end: timeEnd};
 		}
+	},
+	// Creates a new daily quiz from today's quiz
+	createDailyQuiz: function(subject, numQuestions) {
+		// TODO: implement this
+		return null;
 	}
 });
