@@ -3,19 +3,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 text-center">
-					<h1>Add a daily quiz</h1>
+					<h1>Daily Quiz Admin Page</h1>
 				</div>
 			</div>
 			<!-- Form to add quiz -->
 			<div class="row">
-				<h1>Add a daily quiz</h1>
-				<form>
-					<!-- Start date for the quiz -->
-					<input type="date" name="data-date" />
-					<!-- Question IDs to build the quiz -->
-					<span>Enter question IDs in the order you want them to appear in the quiz. Note, please don't add more than 10 questions.</span>
-					<textarea rows="10" cols="40" name="data-questions"></textarea>
-				</form>
+				<div class="col-xs-12">
+					<h1>Add a daily quiz</h1>
+					<!--<form>-->
+						<!-- Start date for the quiz -->
+						<input type="date" name="data-date" />
+						<!-- Question IDs to build the quiz -->
+						<span>Enter question IDs in the order you want them to appear in the quiz. Note, please don't add more than 10 questions.</span>
+						<textarea rows="10" cols="40" name="data-questions"></textarea>
+						<button class="btn btn-lg save-button">Save</button>
+					<!--</form>-->
+					{{#if saved}}<h2>SAVED!</h2>{{/if}}
+				</div>
 			</div>
 
 			<!-- Show all of the daily quizzes -->

@@ -143,5 +143,14 @@ Meteor.methods({
 	createDailyQuiz: function(subject, numQuestions) {
 		// TODO: implement this
 		return null;
+	},
+	// Adds a daily quiz to the daily quiz collection
+	addDailyQuiz: function(data) {
+		console.log(data);
+		// Make sure this user has admin permission
+
+		// Make sure the expected data is present
+
+		// Add the quiz
 	}
 });
