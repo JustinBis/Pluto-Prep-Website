@@ -27,3 +27,9 @@ Meteor.publish('activeQuizzes', function() {
 Meteor.publish('questions', function() {
 	return Questions.find();
 });
+
+// Push the daily quizzes to the admins so they can edit and add to them
+// TODO: Make this for admins only
+Meteor.publish('dailyQuizzes', function() {
+	return Questions.find();
+});
