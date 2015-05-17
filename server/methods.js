@@ -140,17 +140,50 @@ Meteor.methods({
 		}
 	},
 	// Creates a new daily quiz from today's quiz
-	createDailyQuiz: function(subject, numQuestions) {
+	createDailyQuiz: function(subject) {
 		// TODO: implement this
 		return null;
 	},
 	// Adds a daily quiz to the daily quiz collection
 	addDailyQuiz: function(data) {
-		console.log(data);
 		// Make sure this user has admin permission
+		// TODO: Actually check for admin
+		if(!this.userId)
+		{
+			throw new Meteor.Error("err-not-authenticated", "Requester not logged in");
+		}
 
 		// Make sure the expected data is present
+		check(data, {start_date: Date, question_ids: Array, subject: String});
+		
+		// Make sure the question_ids are all nonempty strings found in the database
+		var checkID = Match.Where(function (id){
+			check(id, String);
+			if(!(id.length > 0))
+			{
+				throw new Meteor.Error("bad-data-format", "Found an empty question ID");
+			}
+			// Make sure this question exists
+			var question = Questions.find(id);
+			if(question.count() !== 1)
+			{
+				throw new Meteor.Error("question-not-found", "Question ID "+id+" could not be found");
+			}
+			// Otherwise we pass
+			return true;
+		});
+		// Run the check on every question ID
+		data.question_ids.forEach(function(el){
+			check(el, checkID);
+		});
+
+		// Make sure the subject is correctly set
+		if(!QuizHelper.isCombinedSubject(data.subject))
+		{
+			throw new Meteor.Error("subject-not-found", "The sent subject, "+data.subject+" wasn't found");
+		}
 
 		// Add the quiz
+		DailyQuizzes.insert(data);
 	}
 });

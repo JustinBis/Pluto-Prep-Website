@@ -2,11 +2,16 @@ Template.adminDailyQuiz.created = function() {
 	// Create the reactive state variables for each question template
 	this.saved = new ReactiveVar();
 	this.saved.set(false);
+	this.errorResponse = new ReactiveVar();
+	this.errorResponse.set(false);
 }
 
 Template.adminDailyQuiz.helpers({
 	saved: function() {
 		return Template.instance().saved.get();
+	},
+	error: function() {
+		return Template.instance().errorResponse.get();
 	}
 });
 
@@ -19,16 +24,16 @@ Template.adminDailyQuiz.events({
 		// Save the context for our callback
 		var self = Template.instance();
 
-		console.log(data);
-
 		// Save the question
 		Meteor.call('addDailyQuiz', data, function(err, result) {
 			if(err)
 			{
-				Session.set('server-error', err.reason);
+				self.errorResponse.set(err.reason);
 				console.error("Error calling updateQuestion: " + err.reason);
+				return;
 			}
 			// Mark it as saved
+			self.errorResponse.set(false);
 			self.saved.set(true);
 		});
 	}
@@ -52,9 +57,13 @@ var getQuizData = function() {
 	// Split the question ids over new lines and trim each question
 	questions = questions.split("\n").map(function(val){return val.trim()});
 
+	// Get the selected subject
+	var subject = $('[name="data-subject"]').val();
+
 	var data = {
-		start_time: time,
-		questions: questions
+		start_date: time,
+		subject: subject,
+		question_ids: questions
 	}
 
 	// Return the compiled data

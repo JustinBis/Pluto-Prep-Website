@@ -12,13 +12,25 @@
 					<h1>Add a daily quiz</h1>
 					<!--<form>-->
 						<!-- Start date for the quiz -->
+						Start date
 						<input type="date" name="data-date" />
+						<br />
+						<!-- Subject for the quiz -->
+						Subject:
+						<select name="data-subject">
+							<option value="cpf">(cpf) Chemical and Physical Foundations of Biological Systems</option>
+							<option value="bbf">(bbf) Biological and Biochemical Foundations of Living Systems</option>
+							<option value="psf">(psf) Psychological, Social, and Biological Foundations of Behavior</option>
+						</select>
+						<br />
 						<!-- Question IDs to build the quiz -->
 						<span>Enter question IDs in the order you want them to appear in the quiz. Note, please don't add more than 10 questions.</span>
+						<br />
 						<textarea rows="10" cols="40" name="data-questions"></textarea>
 						<button class="btn btn-lg save-button">Save</button>
 					<!--</form>-->
 					{{#if saved}}<h2>SAVED!</h2>{{/if}}
+					{{#if error}}<h2>Error: {{error}}</h2>{{/if}}
 				</div>
 			</div>
 
