@@ -141,8 +141,28 @@ Meteor.methods({
 	},
 	// Creates a new daily quiz from today's quiz
 	createDailyQuiz: function(subject) {
-		// TODO: implement this
-		return null;
+		// Make sure the user is logged in
+		if(!this.userId)
+		{
+			throw new Meteor.Error("err-not-authenticated", "Requester not logged in");
+		}
+
+		// Request today's questions
+		// This will validate the passed subject for us
+		var questions = QuizHelper.getDailyQuestions(subject);
+
+		// Build the quiz object
+		var quizData = {
+			type: "daily",
+			subject: subject,
+			p1_id: this.userId,
+			questions: questions,
+			time_created: (new Date()).getTime()
+		}
+
+		// Put this quiz into the database so the user can take it
+		// and return the new quiz id
+		return Quizzes.insert(quizData);
 	},
 	// Adds a daily quiz to the daily quiz collection
 	addDailyQuiz: function(data) {
@@ -155,7 +175,7 @@ Meteor.methods({
 
 		// Make sure the expected data is present
 		check(data, {start_date: Date, question_ids: Array, subject: String});
-		
+
 		// Make sure the question_ids are all nonempty strings found in the database
 		var checkID = Match.Where(function (id){
 			check(id, String);

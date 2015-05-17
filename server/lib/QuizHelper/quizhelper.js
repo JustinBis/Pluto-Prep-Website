@@ -157,6 +157,45 @@ QuizHelper = {
 		{
 			throw new Meteor.Error('invalid-subject', 'Failed to form the combined subjects query for subject "' + subject + '" Error was: + ' + err.message);
 		}
+	},
+	// Get today's daily quiz questions
+	getDailyQuestions: function(subject) {
+		// Make sure the subject is a valid subject
+		check(subject, String);
+		if(!QuizHelper.isCombinedSubject(subject))
+		{
+			throw new Meteor.Error("subject-not-found", "The sent subject, "+subject+" wasn't found");
+		}
+
+		// Request the latest quiz from the DB that has already started in this subject
+		var selector = {
+			subject: subject,
+			start_date: { $lte : new Date() }
+		}
+		var options = {
+			// Order by start_date in descending order
+			sort: ["start_date", "desc"],
+			// Only return the first result
+			limit: 1
+		}
+		var result = DailyQuizzes.findOne(selector, options);
+
+		// Make sure there were actually any questions returned
+		if(!result)
+		{
+			throw new Meteor.Error("daily-quiz-not-found", "No matching daily quiz could be found in the database");
+		}
+
+		// Map the result from question_ids to a Mongo selector that matches any
+		// of the given ids
+		var id_selectors = result.question_ids.map(function(id){
+			return {_id: id}
+		});
+		selector = {$or: id_selectors}
+
+		// Return the found questions
+		return Questions.find(selector).fetch();
 	}
+
 
 }

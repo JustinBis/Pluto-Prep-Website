@@ -46,11 +46,7 @@ var getQuizData = function() {
 	// Select all of the info we need from the page
 
 	// Get the starting date as a date object
-	var time = (new Date($('[name="data-date"]').val()));
-	// Convert the time into the date, 00:00 EST
-	time.setHours(0);
-	time.setMinutes(0);
-	time.setSeconds(0);
+	var time = new Date( $('[name="data-date"]').val() );
 
 	// Get the question ids from the text input box
 	var questions = $('[name="data-questions"]').val().trim();
