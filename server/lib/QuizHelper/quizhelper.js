@@ -193,8 +193,17 @@ QuizHelper = {
 		});
 		selector = {$or: id_selectors}
 
-		// Return the found questions
-		return Questions.find(selector).fetch();
+		// Get the questions
+		var questions = Questions.find(selector).fetch();
+
+		// Add question numbers to the questions
+		for(var i = 0; i < questions.length; i++)
+		{
+			questions[i]['number'] = i + 1;
+		}
+
+		// Return the found questions with the added numbers
+		return questions;
 	}
 
 
