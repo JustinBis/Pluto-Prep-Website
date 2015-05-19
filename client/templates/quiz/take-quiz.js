@@ -20,9 +20,9 @@ var goToQuestion = function(number) {
 
 	var quiz_id = Router.current().params._id;
 	// Is this beyond the final question?
-	if(number > Router.current().data().num_questions)
+	if(number > Router.current().data().questions.length)
 	{
-		// TODO: Mark player 1 as done
+		// TODO: Mark this player as done
 		// Meteor.call('quizPlayerFinished')
 		Router.go('quiz-results', {_id: quiz_id});
 	}
