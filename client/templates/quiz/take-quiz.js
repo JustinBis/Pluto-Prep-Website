@@ -22,8 +22,6 @@ var goToQuestion = function(number) {
 	// Is this beyond the final question?
 	if(number > Router.current().data().questions.length)
 	{
-		// TODO: Mark this player as done
-		// Meteor.call('quizPlayerFinished')
 		Router.go('quiz-results', {_id: quiz_id});
 	}
 	// If the number is negative, we have an error
