@@ -1,0 +1,26 @@
+<template name="adminHome">
+	<div class="full-page adminHome">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h1>Admin Home Page</h1>
+				</div>
+			</div>
+			<!-- Form to add quiz -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Important Links</h2>
+					{{#linkTo route="admin-daily-quiz"}}Daily Quiz Editor{{/linkTo}}
+					<br />
+					<br />
+					<span>The rest are not yet links, but for reference, these are the other URLS:
+					<br />
+					Note that any <code>:symbol</code> should be replaced with a variable term, e.g. <code>:subject</code> can be replaced by <code>GenChem</code></span>
+					<br />
+					<span>Question review: admin/questions/<code>:subject</code></span>
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

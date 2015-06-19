@@ -1,3 +1,4 @@
+"use strict";
 // Defines a set of methods to be called by the client
 Meteor.methods({
 	// Create a new quiz
@@ -5,7 +6,7 @@ Meteor.methods({
 		// Make sure the user is logged in
 		if(!this.userId)
 		{
-			throw new Meteor.Error("err-not-authenticated", "Requester not logged in");
+			throw new Meteor.Error("err-not-authenticated","Requester not logged in");
 		}
 
 		//
@@ -14,10 +15,10 @@ Meteor.methods({
 		// Demo passwords: demo1password and demo2password
 		//
 
-		// If we're a demo user, create a demo quiz that always connects the demo users
+		// If we're a demo user, create a quiz that always connects demo users
 		// Let demo1 create a regular quiz, but demo2 always connects to it
 		var username = Meteor.user().username;
-		if(username == "demo2")
+		if(username === "demo2")
 		{
 			return Meteor.call('findOpponent', subject, numQuestions);
 		}
