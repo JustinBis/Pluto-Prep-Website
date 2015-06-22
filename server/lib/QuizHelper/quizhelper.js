@@ -3,6 +3,7 @@ QuizHelper = {
 	// Will select a set of random questions
 	// Returns an array of object _ids corresponding to questions
 	// Each question 
+
 	findRandomQuestions: function(subject, numQuestions) {
 		check(subject, String);
 
