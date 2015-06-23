@@ -33,3 +33,11 @@ Meteor.publish('questions', function() {
 Meteor.publish('dailyQuizzes', function() {
 	return Questions.find();
 });
+
+// TODO: limit this to current user only?
+Meteor.publish("my_question_tracker", function() {
+	if (this.userId) {
+		return QuestionTracker.find({uid: this.userId});
+	}
+    
+});

@@ -4,7 +4,93 @@
 		<div class="section fill-height home-background">
 			<div class="container vertical-center">
 				<p>hi welcome to the dashboard test page</p>
-				<button type="button" class="btn btn-default" id="totalQuestions">button</button>
+				<div class="row">
+					<div class="col-sm-6">
+						<button type="button" class="btn btn-default" id="total-questions">total questions in bank</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<button type="button" class="btn btn-default" id="ques-comp-total">total questions completed</button>
+					</div>
+				</div>
+				<!-- questions completed by subject-->
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="btn-group"> 
+						    <button class="btn btn-primary status" id="comp-subject">Subject</button>
+						    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+						    </button>
+						    <ul class="dropdown-menu dropdown-inverse" id="dropdown-comp-subject">
+						        <li><a href="#fakelink">Bio</a>
+						        </li>
+						        <li><a href="#fakelink">Orgo</a>
+						        </li>
+						        <li><a href="#fakelink">BioChemB</a>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<button type="button" class="btn btn-default" id="ques-comp-subj">questions completed by subject</button>
+					</div>
+				</div>
+
+				<!-- percent correct -->
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="btn-group"> 
+						    <button class="btn btn-primary status" id="perc-weeks">Weeks</button>
+						    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+						    </button>
+						    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-weeks">
+						        <li><a href="#fakelink">0</a>
+						        </li>
+						        <li><a href="#fakelink">1</a>
+						        </li>
+						        <li><a href="#fakelink">2</a>
+						        </li>
+						        <li><a href="#fakelink">3</a>
+						        </li>
+						        <li><a href="#fakelink">4</a>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="btn-group"> 
+						    <button class="btn btn-primary status" id="perc-subj">Subject</button>
+						    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+						    </button>
+						    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-subj">
+						        <li><a href="#fakelink">Bio</a>
+						        </li>
+						        <li><a href="#fakelink">Orgo</a>
+						        </li>
+						        <li><a href="#fakelink">BioChemB</a>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="btn-group"> 
+						    <button class="btn btn-primary status" id="perc-subc">Subcategory</button>
+						    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+						    </button>
+						    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-subc">
+						        <li><a href="#fakelink">Isomerism</a>
+						        </li>
+						        <li><a href="#fakelink">Eukaryotic Cell</a>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-default" id="perc-cor-total">% Correct</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
