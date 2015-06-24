@@ -52,6 +52,22 @@
 
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1">
+								<h4>Answer</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								<!-- Generated dynamically with javascript. -->
+								<select name="answer" id="answer">
+									<option value=""></option>
+									<option value="a">a</option>
+									<option value="b">b</option>
+									<option value="c">c</option>
+									<option value="d">d</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1">
 								<h4>Short Explanation</h4>
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
@@ -97,92 +113,98 @@
 								<h4>Subcategory (Content Category)</h4>
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
-								<!-- FC 1: Biomolecules -->
-								<select name="subcategories" id="subcategories" style="display:none">
-									<option value=""></option>								
-								</select>
-								<!-- FC 2: Organisms as Systems of Molecules, Cells, and Organs -->
-								<select name="subcategory" id="fc2subc" style="display:none">
+								<!-- Generated dynamically with javascript. -->
+								<select name="subcategories" id="subcategories">
 									<option value=""></option>
-								    <option value="2a">2A: Cellular Structures and their Functions (Eukaryotic)</option>
-								    <option value="2b">2B: Prokaryotes and Viruses</option>
-								    <option value="2c">2C: Cell Division, Differentiation, and Specialization</option>
-								</select>
-								<!-- FC 3: Tissue and Organ Systems -->
-								<select name="subcategory" id="fc3subc" style="display:none">
-									<option value=""></option>
-								    <option value="3a">3A: Nervous and Endocrine Systems</option>
-								    <option value="3b">3B: Other Main Organ Systems</option>
-								</select>
-								<!-- FC 4: Physical Principles -->
-								<select name="subcategory" id="fc4subc" style="display:none">
-									<option value=""></option>
-								    <option value="4a">4A: Mechanics</option>
-								    <option value="4b">4B: Fluids</option>
-								    <option value="4c">4C: Circuits and Electrochemistry</option>
-								    <option value="4d">4D: Light and Sound</option>
-								    <option value="4e">4E: Atomic Structure, Decay, and Behavior</option>
-								</select>
-								<!-- FC 5: Chemical Interactions and Reactions -->
-								<select name="subcategory" id="fc5subc" style="display:none">
-									<option value=""></option>
-								    <option value="5a">5A: Acidity and Solubility in Aqueous Solutions</option>
-								    <option value="5b">5B: Bonding and Intermolecular Forces</option>
-								    <option value="5c">5C: Separations and Purifications</option>
-								    <option value="5d">5D: Biological Molecules: Structure, Function, and Reactivity</option>
-								</select>
-								<!-- FC 6: Perception of and Reaction to the Environment -->
-								<select name="subcategory" id="fc6subc" style="display:none">
-									<option value=""></option>
-									<option value="6a">6A: Sensing the Environment</option>
-								    <option value="6b">6B: Making Sense of the Environment</option>
-								    <option value="6c">6C: Response to the Environment</option>
-								</select>
-								<!-- FC 7: Behavior and its Changes -->
-								<select name="subcategory" id="fc7subc" style="display:none">
-								    <option value=""></option>
-								    <option value="7a">7A: Individual Influences on Behavior</option>
-								    <option value="7b">7B: Social Influences on Behavior</option>
-								    <option value="7c">7C: Changes in Attitude and Behavior</option>
-								</select>
-								<!-- FC 8: Our Indentities and Interactions -->
-								<select name="subcategory" id="fc8subc" style="display:none">
-									<option value=""></option>
-									<option value="8a">8A: Self-Identity</option>
-									<option value="8b">8B: Social Thinking</option>
-									<option value="8c">8C: Social Interactions</option>
-								</select>
-								<!-- FC 9: Culture and Society -->
-								<select name="subcategory" id="fc9subc" style="display:none">
-									<option value=""></option>
-									<option value="9a">9A: Social Structures</option>
-									<option value="9b">9B: Demographics</option>
-								</select>
-								<!-- FC 10: Social Stratification and Resources -->
-								<select name="subcategory" id="fc10subc" style="display:none">
-									<option value=""></option>
-									<option value="10a">10A: Social Inequality</option>
 								</select>
 							</div>
 						</div>
+
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1">
 								<h4>Topic</h4>
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
-								<textarea rows="4" cols="100" name="data-topic"></textarea>
+								<!-- Generated dynamically with javascript. -->
+								<select name="topics" id="topics">
+									<option value=""></option>
+								</select>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1 text-center">
+								<button class="btn btn-lg preview-button">Preview</button>
+							</div>
+							<div class="col-xs-10 col-xs-push-1 text-center">
 								<button class="btn btn-lg save-button">Save</button>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div> <!-- /.row -->
+
+			<!-- Show the preview -->
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h2>Preview (Save to Update)</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1">
+					<div class="admin-question-template">
+						<div class="number-bubble">
+							<span>1</span>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 question-text">
+								{{#mathjax}}{{#markdown}}{{/markdown}}{{/mathjax}}
+							</div>
+						</div>
+
+						<div class="row">
+							<ul class="list-inline list-group question-answers">
+								<li class="col-xs-10 col-xs-push-1 list-group-item">
+									<!-- Use <answer> just to seperate the text easily so we can select it for saving later -->
+									<span>A</span><answer>{{#mathjax}}{{#markdown}}{{a}}{{/markdown}}{{/mathjax}}</answer>
+								</li>
+								<li class="col-xs-10 col-xs-push-1 list-group-item">
+									<span>B</span><answer>{{#mathjax}}{{#markdown}}{{b}}{{/markdown}}{{/mathjax}}</answer>
+								</li>
+								<div class="clearfix visible-sm-block"></div>
+								<li class="col-xs-10 col-xs-push-1 list-group-item">
+									<span>C</span><answer>{{#mathjax}}{{#markdown}}{{c}}{{/markdown}}{{/mathjax}}</answer>
+									</li>
+								<li class="col-xs-10 col-xs-push-1 list-group-item">
+									<span>D</span><answer>{{#mathjax}}{{#markdown}}{{d}}{{/markdown}}{{/mathjax}}</answer>
+								</li>
+							</ul>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Short Explanation</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Long Explanation</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
+
+							</div>
+						</div>
+					</div>
+				</div> <!-- /.col-xs-10 -->
+			</div> <!-- /.row -->
+
 		</div>
 	</div>
 </template>
