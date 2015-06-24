@@ -12,7 +12,6 @@ QuizHelper = {
 		if(QuizHelper.isCombinedSubject(subject))
 		{
 			query = QuizHelper.getCombinedSubjectsQuery(subject);
-			console.log(query);
 		}
 		// Otherwise just select from this specific subject
 		else

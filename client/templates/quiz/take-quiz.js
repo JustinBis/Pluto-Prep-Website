@@ -316,6 +316,11 @@ Template.questionTemplate.helpers({
 	}
 });
 
+
+///////////////////////
+// Question Template //
+///////////////////////
+
 // Event handlers for the question templates
 Template.questionTemplate.events({
 	// Check answers on the server
