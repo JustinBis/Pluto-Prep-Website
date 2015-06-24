@@ -52,11 +52,6 @@ var getEditedQuestion = function(questionId) {
 		d: $('#'+questionId+' [data-answer="d"]').val().trim(),
 		short_explanation: $('#'+questionId+' [name="data-short-explanation"]').val().trim(),
 		long_explanation: $('#'+questionId+' [name="data-long-explanation"]').val().trim(),
-
-		// 2 new fields added
-		
-		fc: $('#'+questionId+' [name="data-fc"]').val().trim(),
-		cc: $('#'+questionId+' [name="data-cc"]').val().trim()
 	}
 
 	// Return the compiled data
