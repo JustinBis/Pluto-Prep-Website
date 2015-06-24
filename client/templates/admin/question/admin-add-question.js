@@ -23,6 +23,13 @@ var getQuestion = function(questionId) {
 	return data;
 }
 
+// Grabs question data for preview.
+Template.adminAddQuestion.helpers({
+	getData : function() {
+		return Session.get("data");
+	},
+})
+
 Template.adminAddQuestion.events({
 	// Save button
 	'click .save-button': function () {
@@ -37,19 +44,21 @@ Template.adminAddQuestion.events({
 			{
 				Session.set('server-error', err.reason);
 				console.error("Error calling addQuestion: " + err.reason);
-				alert("Error calling addQuestion: " + err.reason);
-			}
 
+				// Alert the admin! So they don't save a poopy question.
+				alert(err.reason);
+			}
+			else
+			{
+				alert("Question saved!");
+			}
 		});
 	},
 	
-	// Preview button
+	// Preview button, set proper session values to be grabbed on html doc
 	'click .preview-button': function() {
 		var data = getQuestion();
-
-		console.log(data);
-
-		// $(".question-text").text("{{#mathjax}}{{#markdown}}"+data.question+"{{/markdown}}{{/mathjax}}")
+		Session.set("data", data);
 	},
 
 	// Handling when admin changes subject
