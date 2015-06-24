@@ -133,6 +133,7 @@ Template.adminAddQuestion.events({
             break;
 		}
 	},
+	
 	// Handling when admin changes subcategory
 	'change #subcategories' : function(e) {
 		var subcategory = $('#subcategories :selected').val();

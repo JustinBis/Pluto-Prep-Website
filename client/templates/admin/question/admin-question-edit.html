@@ -1,7 +1,7 @@
 <!-- The page served to the "/admin/question/:id/edit" route -->
 <template name="adminQuestionEdit">
 	<!-- Full page container -->
-	<div class="full-page takeQuiz slate-background">
+	<div class="full-page takeQuiz adminAddQuestion slate-background">
 
 		{{#if this}}
 		<div class="container">
@@ -81,6 +81,55 @@
 							</div>
 						</div>
 
+						<!-- Select subject, determines values for subcategory. -->
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1">
+								<h4>Subject (Foundational Concept)</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								<select name="subject" id="subject">
+									<!-- Display question's original subject as first option -->
+									<option value="{{subject}}">{{subject}}</option>
+									<option value="fc1">FC 1: Biomolecules</option>
+								    <option value="fc2">FC 2: Organisms as Systems of Molecules, Cells, and Organs</option>
+								    <option value="fc3">FC 3: Tissue and Organ Systems</option>
+								    <option value="fc4">FC 4: Physical Principles</option>
+								    <option value="fc5">FC 5: Chemical Interactions and Reactions</option>
+								    <option value="fc6">FC 6: Perception of and Reaction to the Environment</option>
+								    <option value="fc7">FC 7: Behavior and its Changes</option>
+								    <option value="fc8">FC 8: Our Indentities and Interactions</option>
+								    <option value="fc9">FC 9: Culture and Society</option>
+								    <option value="fc10">FC 10: Social Stratification and Resources</option>
+								</select>
+							</div>
+						</div>
+						<!-- Select subcategory, determines values for topics. -->
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1">
+								<h4>Subcategory (Content Category)</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								<!-- Generated dynamically with javascript. -->
+								<select name="subcategories" id="subcategories">
+									<!-- Display question's original subcategory as first option -->
+									<option value="{{subcategory}}">{{subcategory}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1">
+								<h4>Topic</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								<!-- Generated dynamically with javascript. -->
+								<select name="topics" id="topics">
+									<!-- Display question's original subject as first option -->
+									<option value="">{{topic}}</option>
+								</select>
+							</div>
+						</div>
+
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1 text-center">
 								<button class="btn btn-lg save-button">Save</button>
@@ -147,9 +196,46 @@
 							</div>
 							<div class="col-xs-10 col-xs-push-1">
 								{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
-
 							</div>
 						</div>
+
+						<!-- Admin can view subject/subcategory/topic and answer of current question -->
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Subject</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{subject}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Subcategory</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{subcategory}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Topic</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{topic}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1 text-center">
+								<h4>Answer</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{answer}}
+							</div>
+						</div>
+
 					</div>
 				</div> <!-- /.col-xs-10 -->
 			</div> <!-- /.row -->

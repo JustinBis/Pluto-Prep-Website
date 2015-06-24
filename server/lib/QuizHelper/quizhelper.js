@@ -106,28 +106,49 @@ QuizHelper = {
 		return indicies;
 	},
 	// The combined subjects and their associated mappings
+	// Search for both the new subjects and old subjects (admins 
+	// are still reorganizing questions).
 	// TODO: include the subjects' real percentages
 	_combinedSubjects: {
 		// Chemical and Physical Foundations of Biological Systems 
 		cpf: {
+			// Old subjects
 			'Orgo': 1,
 			'GenChem': 1,
 			'BioChemP': 1,
 			'BioChemBP': 1,
-			'Phys': 1
+			'Phys': 1,
+
+			// New subjects
+			'fc4': 1,
+			'fc5': 1
 		},
 		// Biological and Biochemical Foundations of Living Systems
 		bbf: {
+			// Old subjects
 			'Bio': 1,
 			'BioN': 1,
 			'BioChemB': 1,
-			'BioChemBP': 1
+			'BioChemBP': 1,
+
+			// New subjects
+			'fc1': 1,
+			'fc2': 1,
+			'fc3': 1
 		},
 		// Psychological, Social, and Biological Foundations of Behavior
 		psf: {
+			// Old subjects
 			'BioN': 1,
 			'Psy': 1,
 			'Soc': 1,
+
+			// New subjects
+			'fc6': 1,
+			'fc7': 1,
+			'fc8': 1,
+			'fc9': 1,
+			'fc10': 1
 		}
 	},
 	// Is this subject on the list of combined subjects?
