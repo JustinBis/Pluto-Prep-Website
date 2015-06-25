@@ -1,3 +1,7 @@
+Template.adminAddQuestion.created = function() {
+	// Create the reactive state variables for each question template
+	this.question = new ReactiveVar();
+}
 /*
  * Grabs all of the question fields from a question template
  * and returns them as an object
@@ -26,7 +30,7 @@ var getQuestion = function(questionId) {
 // Grabs question data for preview.
 Template.adminAddQuestion.helpers({
 	getData : function() {
-		return Session.get("data");
+		return Template.instance().question.get();
 	},
 })
 
@@ -46,7 +50,7 @@ Template.adminAddQuestion.events({
 				console.error("Error calling addQuestion: " + err.reason);
 
 				// Alert the admin! So they don't save a poopy question.
-				alert(err.reason);
+				alert("ERROR! One of the fields is empty, or there is an invalid subject/subcategory/topic.");
 			}
 			else
 			{
@@ -58,7 +62,7 @@ Template.adminAddQuestion.events({
 	// Preview button, set proper session values to be grabbed on html doc
 	'click .preview-button': function() {
 		var data = getQuestion();
-		Session.set("data", data);
+		Template.instance().question.set(data);
 	},
 
 	// Handling when admin changes subject

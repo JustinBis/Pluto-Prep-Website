@@ -34,10 +34,16 @@ Meteor.publish('dailyQuizzes', function() {
 	return Questions.find();
 });
 
-// TODO: limit this to current user only?
-Meteor.publish("my_question_tracker", function() {
+// Publish only answered questions for current user.
+Meteor.publish("myQuestionTracker", function() {
 	if (this.userId) {
 		return QuestionTracker.find({uid: this.userId});
 	}
-    
+});
+
+// Publish only quizzes completed by current user.
+Meteor.publish("myQuizzes", function() {
+	if (this.userId) {
+		return Quizzes.find({p1_id: this.userId});
+	}
 });

@@ -1,11 +1,8 @@
-if (Meteor.isClient) {
-	Meteor.subscribe("my_question_tracker");
-};
-
 Template.appDashboard.events({
 	// Total questions
 	'click #total-questions': function (e) {
 		console.log(UserInteraction.totalQuestions());
+		console.log(UserInteraction.quizScoreTotal());
 	},
 	// Total questions complete
 	'click #ques-comp-total': function (e) {
