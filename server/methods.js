@@ -112,6 +112,9 @@ Meteor.methods({
 		// Select the quiz and make sure that the user is one of the players
 		// Also make sure the quiz hasn't started yet with $exists
 
+		// here! timeEnd is the start time plus a constant? change this?!?!??!
+
+
 		// Time in msec
 		var timeStart = (new Date()).getTime();
 		var timeEnd = timeStart + quiz_time;

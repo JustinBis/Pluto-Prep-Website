@@ -4,10 +4,6 @@ var QUIZ_TIME = 6 * 60 * 1000;
 // Question Time (30 seconds)
 var QUES_TIME = 30000;
 
-// Variable to store question times
-var startTimes = [];
-var quizStartTime = 0;
-
 /*
  *
  * Common Quiz Helper Functions
@@ -137,6 +133,9 @@ var didPlayerAnswerCorrectly = function(player, question)
 Template.takeQuiz.created = function() {
 	// Create the reactive state variables
 	this.quizTimeRemaining = new ReactiveVar();
+
+	// Reactive variable for when a question starts.
+	Session.set("quesStartTime", (new Date()).getTime());
 }
 
 // When the quiz template is rendered, start the quiz timer on the server
@@ -161,10 +160,6 @@ Template.takeQuiz.rendered = function(){
 
 			console.log("Quiz started at time " + result.time_start);
 			console.log(result);
-
-
-			// ADDED THIS!!!!!!!!!! TO CHECK FOR WHEN QUIZ STARTS IN SECONDS!!!!!
-			quizStartTime = result.time_start / 1000;
 
 			var localTime = (new Date()).getTime();
 			console.log("Local time " + localTime);
@@ -351,24 +346,11 @@ Template.questionTemplate.events({
 		var letter = $(event.currentTarget).attr("data-answer")
 		// Get the id of this question
 		var question_id = this._id;
-		
-		// Calculate time it took to answer this question
-		var currTime = (new Date()).getTime() / 1000; //Current time in seconds
-		var questionTime = 0;
 
-		// If we're on the first question, find difference between the time
-		// this question was answered and when the quiz started.
-		if (startTimes.length == 0) {
-			questionTime = currTime - quizStartTime;
-			console.log("question time in seconds = " + questionTime);
-		// Otherwise, grab starting time of this current question.
-		} else {
-			questionTime = currTime - startTimes[startTimes.length-1];
-			console.log("question time in seconds = " + questionTime);
-		}
+		console.log("question start time = " + Session.get("quesStartTime"));
 
 		// Ask the server if this is the right answer
-		Meteor.call('checkQuizAnswer', quiz_id, question_id, letter, questionTime, function(err, result) {
+		Meteor.call('checkQuizAnswer', quiz_id, question_id, letter, Session.get("quesStartTime"), function(err, result) {
 			if(err)
 			{
 				Session.set('serverError', err.reason);
@@ -390,10 +372,8 @@ Template.questionTemplate.events({
 		// any answer at all. If there was no answer, it returns null which evals as false
 		if(didPlayerAnswerCorrectly(getPlayerNumber(), this))
 		{
-			// When the next button is clicked, store the start time for the next question.
-			var currTime = (new Date()).getTime() / 1000;
-			startTimes.push(currTime)
-
+			// When the next button is clicked, reset the start time for the question.
+			Session.set("quesStartTime", (new Date()).getTime());
 			// What question number is this button on?
 			var number = this.number;
 			// Go to the next question
