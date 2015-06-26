@@ -33,3 +33,17 @@ Meteor.publish('questions', function() {
 Meteor.publish('dailyQuizzes', function() {
 	return Questions.find();
 });
+
+// Publish only answered questions for current user.
+Meteor.publish("myQuestionTracker", function() {
+	if (this.userId) {
+		return QuestionTracker.find({uid: this.userId});
+	}
+});
+
+// Publish only quizzes completed by current user.
+Meteor.publish("myQuizzes", function() {
+	if (this.userId) {
+		return Quizzes.find({p1_id: this.userId});
+	}
+});

@@ -1,41 +1,68 @@
-Template.adminQuestionEdit.created = function() {
+Template.adminAddQuestion.created = function() {
 	// Create the reactive state variables for each question template
-	this.saved = new ReactiveVar();
-	this.saved.set(false);
+	this.question = new ReactiveVar();
+}
+/*
+ * Grabs all of the question fields from a question template
+ * and returns them as an object
+ */
+var getQuestion = function(questionId) {
+	// Select all of the info we need from the page
+	console.log("in get question");
+	var data = {
+		question: $('[name="data-question"]').val().trim(),
+		a: $('[data-answer="a"]').val().trim(),
+		b: $('[data-answer="b"]').val().trim(),
+		c: $('[data-answer="c"]').val().trim(),
+		d: $('[data-answer="d"]').val().trim(),
+		answer: $('#answer :selected').val(), 
+		short_explanation: $('[name="data-short-explanation"]').val().trim(),
+		long_explanation: $('[name="data-long-explanation"]').val().trim(),
+		subject: $('#subject :selected').val(),
+		subcategory: $('#subcategories :selected').val(),
+		topic: $('#topics :selected').text()
+	};
+
+	// Return the compiled data
+	return data;
 }
 
-Template.adminQuestionEdit.helpers({
-	saved: function() {
-		return Template.instance().saved.get();
+// Grabs question data for preview.
+Template.adminAddQuestion.helpers({
+	getData : function() {
+		return Template.instance().question.get();
 	},
-	nonreactiveQuestion: function() {
-		return Questions.findOne({_id: Template.instance().data._id}, {reactive: false});
-	}
-});
+})
 
-Template.adminQuestionEdit.events({
-	// When the save button is clicked, switch back to the original
-	"click .save-button": function () {
+Template.adminAddQuestion.events({
+	// Save button
+	'click .save-button': function () {
 		// Get the question data
-		var questionId = Template.instance().data._id;
-		var data = getEditedQuestion(questionId);
-
-		// Save the context for our callback
-		var self = Template.instance();
+		var data = getQuestion();
 
 		console.log(data);
 
 		// Save the question
-		Meteor.call('updateQuestion', questionId, data, function(err, result) {
+		Meteor.call('addQuestion', data, function(err, result) {
 			if(err)
 			{
 				Session.set('server-error', err.reason);
-				console.error("Error calling updateQuestion: " + err.reason);
-				alert(err.reason);
+				console.error("Error calling addQuestion: " + err.reason);
+
+				// Alert the admin! So they don't save a poopy question.
+				alert("ERROR! One of the fields is empty, or there is an invalid subject/subcategory/topic.");
 			}
-			// Mark it as saved
-			self.saved.set(true);
+			else
+			{
+				alert("Question saved!");
+			}
 		});
+	},
+	
+	// Preview button, set proper session values to be grabbed on html doc
+	'click .preview-button': function() {
+		var data = getQuestion();
+		Template.instance().question.set(data);
 	},
 
 	// Handling when admin changes subject
@@ -110,7 +137,7 @@ Template.adminQuestionEdit.events({
             break;
 		}
 	},
-
+	
 	// Handling when admin changes subcategory
 	'change #subcategories' : function(e) {
 		var subcategory = $('#subcategories :selected').val();
@@ -373,30 +400,3 @@ Template.adminQuestionEdit.events({
 		}
 	}
 });
-
-/*
- * Grabs all of the editibale question fields from a question template
- * and returns them as an object
- */
-var getEditedQuestion = function(questionId) {
-	// Select all of the info we need from the page
-
-	var data = {
-		question: $('#'+questionId+' [name="data-question"]').val().trim(),
-		a: $('#'+questionId+' [data-answer="a"]').val().trim(),
-		b: $('#'+questionId+' [data-answer="b"]').val().trim(),
-		c: $('#'+questionId+' [data-answer="c"]').val().trim(),
-		d: $('#'+questionId+' [data-answer="d"]').val().trim(),
-		short_explanation: $('#'+questionId+' [name="data-short-explanation"]').val().trim(),
-		long_explanation: $('#'+questionId+' [name="data-long-explanation"]').val().trim(),
-
-		// New fields to grab
-
-		subject: $('#subject :selected').val(),
-		subcategory: $('#subcategories :selected').val(),
-		topic: $('#topics :selected').text()
-	}
-
-	// Return the compiled data
-	return data;
-}
