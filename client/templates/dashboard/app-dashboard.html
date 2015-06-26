@@ -1,0 +1,180 @@
+<template name="appDashboard">
+	<div class="full-page adminAddQuestion appDashboard slate-background">
+		<div class="container">
+			<div class="row">
+				<h2 style="text-align:center">{{getUsername}}'s Dashboard Test Page</h2>
+			</div>			
+
+			<!-- User Data Container -->
+			<div class="row">
+
+				<!-- Quiz Data -->
+				<div class="col-sm-6">
+					<h4 style="text-align:center">Quiz Data</h4>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Choose a Section:</h5>
+						</div>
+					</div>
+					<div class="row" style="text-align:center">
+						<select name="quiz-sect" id="quiz-sect">
+							<option value="placeholder"></option>
+							<option value="">Overall</option>
+							<option value="cpf">Chemical and Physical Foundations</option>
+							<option value="bbf">Biological and Biochemical Foundations</option>
+							<option value="psf">Psychological, Social and Biological Foundations</option>
+						</select>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Average Time Per Quiz:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quizTimeAverage"></h5>
+						</div>		
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Total Score:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quizScoreTotal"></h5>
+						</div>		
+					</div>
+
+				</div> <!-- /quiz data -->
+
+				<!-- Question Data -->
+				<div class="col-sm-6">
+					<h4 style="text-align:center">Question Data</h4>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Choose a Subject:</h5>
+						</div>
+					</div>
+					<div class="row" style="text-align:center">
+						<select name="ques-subj" id="ques-subj">
+							<option value="placeholder"></option>
+							<option value="">Overall</option>
+							<option value="BioN">BioN</option>
+							<option value="Psy">Psy</option>
+							<option value="Bio">Bio</option>
+							<option value="Phys">Phys</option>
+							<option value="Soc">Soc</option>
+							<option value="Orgo">Orgo</option>
+							<option value="BioChemB">BioChemB</option>
+							<option value="GenChem">GenChem</option>
+							<option value="BioChemP">BioChemP</option>
+							<option value="BioChemBP">BioChemBP</option>
+						</select>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Total Questions Completed:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="questionsCompTotal"></h5>
+						</div>
+					</div> 
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Average Time Per Question:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quesTimeAverage"></h5>
+						</div>
+					</div>
+				</div><!-- /question data -->
+			</div> <!-- /user data container -->
+
+
+			<!-- questions completed by subject-->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="btn-group"> 
+					    <button class="btn btn-primary status" id="comp-subject">Subject</button>
+					    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+					    </button>
+					    <ul class="dropdown-menu dropdown-inverse" id="dropdown-comp-subject">
+					    	<li><a href="#fakelink">Subject</a>
+					        </li>
+					        <li><a href="#fakelink">Bio</a>
+					        </li>
+					        <li><a href="#fakelink">Orgo</a>
+					        </li>
+					        <li><a href="#fakelink">BioChemB</a>
+					        </li>
+					    </ul>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<button type="button" class="btn btn-default" id="ques-comp-subj">questions completed by subject</button>
+				</div>
+			</div>
+
+			<!-- percent correct -->
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="btn-group"> 
+					    <button class="btn btn-primary status" id="perc-weeks">Weeks</button>
+					    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+					    </button>
+					    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-weeks">
+					        <li><a href="#fakelink">0</a>
+					        </li>
+					        <li><a href="#fakelink">1</a>
+					        </li>
+					        <li><a href="#fakelink">2</a>
+					        </li>
+					        <li><a href="#fakelink">3</a>
+					        </li>
+					        <li><a href="#fakelink">4</a>
+					        </li>
+					    </ul>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="btn-group"> 
+					    <button class="btn btn-primary status" id="perc-subj">Subject</button>
+					    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+					    </button>
+					    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-subj">
+					    	<li><a href="#fakelink">Subject</a>
+					        </li>
+					        <li><a href="#fakelink">Bio</a>
+					        </li>
+					        <li><a href="#fakelink">Orgo</a>
+					        </li>
+					        <li><a href="#fakelink">BioChemB</a>
+					        </li>
+					    </ul>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="btn-group"> 
+					    <button class="btn btn-primary status" id="perc-subc">Subcategory</button>
+					    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+					    </button>
+					    <ul class="dropdown-menu dropdown-inverse" id="dropdown-perc-subc">
+					    	<li><a href="#fakelink">Subcategory</a>
+					        </li>
+					        <li><a href="#fakelink">Isomerism</a>
+					        </li>
+					        <li><a href="#fakelink">Eukaryotic Cell</a>
+					        </li>
+					    </ul>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-default" id="perc-cor-total">% Correct</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</template>
