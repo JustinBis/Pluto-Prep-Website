@@ -1,18 +1,98 @@
 <template name="appDashboard">
-	<div class="full-page takeQuiz adminAddQuestion appDashboard slate-background">
+	<div class="full-page adminAddQuestion appDashboard slate-background">
 		<div class="container">
-			<h4>Dashboard Test Page</h4>
 			<div class="row">
-				<div class="col-sm-6">
-					<button type="button" class="btn btn-default" id="total-questions">total questions in bank</button>
-				</div>
-			</div>
-			
+				<h2 style="text-align:center">{{getUsername}}'s Dashboard Test Page</h2>
+			</div>			
+
+			<!-- User Data Container -->
 			<div class="row">
+
+				<!-- Quiz Data -->
 				<div class="col-sm-6">
-					<button type="button" class="btn btn-default" id="ques-comp-total">total questions completed</button>
-				</div>
-			</div>
+					<h4 style="text-align:center">Quiz Data</h4>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Choose a Section:</h5>
+						</div>
+					</div>
+					<div class="row" style="text-align:center">
+						<select name="quiz-sect" id="quiz-sect">
+							<option value="placeholder"></option>
+							<option value="">Overall</option>
+							<option value="cpf">Chemical and Physical Foundations</option>
+							<option value="bbf">Biological and Biochemical Foundations</option>
+							<option value="psf">Psychological, Social and Biological Foundations</option>
+						</select>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Average Time Per Quiz:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quizTimeAverage"></h5>
+						</div>		
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Total Score:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quizScoreTotal"></h5>
+						</div>		
+					</div>
+
+				</div> <!-- /quiz data -->
+
+				<!-- Question Data -->
+				<div class="col-sm-6">
+					<h4 style="text-align:center">Question Data</h4>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Choose a Subject:</h5>
+						</div>
+					</div>
+					<div class="row" style="text-align:center">
+						<select name="ques-subj" id="ques-subj">
+							<option value="placeholder"></option>
+							<option value="">Overall</option>
+							<option value="BioN">BioN</option>
+							<option value="Psy">Psy</option>
+							<option value="Bio">Bio</option>
+							<option value="Phys">Phys</option>
+							<option value="Soc">Soc</option>
+							<option value="Orgo">Orgo</option>
+							<option value="BioChemB">BioChemB</option>
+							<option value="GenChem">GenChem</option>
+							<option value="BioChemP">BioChemP</option>
+							<option value="BioChemBP">BioChemBP</option>
+						</select>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Total Questions Completed:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="questionsCompTotal"></h5>
+						</div>
+					</div> 
+
+					<div class="row">
+						<div class="col-sm-6">
+							<h5>Average Time Per Question:</h5>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="data" id="quesTimeAverage"></h5>
+						</div>
+					</div>
+				</div><!-- /question data -->
+			</div> <!-- /user data container -->
+
+
 			<!-- questions completed by subject-->
 			<div class="row">
 				<div class="col-sm-6">

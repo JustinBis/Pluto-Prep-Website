@@ -1,15 +1,64 @@
-Template.appDashboard.events({
-	// Total questions
-	'click #total-questions': function (e) {
-		console.log(UserInteraction.totalQuestions());
-		console.log(UserInteraction.quizScoreTotal());
-	},
-	// Total questions complete
-	'click #ques-comp-total': function (e) {
-		console.log(UserInteraction.questionsCompTotal());
+Template.appDashboard.helpers({
+	getUsername: function() {
+		if (Meteor.user().profile.username !== undefined) {
+			return Meteor.user().profile.username;
+		}
 	},
 
-	// QUESTIONS COMPLETE
+	///////////////////
+	// Question Data //
+	///////////////////
+
+	totalQuestions: function () { 
+		if (UserInteraction.totalQuestions() !== undefined) {
+			return UserInteraction.totalQuestions();
+		}
+	},
+	questionsCompTotal: function () {
+		if (UserInteraction.questionsCompTotal() !== undefined) {
+			return UserInteraction.questionsCompTotal();
+		}
+	},
+	quesTimeAverage: function () {
+		if (UserInteraction.quesTimeAverage() !== undefined) {
+			return UserInteraction.quesTimeAverage();	
+		}
+	},
+
+	///////////////
+	// Quiz Data //
+	///////////////
+
+	quizTimeAverage: function () {
+		if (UserInteraction.quizTimeAverage() !== undefined) {
+			return UserInteraction.quizTimeAverage();
+		}
+	},
+
+	quizScoreTotal: function () {
+		if ($('#quiz-sect').text() === "Overall") {
+			if (UserInteraction.quizScoreTotal() !== undefined) {
+			return UserInteraction.quizScoreTotal();
+			}	
+		}
+	}
+
+});
+
+Template.appDashboard.events({
+
+	// When user chooses a section for quizzes, grab proper
+	'change #quiz-sect' : function (e){
+		var section = $('#quiz-sect :selected').val();
+		$('#quizTimeAverage').text(UserInteraction.quizTimeAverage(section));
+		$('#quizScoreTotal').text(UserInteraction.quizScoreTotal(section));
+	},
+
+	'change #ques-subj' : function (e){
+		var subject = $('#ques-subj :selected').val();
+		$('#questionsCompTotal').text(UserInteraction.questionsCompTotal(subject));
+		$('#quesTimeAverage').text(UserInteraction.quesTimeAverage(subject));
+	},
 
 	// Dropdown value of subject for complete by subject
 	'click #dropdown-comp-subject': function(e) {
