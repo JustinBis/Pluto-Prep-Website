@@ -134,7 +134,7 @@ Template.takeQuiz.created = function() {
 	// Create the reactive state variables
 	this.quizTimeRemaining = new ReactiveVar();
 
-	// Reactive variable for when a question starts.
+	// Store when a question starts (starting at when the quiz starts).
 	Session.set("quesStartTime", (new Date()).getTime());
 }
 
@@ -185,16 +185,6 @@ Template.takeQuiz.rendered = function(){
 				// Call the quizFinished function (registered in template creation)
 				this_template.quizFinished();
 			}
-		}, 1000);
-
-
-		// Set time for first question
-		this.currQuesTime.set(QUES_TIME);
-
-		var ques_interval = Meteor.setInterval(function() {
-			this_template.currQuesTime.set(
-				this_template.currQuesTime.get() - 1000
-			);
 		}, 1000);
 	}
 }
@@ -349,7 +339,8 @@ Template.questionTemplate.events({
 
 		console.log("question start time = " + Session.get("quesStartTime"));
 
-		// Ask the server if this is the right answer
+		// Ask the server if this is the right answer, pass in the time of when
+		// this question was answered
 		Meteor.call('checkQuizAnswer', quiz_id, question_id, letter, Session.get("quesStartTime"), function(err, result) {
 			if(err)
 			{
@@ -378,9 +369,7 @@ Template.questionTemplate.events({
 			var number = this.number;
 			// Go to the next question
 			number = Number(number) + 1;
-			if (number > Router.current().data().questions.length) {
-				startTimes = [];
-			}
+
 			goToQuestion(number);
 		}
 	}

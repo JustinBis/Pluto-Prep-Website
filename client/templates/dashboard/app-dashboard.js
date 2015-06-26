@@ -57,7 +57,7 @@ Template.appDashboard.events({
 	'change #ques-subj' : function (e){
 		var subject = $('#ques-subj :selected').val();
 		$('#questionsCompTotal').text(UserInteraction.questionsCompTotal(subject));
-		$('#quesTimeAverage').text(UserInteraction.quesTimeAverage(subject));
+		$('#quesTimeAverage').text(UserInteraction.quesTimeAverage(5, subject));
 	},
 
 	// Dropdown value of subject for complete by subject
