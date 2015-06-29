@@ -20,7 +20,8 @@ var getQuestion = function(questionId) {
 		long_explanation: $('[name="data-long-explanation"]').val().trim(),
 		subject: $('#subject :selected').val(),
 		subcategory: $('#subcategories :selected').val(),
-		topic: $('#topics :selected').text()
+		topic: $('#topics :selected').text(),
+		premium: $('#premium').is(':checked')
 	};
 
 	// Return the compiled data

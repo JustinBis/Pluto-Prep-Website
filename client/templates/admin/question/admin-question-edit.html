@@ -130,6 +130,21 @@
 							</div>
 						</div>
 
+						<!-- Premium Question Check -->
+
+						<div class="row">
+							<div class="col-xs-10 col-xs-push-1">
+								<h4>Premium</h4>
+							</div>
+							<div class="col-xs-10 col-xs-push-1">
+								{{#if premium}}
+								<input id="premium" type="checkbox" name="my-checkbox" checked>
+								{{else}}
+								<input id="premium" type="checkbox" name="my-checkbox">
+								{{/if}}
+							</div>
+						</div>
+
 						<div class="row">
 							<div class="col-xs-10 col-xs-push-1 text-center">
 								<button class="btn btn-lg save-button">Save</button>

@@ -10,6 +10,11 @@ Template.adminQuestionEdit.helpers({
 	},
 	nonreactiveQuestion: function() {
 		return Questions.findOne({_id: Template.instance().data._id}, {reactive: false});
+	},
+	premium: function() {
+		var data = Questions.findOne({_id: Template.instance().data._id}, {reactive: false});
+		if (data && data.premium)
+            return data.premium;
 	}
 });
 
@@ -395,7 +400,8 @@ var getEditedQuestion = function(questionId) {
 
 		subject: $('#subject :selected').val(),
 		subcategory: $('#subcategories :selected').val(),
-		topic: $('#topics :selected').text()
+		topic: $('#topics :selected').text(),
+		premium: $('#premium').is(':checked')
 	}
 
 	// Return the compiled data
