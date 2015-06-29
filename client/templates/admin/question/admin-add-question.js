@@ -227,6 +227,7 @@ Template.adminAddQuestion.events({
 				$("#topics").append("<option value=\"\">Repiratory System</option>");
 				$("#topics").append("<option value=\"\">Circulatory System</option>");
 				$("#topics").append("<option value=\"\">Lymphatic System</option>");
+				$("#topics").append("<option value=\"\">Immune System</option>");
 				$("#topics").append("<option value=\"\">Digestive System</option>");
 				$("#topics").append("<option value=\"\">Excretory System</option>");
 				$("#topics").append("<option value=\"\">Reproductive System</option>");

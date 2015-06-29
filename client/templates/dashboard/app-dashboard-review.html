@@ -1,0 +1,244 @@
+<template name="appDashboardReview">
+	<div class="full-page">
+		<!-- The results header -->
+		<div class="section quiz-results appDashboard slate-background">
+			<div class="container">
+				<div class="row text-center">
+					<h1>Review Section</h1>
+				</div>
+				{{#if quizzes}}
+				<div class="row text-center">
+					<div class="col-xs-4">
+						<button type="button" class="btn btn-primary sort-button" id="all-ques">All Questions</button>
+					</div>
+					<div class="col-xs-4">
+						<button type="button" class="btn btn-primary sort-button" id="cor-ques">Correct Questions</button>
+					</div>
+					<div class="col-xs-4">
+						<button type="button" class="btn btn-primary sort-button" id="inc-ques">Incorrect Questions</button>
+					</div>
+				</div>
+				{{/if}}
+			</div>
+		</div>
+
+		{{#unless quizzes.count}}
+			<div class="section quiz-results slate-background">
+				<div class="container">
+					<div class="row text-center">
+						<h2>Sorry! You haven't taken any quizzes in this section!</h2>
+					</div>
+				</div>
+			</div>
+		{{/unless}}
+
+		{{#each quizzes}}
+		<div class="section quiz-results slate-background">
+			<div class="container">
+				<div class="row text-center">
+					<h1>{{howYouDid}}</h1>
+					<h2>Score: {{myPoints}}</h2>
+				</div>
+			</div>
+		</div>
+
+		<!-- The question overview section -->
+		<div class="section quiz-questions top-shadow">
+			<div class="container">
+				<div class="row col-custom-clearfix">
+					<!-- TODO: Make this the error page when there is no valid quiz -->
+					{{#unless questions}}
+						Sorry! There was an error finding the results for this quiz.
+					{{/unless}}
+
+					{{#each questions}}
+					<!-- Have to list each col size for the clearfix to work -->
+					<!-- Sort by correct questions only -->
+					{{#if sortAll}}
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="number-bubble">
+								<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+							</div>
+
+							<div class="question two-col-container">
+								{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
+
+								<ul class="answers">
+									<li class="{{isAnswer 'a'}}">
+										{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'b'}}">
+										{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'c'}}">
+										{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'd'}}">
+										{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
+									</li>
+								</ul>
+
+								<div class="explanation">
+									{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
+								</div>
+
+								<!-- Link to Long Explanation -->
+								<!-- Note: must be handled in JS because Iron Router removes the hashes from the URL, meaning anchor links don't work -->
+								<!--
+								<div class="text-center">
+									<button class="btn more-info-button">
+										More Info
+									</button>
+									<button class="btn mark-for-review-button">
+										<!- TODO: If marked, show "Marked! with a check" ->
+										Mark for Review
+									</button>
+								</div>
+								-->
+							</div>
+						</div>
+					{{/if}}
+					{{#if sortCorrect}}
+						{{#if p1_cor}}
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="number-bubble">
+								<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+							</div>
+
+							<div class="question two-col-container">
+								{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
+
+								<ul class="answers">
+									<li class="{{isAnswer 'a'}}">
+										{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'b'}}">
+										{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'c'}}">
+										{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'd'}}">
+										{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
+									</li>
+								</ul>
+
+								<div class="explanation">
+									{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
+								</div>
+
+								<!-- Link to Long Explanation -->
+								<!-- Note: must be handled in JS because Iron Router removes the hashes from the URL, meaning anchor links don't work -->
+								<!--
+								<div class="text-center">
+									<button class="btn more-info-button">
+										More Info
+									</button>
+									<button class="btn mark-for-review-button">
+										<!- TODO: If marked, show "Marked! with a check" ->
+										Mark for Review
+									</button>
+								</div>
+								-->
+							</div>
+						</div>
+						{{/if}}
+					{{/if}}
+
+					<!-- Sort by incorrect questions only -->
+					{{#if sortIncorrect}}
+						{{#unless p1_cor}}
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="number-bubble">
+								<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+							</div>
+
+							<div class="question two-col-container">
+								{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
+
+								<ul class="answers">
+									<li class="{{isAnswer 'a'}}">
+										{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'b'}}">
+										{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'c'}}">
+										{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
+									</li>
+									<li class="{{isAnswer 'd'}}">
+										{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
+									</li>
+								</ul>
+
+								<div class="explanation">
+									{{#mathjax}}{{#markdown}}{{short_explanation}}{{/markdown}}{{/mathjax}}
+								</div>
+
+								<!-- Link to Long Explanation -->
+								<!-- Note: must be handled in JS because Iron Router removes the hashes from the URL, meaning anchor links don't work -->
+								<!--
+								<div class="text-center">
+									<button class="btn more-info-button">
+										More Info
+									</button>
+									<button class="btn mark-for-review-button">
+										<!- TODO: If marked, show "Marked! with a check" ->
+										Mark for Review
+									</button>
+								</div>
+								-->
+							</div>
+						</div>
+						{{/unless}}
+					{{/if}}
+					{{/each}}
+				</div> <!-- /row -->
+			</div>
+		</div> <!-- /.section -->
+
+		<!-- Long explanation section -->
+		{{#each questions}}
+		<!-- Use a unique ID as an achor tag for scrolling -->
+		<div id="long-explanation-{{number}}" class="section long-explanation">
+			<div class="container">
+				<div class="row">
+					<div class="number-bubble">
+							<span class="{{wasQuestionAnsweredCorrectly}}">{{number}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Question -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="question two-col-container">
+							{{#mathjax}}{{#markdown}}{{question}}{{/markdown}}{{/mathjax}}
+
+							<ul class="answers">
+								<li class="{{isAnswer 'a'}}">
+									{{#mathjax}}{{#markdown}}A. {{a}}{{/markdown}}{{/mathjax}}
+								</li>
+								<li class="{{isAnswer 'b'}}">
+									{{#mathjax}}{{#markdown}}B. {{b}}{{/markdown}}{{/mathjax}}
+								</li>
+								<li class="{{isAnswer 'c'}}">
+									{{#mathjax}}{{#markdown}}C. {{c}}{{/markdown}}{{/mathjax}}
+								</li>
+								<li class="{{isAnswer 'd'}}">
+									{{#mathjax}}{{#markdown}}D. {{d}}{{/markdown}}{{/mathjax}}
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- Long Explanation -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="two-col-container">
+							{{#mathjax}}{{#markdown}}{{long_explanation}}{{/markdown}}{{/mathjax}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+		{{/each}}
+	</div>
+</template>
