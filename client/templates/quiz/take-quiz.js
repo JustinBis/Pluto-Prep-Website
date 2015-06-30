@@ -136,6 +136,9 @@ Template.takeQuiz.created = function() {
 
 	// Store when a question starts (starting at when the quiz starts).
 	Session.set("quesStartTime", (new Date()).getTime());
+
+	ll('tagEvent', 'Take Quiz');
+	ll('tagScreen', 'Quiz Page');
 }
 
 // When the quiz template is rendered, start the quiz timer on the server

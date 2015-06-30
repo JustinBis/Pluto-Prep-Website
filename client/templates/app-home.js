@@ -1,3 +1,8 @@
+Template.appHome.created = function () {
+	// Tagging screen for user flow in Localytics
+	ll('tagScreen', 'Home Page');
+};
+
 Template.appHome.events({
 	// When the sign up button is pressed, sign this user up
 	"submit #create-user-form": function (event, template) {
@@ -38,6 +43,10 @@ Template.appHome.events({
 			}
 			else
 			{
+
+				// Localytics event for when a user registers.
+				ll('tagEvent', 'User Registered');
+
 				Router.go('quiz-select-subject');
 			}
 		});

@@ -1,3 +1,7 @@
+Template.quizResults.created = function () {
+	ll('tagScreen', 'Results Page');
+};
+
 Template.quizResults.helpers({
 	// Returns "correct" if the given letter was the answer for this question
 	// returns "wrong" if this user answered with the given letter and was wrong
@@ -225,6 +229,7 @@ Template.quizResults.helpers({
 Template.quizResults.events({
 	// If there is an error loading the quiz and the user clicks the go back button
 	"click #play-again-button": function(event) {
+		ll('tagEvent', 'Replay Quiz');
 		Router.go('quiz-select-subject');
 	}
 });
