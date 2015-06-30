@@ -5,6 +5,7 @@ Template.findQuizPartner.created = function() {
 	// Create the reactive state variables
 	this.progress = new ReactiveVar();
 	this.quizId = new ReactiveVar();
+	Localytics.setDurStartTime((new Date()).getTime(), "Find Partner Page");
 }
 
 Template.findQuizPartner.rendered = function() {

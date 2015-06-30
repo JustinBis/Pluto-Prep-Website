@@ -1,4 +1,6 @@
 Template.appHome.created = function () {
+
+	Localytics.setDurStartTime((new Date()).getTime(), "Home Page");
 	// Tagging screen for user flow in Localytics
 	ll('tagScreen', 'Home Page');
 };

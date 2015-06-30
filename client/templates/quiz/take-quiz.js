@@ -137,6 +137,9 @@ Template.takeQuiz.created = function() {
 	// Store when a question starts (starting at when the quiz starts).
 	Session.set("quesStartTime", (new Date()).getTime());
 
+	console.log(Meteor.connection._lastSessionId);
+
+	Localytics.setDurStartTime((new Date()).getTime(), "Quiz Page");
 	ll('tagEvent', 'Take Quiz');
 	ll('tagScreen', 'Quiz Page');
 }

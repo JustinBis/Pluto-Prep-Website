@@ -1,4 +1,5 @@
 Template.quizResults.created = function () {
+	Localytics.setDurStartTime((new Date()).getTime(), "Results Page");
 	ll('tagScreen', 'Results Page');
 };
 
